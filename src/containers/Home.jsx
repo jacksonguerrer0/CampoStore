@@ -1,11 +1,10 @@
 import React from 'react'
-import Menu from '../layout/Menu'
+import Header from '../components/Header'
 
 const Home = () => {
     return (
         <div>
-            CampoStore
-            <Menu />
+            <Header title='CampoStore'/>
         </div>
     )
 }
