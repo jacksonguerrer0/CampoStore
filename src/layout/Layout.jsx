@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Menu from './Menu'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route, useLocation } from 'react-router-dom'
 import Home from '../containers/Home'
 import Post from '../containers/Post'
 import Messages from '../containers/Messages'
@@ -57,7 +57,6 @@ const Layout = () => {
       // console.log(list)
       setMenu(list)
    }
-
    return (
       <div className='container'>
          <Router>

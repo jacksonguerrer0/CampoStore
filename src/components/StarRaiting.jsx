@@ -5,7 +5,7 @@ import { ContentStar } from "./star-raiting/StarRaiting.js";
 const StarRaiting = () =>{
     const [raiting, setRaiting] = useState({raiting:0})
 
-  const onStarClick = (nextValue, prevValue, name) =>{
+  const onStarClick = async (nextValue, prevValue, name) =>{
     setRaiting({ rating: nextValue });
   }
     const { rating } = raiting;

@@ -24,7 +24,6 @@ const ProfileDetalle = () => {
                 <ButtonBack />
                 <h2>Perfil</h2>
             </ContainerHeader>
-
             <ContainerBody>
                 <ContentImg>
                     <ImgProfile src={imgProfile} alt="" />
@@ -32,11 +31,9 @@ const ProfileDetalle = () => {
                 </ContentImg>
                 <ContentInfo>
                     <StarRaiting />
-                    <p>Ciudad: {city} <br />Ventas Exitosas: {salesRealized} </p>
-                    <Link to="/messages">  
-                        <ButtonContact>
-                            Contactar
-                        </ButtonContact>
+                    <p>Ciudad: {city} <br />Ventas Exitosas: {salesRealized} </p>  
+                    <Link to="/messages">
+                        Contactar
                     </Link>
                 </ContentInfo>
             </ContainerBody>

@@ -13,7 +13,7 @@ const DesactiveAcordeon = css`
 // 
 export const ContainerDetalle = styled.div`
     background-color: ${variables.white};
-    padding: 1rem;
+    /* padding: 1rem; */
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(auto);
@@ -46,25 +46,28 @@ export const ImgProfile = styled.img`
     border: 0.8rem solid ${variables.greenDown} ;
 `
 export const ButtonContact = styled.div`
-    cursor: pointer;
-    border-left: 2px solid black;
-    border-right: 2px solid black;
-    padding: 1rem;
-    text-align: center;
-    border-radius: 10px;
-    background: ${variables.gradiant};
-    &:active{
-        transition: all 0.1s ease-in-out;
-        box-shadow: ${variables.boxShadown};
-    }
+
 `
 export const ContentInfo = styled.div`
     display: flex;
     flex-flow: column wrap;
     justify-content: center;
     padding: 1rem;
-    Link{
+    a{
+        color: ${variables.black};
         text-decoration: none;
+        cursor: pointer;
+        border-left: 2px solid black;
+        border-right: 2px solid black;
+        padding: 1rem;
+        text-align: center;
+        border-radius: 10px;
+        background: ${variables.gradiant};
+        &:active{
+            transition: all 0.1s ease-in-out;
+            box-shadow: ${variables.boxShadown};
+            color: ${variables.black};
+        }
     }
 `
 

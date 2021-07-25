@@ -9,7 +9,7 @@ export const ButonBack = styled.div`
     cursor: pointer;
     background: ${variables.gradiant};
     padding: 0.5rem;
-    border-radius: 100% 40% 40% 100%;
+    border-radius: 100% 20px 20px 100%;
     box-shadow: 0px 0px 50px rgba(90, 108, 234, 0.1);
     &:active{
         transition: all 0.1s ease-in-out;
