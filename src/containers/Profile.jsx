@@ -1,9 +1,10 @@
 import React from 'react'
+import ProfileDetale from '../components/ProfileDetalle'
 
 const Profile = () => {
    return (
       <div>
-         soy el perfil
+         <ProfileDetale />
       </div>
    )
 }

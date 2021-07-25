@@ -1,0 +1,10 @@
+.activeAcordeon {
+    height: auto;
+    padding: 1rem;
+}
+.desactiveAcordeon{
+    height: 0;
+    padding:0rem;
+    overflow: hidden;
+    transition: all .5s ease;
+}
