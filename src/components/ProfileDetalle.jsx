@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
-import { ButtonBack, ContainerBody, ContainerDetalle, ContainerFooter, ContainerHeader, ContentButtonBack, ImgProfile, PAcordeon } from './profile-detalle-styles/ProfileDetalleStyled'
-import './profile-detalle-styles/profileDetalleStyle.css'
+import {  ContainerBody, ContainerDetalle, ContainerFooter, ContainerHeader, ImgProfile, ButtonContact, ContentAcordeon, ToggleAcordeon, ContentImg, ContentInfo } from './profile-detalle-styles/ProfileDetalleStyled'
+
+import ButtonBack from './ButtonBack';
+import StarRaiting from './StarRaiting';
+import { Link } from 'react-router-dom';
 
 
 
@@ -8,9 +11,8 @@ const imgProfile = "https://us.123rf.com/450wm/kritchanut/kritchanut1406/kritcha
 
 const nameUser = "Jackson Guerrero"
 const rolUser = "Vendedor" || "Comprador"
-const stars = 3
-const iconStar = <i className="fas fa-heart"></i>
-
+const city = "Arauca"
+const salesRealized = 45
 const ProfileDetalle = () => {
     const [activeAcordeon, setActiveAcordeon] = useState(false)
     const handlePAcordeon = () => {
@@ -19,40 +21,32 @@ const ProfileDetalle = () => {
     return (
         <ContainerDetalle>
             <ContainerHeader>
-                <ContentButtonBack>
-                    <ButtonBack>
-                        Atrás
-                    </ButtonBack>
-                </ContentButtonBack>
-                <div>
-                    <h2>Perfil</h2>
-                </div>
+                <ButtonBack />
+                <h2>Perfil</h2>
             </ContainerHeader>
             <ContainerBody>
-                <div>
+                <ContentImg>
                     <ImgProfile src={imgProfile} alt="" />
-                    <p>{nameUser}</p>
-                    <p>Soy {rolUser}</p>
-                </div>
-                <div>
-                    <div>
-                        {stars}
-                    </div>
-                    <div>
+                    <p>{nameUser} <br />Soy {rolUser}</p>
+                </ContentImg>
+                <ContentInfo>
+                    <StarRaiting />
+                    <p>Ciudad: {city} <br />Ventas Exitosas: {salesRealized} </p>  
+                    <Link to="/messages">
                         Contactar
-                    </div>
-                </div>
+                    </Link>
+                </ContentInfo>
             </ContainerBody>
+
             <ContainerFooter>
-                <div >
-                <h3 onClick={handlePAcordeon}>Ver más información</h3>
-                <p className={activeAcordeon ? "activeAcordeon" : "desactiveAcordeon"}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis dicta provident totam sapiente tempore odio voluptatum doloremque sequi laborum voluptates.
+                <ContentAcordeon>
+                <h3 onClick={handlePAcordeon}>Ver más información<i className="fas fa-hand-pointer"></i></h3>
+                <ToggleAcordeon status={activeAcordeon.toString()}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis dicta provident totam sapiente tempore odio voluptatum doloremque sequi laborum voluptates.
                     <br />
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur molestias quia ipsum velit quis unde exercitationem modi, vero autem vitae?
-                </p>
-                </div>
+                </ToggleAcordeon>
+                </ContentAcordeon>
             </ContainerFooter>
-
         </ContainerDetalle>
     )
 }
