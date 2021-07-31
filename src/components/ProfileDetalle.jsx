@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {  ContainerBody, ContainerDetalle, ContainerFooter, ContainerHeader, ImgProfile, ButtonContact, ContentAcordeon, ToggleAcordeon, ContentImg, ContentInfo } from './profile-detalle-styles/ProfileDetalleStyled'
+import {  ContainerBody, ContainerDetalle, ContainerFooter, ContainerHeader, ImgProfile,  ContentAcordeon, ToggleAcordeon, ContentImg, ContentInfo } from './profile-detalle-styles/ProfileDetalleStyled'
 
 import ButtonBack from './ButtonBack';
 import StarRaiting from './StarRaiting';

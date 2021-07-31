@@ -1,12 +1,6 @@
 import styled from 'styled-components'
 import variables from '../../styles/variables'
 
-export const ContainerProducts = styled.div`
-    display: grid;
-    grid-template-columns: 1fr;
-    margin-bottom: 90px;
-`
-
 export const ContentProduct = styled.div`
     width: auto;
     height: 12rem;
@@ -35,6 +29,7 @@ export const ContentProduct = styled.div`
         border-radius: 10px;
         background: ${variables.gradiant};
         margin-top: 1rem;
+        margin: auto auto 0 auto;
         &:active{
             transition: all 0.1s ease-in-out;
             box-shadow: ${variables.boxShadown};
@@ -44,9 +39,20 @@ export const ContentProduct = styled.div`
     p{
         margin: 0;
     }
-    div{
-        display: flex;
-        flex-flow: column wrap;
-        /* justify-content: space-evenly; */
-    }
+`
+export const ContentPDetail = styled.div`
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    height: 4rem;
+
+`
+export const ContentDetailInfo = styled.div`
+    display: flex;
+    flex-flow: wrap column;
+
+`
+export const Pr = styled.p`
+    text-align: right;
+    color: #0000006b;
 `

@@ -1,13 +1,13 @@
 import React from 'react'
+import ProductsHome from '../components/ProductsHome'
 import ProfileDetale from '../components/ProfileDetalle'
-import ProfileProducts from '../components/ProfileProducts'
 
 const Profile = () => {
    return (
       <div>
          <ProfileDetale />
          <h2 style={{textAlign: 'center'}}>Mis productos</h2>
-         <ProfileProducts />
+         <ProductsHome />
       </div>
    )
 }
