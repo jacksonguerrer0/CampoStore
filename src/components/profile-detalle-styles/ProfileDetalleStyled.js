@@ -1,5 +1,7 @@
 import styled, {css} from 'styled-components'
 import variables from '../../styles/variables'
+
+
 const ActiveAcordeon =  css`
     height: auto;
     overflow: hidden;
@@ -12,7 +14,7 @@ const DesactiveAcordeon = css`
 `
 // 
 export const ContainerDetalle = styled.div`
-    background-color: ${variables.white};
+    background-color: ${variables.background};
     /* padding: 1rem; */
     display: grid;
     grid-template-columns: 1fr;

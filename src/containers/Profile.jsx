@@ -4,7 +4,7 @@ import ProfileProducts from '../components/ProfileProducts'
 
 const Profile = () => {
    return (
-      <div  >
+      <div>
          <ProfileDetale />
          <h2 style={{textAlign: 'center'}}>Mis productos</h2>
          <ProfileProducts />

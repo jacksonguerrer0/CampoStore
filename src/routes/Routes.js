@@ -15,9 +15,8 @@ const Routes = () => {
          font-family: 'Otomanopee One';
          margin: 0;
          padding: 0;
-         width: 100vw;
+         width: 100%;
       };
-      
       .container{
          max-width: 600px;
          margin: 0 auto;
