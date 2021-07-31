@@ -14,12 +14,13 @@ const DesactiveAcordeon = css`
 `
 // 
 export const ContainerDetalle = styled.div`
-    background-color: ${variables.background};
+    background-color: ${variables.white};
     /* padding: 1rem; */
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(auto);
-    border-bottom: 2rem solid ${variables.background};
+    border-radius: 0 0 3rem 3rem;
+    border-radius: 1rem 2rem 1rem 2rem;
 `
 // 
 export const ContainerHeader = styled.div`
