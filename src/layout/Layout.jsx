@@ -6,6 +6,7 @@ import Post from '../containers/Post'
 import Messages from '../containers/Messages'
 import Profile from '../containers/Profile'
 import DetailProduct from '../containers/DetailProduct'
+import Login from '../containers/Login'
 
 const Layout = () => {
 
@@ -66,6 +67,7 @@ const Layout = () => {
                   <Route key={index} exact path={element.path} component={element.component} />
                ))}
                <Route exact path='/detail' component={DetailProduct} />
+               <Route path='/login' exact component={Login} />
             </Switch>
             <Menu listMenu = {menu} handleMenu={handleMenu} />
          </Router>

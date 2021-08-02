@@ -10,7 +10,7 @@ const ButtonBack = () => {
     return (
         <ContentButtonBack>
             <ButonBack>
-                <IIcon className="fas fa-less-than"> Atrás</IIcon>
+                <IIcon className="fas fa-less-than"></IIcon>
             </ButonBack>
         </ContentButtonBack>
     )

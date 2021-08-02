@@ -17,6 +17,7 @@ const StarRaiting = () =>{
           starCount={5}
           value={rating}
           onStarClick={onStarClick}
+          starRatedColor="blue"
         />
       </ContentStar>
     );

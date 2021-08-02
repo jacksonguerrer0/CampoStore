@@ -6,11 +6,16 @@ export const ContentButtonBack = styled.div`
     margin-left: 0;
 `
 export const ButonBack = styled.div`
-    width: 4.5rem;
+    /* color: ${variables.white}; */
+    width: 2rem;
+    text-align: center;
     cursor: pointer;
     background: ${variables.gradiant};
+    border: 2px solid white;
+    color: white;
     padding: 0.5rem;
-    border-radius: 100% 20px 20px 100%;
+    margin-left: 1rem;
+    border-radius: 100%;
     box-shadow: 0px 0px 50px rgba(90, 108, 234, 0.1);
     &:active{
         transition: all 0.1s ease-in-out;

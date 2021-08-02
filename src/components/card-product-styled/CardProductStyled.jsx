@@ -19,21 +19,19 @@ export const ContentProduct = styled.div`
     }
     a{
         width: 50%;
-        color: ${variables.black};
+        color: ${variables.white};
         text-decoration: none;
         cursor: pointer;
-        border-left: 2px solid black;
-        border-right: 2px solid black;
-        padding: 0.5rem 1rem;
+        padding: 0.7rem 1rem;
         text-align: center;
         border-radius: 10px;
         background: ${variables.gradiant};
+        box-shadow: ${variables.boxShadown};
         margin-top: 1rem;
         margin: auto auto 0 auto;
         &:active{
             transition: all 0.1s ease-in-out;
             box-shadow: ${variables.boxShadown};
-            color: ${variables.black};
         }
     }
     p{

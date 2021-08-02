@@ -30,6 +30,7 @@ export const ContainerHeader = styled.div`
 `
 export const H2 = styled.h2`
     text-align: center;
+    color: ${variables.white};
 `
 // 
 
@@ -58,15 +59,14 @@ export const ContentInfo = styled.div`
     justify-content: center;
     padding: 1rem;
     a{
-        color: ${variables.black};
+        color: ${variables.white};
         text-decoration: none;
         cursor: pointer;
-        border-left: 2px solid black;
-        border-right: 2px solid black;
         padding: 1rem;
         text-align: center;
         border-radius: 10px;
         background: ${variables.gradiant};
+        box-shadow: ${variables.boxShadown};
         &:active{
             transition: all 0.1s ease-in-out;
             box-shadow: ${variables.boxShadown};

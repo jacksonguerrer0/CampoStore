@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {  ContainerBody, ContainerDetalle, ContainerFooter, ContainerHeader, ImgProfile,  ContentAcordeon, ToggleAcordeon, ContentImg, ContentInfo } from './profile-detalle-styles/ProfileDetalleStyled'
+import {  ContainerBody, ContainerDetalle, ContainerFooter, ContainerHeader, ImgProfile,  ContentAcordeon, ToggleAcordeon, ContentImg, ContentInfo, H2 } from './profile-detalle-styles/ProfileDetalleStyled'
 
 import ButtonBack from './ButtonBack';
 import StarRaiting from './StarRaiting';
@@ -22,7 +22,7 @@ const ProfileDetalle = () => {
         <ContainerDetalle>
             <ContainerHeader>
                 <ButtonBack />
-                <h2>Perfil</h2>
+                <H2>Perfil</H2>
             </ContainerHeader>
             <ContainerBody>
                 <ContentImg>
