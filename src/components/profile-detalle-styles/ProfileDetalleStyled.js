@@ -26,6 +26,7 @@ export const ContainerDetalle = styled.div`
 export const ContainerHeader = styled.div`
     display: grid;
     grid-template-columns: 1fr 3fr;
+    background: ${variables.gradiant};
 `
 export const H2 = styled.h2`
     text-align: center;

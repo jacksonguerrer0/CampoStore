@@ -6,6 +6,7 @@ export const ContentButtonBack = styled.div`
     margin-left: 0;
 `
 export const ButonBack = styled.div`
+    width: 4.5rem;
     cursor: pointer;
     background: ${variables.gradiant};
     padding: 0.5rem;

@@ -5,6 +5,7 @@ import variables from '../styles/variables'
 import '../styles/style.css'
 import Layout from '../layout/Layout'
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import DetailProduct from '../containers/DetailProduct'
 
 const Routes = () => {
 

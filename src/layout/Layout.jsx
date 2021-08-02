@@ -5,6 +5,7 @@ import Home from '../containers/Home'
 import Post from '../containers/Post'
 import Messages from '../containers/Messages'
 import Profile from '../containers/Profile'
+import DetailProduct from '../containers/DetailProduct'
 
 const Layout = () => {
 
@@ -64,6 +65,7 @@ const Layout = () => {
                {menu.map((element, index) => (
                   <Route key={index} exact path={element.path} component={element.component} />
                ))}
+               <Route exact path='/detail' component={DetailProduct} />
             </Switch>
             <Menu listMenu = {menu} handleMenu={handleMenu} />
          </Router>
