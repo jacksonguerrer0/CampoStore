@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import listSearchStore from '../actions/searchHome'
 import { ButtonSearch, FormSearch, InputSearch } from './serach-home-styled/SearchHomeStyled'
 
 const SearchHome = () => {
@@ -10,7 +11,7 @@ const SearchHome = () => {
     const handleSearchChange = ({ target }) => {
         setSearch(target.value)
     }
-    console.log(search)
+    console.log(listSearchStore())
 
     return (
         <FormSearch onSubmit={handleSearchSubmit}>
