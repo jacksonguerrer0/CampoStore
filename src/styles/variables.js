@@ -7,6 +7,7 @@ const variables = {
     active: '#EAFAF2',
     gradiant: 'linear-gradient(to right, #53e88b, #15be77)',
     boxShadown: 'inset 0 0 0 rgb(0 0 0 / 1%), 0 0 0 0 rgb(255 255 255), 4px 4px 4px rgb(0 0 0 / 10%)',
-    suave: '#0000006b;'
+    suave: '#0000006b;',
+    gray: '#3B3B3B'
 }
 export default variables

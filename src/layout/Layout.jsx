@@ -7,6 +7,7 @@ import Messages from '../containers/Messages'
 import Profile from '../containers/Profile'
 import DetailProduct from '../containers/DetailProduct'
 import Login from '../containers/Login'
+import ShowChat from '../components/ShowChat'
 
 const Layout = () => {
 
@@ -62,6 +63,7 @@ const Layout = () => {
    return (
       <div className='container'>
          <Router>
+         <Route exact path='/messages/:id' component={ShowChat} />
             <Switch>
                {menu.map((element, index) => (
                   <Route key={index} exact path={element.path} component={element.component} />
