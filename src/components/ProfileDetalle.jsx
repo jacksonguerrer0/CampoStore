@@ -13,11 +13,12 @@ const DataPersona = {
         imgBanner: 'https://e00-co-marca.uecdn.es/claro/assets/multimedia/imagenes/2020/06/06/15914565469629.jpg',
         nameUser: "Jackson Guerrero",
         city: "Arauca",
+        stars: 4,
         salesRealized: 45,
         description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Libero repellendus, optio eos nostrum ipsa obcaecati ratione odit, commodi unde amet accusantium distinctio dicta voluptates possimus eaque magni officiis nam pariatur Iusto unde tempore temporibus recusandae veniam totam odio nobis dolores eveniet repudiandae eligendi consequatur qui quasi suscipit iure, a tempora dolorem cupiditate neque autem non facere provident dolore necessitatibus'
 }
 
-const {imgProfile, imgBanner, nameUser, city, salesRealized, description} = DataPersona
+const {imgProfile, imgBanner, nameUser, city, stars, salesRealized, description} = DataPersona
 const imgFail = {
     imgPrifile2: 'https://us.123rf.com/450wm/kritchanut/kritchanut1406/kritchanut140600114/29213224-hombre-foto-de-perfil-silueta-avatar.jpg?ver=6',
     imgBanner2: 'https://www.publicdomainpictures.net/pictures/280000/nahled/dusky-grey-sky-background.jpg'
@@ -59,7 +60,7 @@ const ProfileDetalle = () => {
                     }
                 </ContentImg>
                 <ContentInfo>
-                    <StarRaiting />
+                    <StarRaiting stars={stars}/>
                     <TextInfo>
                         <p>Ciudad:</p><PRinfo>{city}</PRinfo>
                         <p>Ventas Exitosas:</p><PRinfo>{salesRealized}</PRinfo>
