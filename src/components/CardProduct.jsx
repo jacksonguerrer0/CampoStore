@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import ButtonGreen from './ButtonGreen'
 import { ContentDetailInfo, ContentPDetail, ContentProduct, Pr } from './card-product-styled/CardProductStyled'
 
 const CardProduct = () => {
@@ -13,9 +14,7 @@ const CardProduct = () => {
                         <p>Precio:</p><Pr>Soy precio</Pr>
                         <p>Cantidad:</p><Pr>Soy cantidad</Pr>
                     </ContentPDetail>
-                    <Link to='/detalleProducto'>
-                        Ver el Producto
-                    </Link>
+                    <ButtonGreen url='/detalleProducto' text='Ver el producto' />
                 </ContentDetailInfo>
             </ContentProduct>
         </>

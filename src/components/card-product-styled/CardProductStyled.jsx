@@ -3,7 +3,7 @@ import variables from '../../styles/variables'
 
 export const ContentProduct = styled.div`
     width: auto;
-    height: 12rem;
+    height: 14rem;
     display: grid;
     margin-bottom: 1rem;
     grid-template-columns: 1fr 1fr;
@@ -17,25 +17,11 @@ export const ContentProduct = styled.div`
         margin: auto;
         border-radius: 10px;
     }
-    a{
-        width: 50%;
-        color: ${variables.white};
-        text-decoration: none;
-        cursor: pointer;
-        padding: 0.7rem 1rem;
-        text-align: center;
-        border-radius: 10px;
-        background: ${variables.gradiant};
-        box-shadow: ${variables.boxShadown};
-        margin-top: 1rem;
-        margin: auto auto 0 auto;
-        &:active{
-            transition: all 0.1s ease-in-out;
-            box-shadow: ${variables.boxShadown};
-        }
-    }
     p{
         margin: 0;
+    }
+    a{
+        width: 10rem;
     }
 `
 export const ContentPDetail = styled.div`
@@ -48,6 +34,10 @@ export const ContentPDetail = styled.div`
 export const ContentDetailInfo = styled.div`
     display: flex;
     flex-flow: wrap column;
+    justify-content: center;
+    h3{
+        text-align: center;
+    }
 
 `
 export const Pr = styled.p`
