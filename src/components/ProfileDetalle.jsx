@@ -8,14 +8,22 @@ import ButtonGreen from './ButtonGreen';
 import EditInfoProfile from './EditInfoProfile';
 import ModalCampo from './ModalCampo';
 
+const DataPersona = {
+        imgProfile: "https://us.123rf.com/450wm/kritchanut/kritchanut1406/kritchanut140600114/29213224-hombre-foto-de-perfil-silueta-avatar.jpg?ver=6",
+        imgBanner: 'https://e00-co-marca.uecdn.es/claro/assets/multimedia/imagenes/2020/06/06/15914565469629.jpg',
+        nameUser: "Jackson Guerrero",
+        city: "Arauca",
+        salesRealized: 45,
+        description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Libero repellendus, optio eos nostrum ipsa obcaecati ratione odit, commodi unde amet accusantium distinctio dicta voluptates possimus eaque magni officiis nam pariatur Iusto unde tempore temporibus recusandae veniam totam odio nobis dolores eveniet repudiandae eligendi consequatur qui quasi suscipit iure, a tempora dolorem cupiditate neque autem non facere provident dolore necessitatibus'
+}
+
+const {imgProfile, imgBanner, nameUser, city, salesRealized, description} = DataPersona
+const imgFail = {
+    imgPrifile2: 'https://us.123rf.com/450wm/kritchanut/kritchanut1406/kritchanut140600114/29213224-hombre-foto-de-perfil-silueta-avatar.jpg?ver=6',
+    imgBanner2: 'https://www.publicdomainpictures.net/pictures/280000/nahled/dusky-grey-sky-background.jpg'
+}
 
 
-const imgProfile = "https://us.123rf.com/450wm/kritchanut/kritchanut1406/kritchanut140600114/29213224-hombre-foto-de-perfil-silueta-avatar.jpg?ver=6";
-const imgBanner = 'https://e00-co-marca.uecdn.es/claro/assets/multimedia/imagenes/2020/06/06/15914565469629.jpg'
-const nameUser = "Jackson Guerrero"
-const rolUser = "Vendedor" || "Comprador"
-const city = "Arauca"
-const salesRealized = 45
 const ProfileDetalle = () => {
 
     const [activeAcordeon, setActiveAcordeon] = useState(false)
@@ -61,14 +69,10 @@ const ProfileDetalle = () => {
             </ContainerBody>
 
             <ContainerFooter>
-
                 <ContentAcordeon>
                 <h3 onClick={handlePAcordeon}>Ver más información<i className="fas fa-hand-pointer"></i></h3>
                 <ToggleAcordeon status={activeAcordeon.toString()}>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis dicta provident totam sapiente tempore odio voluptatum doloremque sequi laborum voluptates.
-                    <br />
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur molestias quia ipsum velit quis unde exercitationem modi, vero autem vitae?
-                    </p>
+                    <p>{ description }</p>
                 </ToggleAcordeon>
                 </ContentAcordeon>
             </ContainerFooter>
