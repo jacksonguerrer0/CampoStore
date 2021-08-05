@@ -94,7 +94,7 @@ export const PRinfo = styled.p`
 export const ContainerFooter = styled.div`
     display: grid;
     grid-template-columns: 1fr;
-    margin-top: -180px;
+    margin-top: -170px;
 `
 export const ContentAcordeon = styled.div`
     max-width: 100%;
