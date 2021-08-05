@@ -47,7 +47,7 @@ const ProfileDetalle = () => {
     }
     const modePerfil = () => {
         const direccion = history.location.pathname;
-        if (direccion.toLowerCase() !== '/myProfile') {
+        if (direccion.toLowerCase() === '/myprofile') {
             setModeMyProfile(true)  
         } else{
             setModeMyProfile(false)

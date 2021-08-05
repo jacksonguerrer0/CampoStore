@@ -16,7 +16,7 @@ const StarRaiting = ({ stars }) =>{
           starRatedColor='#FFFF00'
           starHoverColor='#FFFF00'
           // changeRating={changeRating}
-          numberOfStars={6}
+          numberOfStars={5}
           name='rating'
           starDimension='2rem'
         />

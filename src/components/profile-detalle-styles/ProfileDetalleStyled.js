@@ -58,6 +58,7 @@ export const ContentImg = styled.div`
         margin: inherit;
     }
 `
+
 export const ImgProfile = styled.img`
     width: 9rem;
     height: 9rem;

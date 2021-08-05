@@ -14,7 +14,7 @@ const CardProduct = () => {
                         <p>Precio:</p><Pr>Soy precio</Pr>
                         <p>Cantidad:</p><Pr>Soy cantidad</Pr>
                     </ContentPDetail>
-                    <ButtonGreen url='/detalleProducto' text='Ver el producto' />
+                    <ButtonGreen url='/detail' text='Ver el producto' />
                 </ContentDetailInfo>
             </ContentProduct>
         </>
