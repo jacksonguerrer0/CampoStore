@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {  ContainerBody, ContainerDetalle, ContainerFooter, ContainerHeader, ImgProfile,  ContentAcordeon, ToggleAcordeon, ContentImg, ContentInfo, H2, ContainerBanner, TextInfo, PRinfo } from './profile-detalle-styles/ProfileDetalleStyled'
+import {  ContainerBody, ContainerDetalle, ContainerFooter, ContainerHeader, ImgProfile,  ContentAcordeon, ToggleAcordeon, ContentImg, ContentInfo, H2, ContainerBanner, TextInfo, PRinfo, IconPhotoPerfil } from './profile-detalle-styles/ProfileDetalleStyled'
 
 import ButtonBack from './ButtonBack';
 import StarRaiting from './StarRaiting';
@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import ButtonGreen from './ButtonGreen';
 import EditInfoProfile from './EditInfoProfile';
 import ModalCampo from './ModalCampo';
+import InputFile from '../layout/input-file-styles/InputFile';
 
 const DataPersona = {
         imgProfile: "https://us.123rf.com/450wm/kritchanut/kritchanut1406/kritchanut140600114/29213224-hombre-foto-de-perfil-silueta-avatar.jpg?ver=6",
@@ -42,13 +43,16 @@ const ProfileDetalle = () => {
     return (
         <ContainerDetalle>
             <ContainerBanner>
-                <ButtonBack />
                 <ContainerHeader src={imgBanner} alt="Portada" >
                 </ContainerHeader>
+                <InputFile imageBanner='true' />
             </ContainerBanner>
             <ContainerBody>
                 <ContentImg>
-                    <ImgProfile src={imgProfile} alt="Perfil"/>
+                    <div style={{position:'relative'}}>
+                        <ImgProfile src={imgProfile} alt="Perfil"/>
+                        <InputFile imageProfile='true'/>
+                    </div>
                     <p>{nameUser}</p>
                     <p>#soyCampo</p>
                     <EditInfoProfile handleModal={handleModal}/>

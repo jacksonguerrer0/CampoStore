@@ -21,6 +21,10 @@ export const ContainerDetalle = styled.div`
 `
 // 
 export const ContainerBanner = styled.div`
+    position: relative;
+    i{
+        z-index: 9;
+    }
 `
 export const ContainerHeader = styled.img`
     width: 100%;
@@ -63,9 +67,11 @@ export const ImgProfile = styled.img`
 `
 
 export const ContentInfo = styled.div`
+    justify-content: center;
+    position: inherit;
+    bottom: -50px;
     display: flex;
     flex-flow: column wrap;
-    justify-content: flex-end;
     padding: 1rem;
     p{
         margin: 0;
@@ -86,7 +92,7 @@ export const PRinfo = styled.p`
 export const ContainerFooter = styled.div`
     display: grid;
     grid-template-columns: 1fr;
-    margin-top: -150px;
+    margin-top: -120px;
 `
 export const ContentAcordeon = styled.div`
     max-width: 100%;
