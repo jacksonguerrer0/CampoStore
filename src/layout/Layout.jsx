@@ -35,7 +35,7 @@ const Layout = () => {
       },
       {
          name: 'Perfil',
-         path: '/profile',
+         path: '/myprofile',
          component: Profile,
          icon: 'https://i.imgur.com/NI4icpy.png',
          status: false
@@ -70,6 +70,7 @@ const Layout = () => {
                ))}
                <Route exact path='/detail' component={DetailProduct} />
                <Route path='/login' exact component={Login} />
+               <Route exact path='/profile' component={Profile} />
             </Switch>
             <Menu listMenu = {menu} handleMenu={handleMenu} />
          </Router>

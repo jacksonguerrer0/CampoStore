@@ -53,6 +53,7 @@ export const ContainerBody = styled.div`
 export const ContentImg = styled.div`
     text-align: center;
     padding: 1rem;
+    height: 330px;
     p{
         margin: inherit;
     }
@@ -67,7 +68,8 @@ export const ImgProfile = styled.img`
 `
 
 export const ContentInfo = styled.div`
-    justify-content: center;
+    height: 250px;
+    justify-content: flex-end;
     position: inherit;
     bottom: -50px;
     display: flex;
@@ -92,7 +94,7 @@ export const PRinfo = styled.p`
 export const ContainerFooter = styled.div`
     display: grid;
     grid-template-columns: 1fr;
-    margin-top: -120px;
+    margin-top: -180px;
 `
 export const ContentAcordeon = styled.div`
     max-width: 100%;

@@ -1,13 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {  ContainerBody, ContainerDetalle, ContainerFooter, ContainerHeader, ImgProfile,  ContentAcordeon, ToggleAcordeon, ContentImg, ContentInfo, H2, ContainerBanner, TextInfo, PRinfo, IconPhotoPerfil } from './profile-detalle-styles/ProfileDetalleStyled'
 
 import ButtonBack from './ButtonBack';
 import StarRaiting from './StarRaiting';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import ButtonGreen from './ButtonGreen';
 import EditInfoProfile from './EditInfoProfile';
 import ModalCampo from './ModalCampo';
-import InputFile from '../layout/input-file-styles/InputFile';
+import InputFile from '../layout/input-file-styles/InputFileProfile';
+import InputFileBanner from '../layout/input-file-styles/InputFileBanner';
+import InputFileProfile from '../layout/input-file-styles/InputFileProfile';
+
 
 const DataPersona = {
         imgProfile: "https://us.123rf.com/450wm/kritchanut/kritchanut1406/kritchanut140600114/29213224-hombre-foto-de-perfil-silueta-avatar.jpg?ver=6",
@@ -27,10 +30,12 @@ const imgFail = {
 
 
 const ProfileDetalle = () => {
-
+    const [modeMyProfile, setModeMyProfile] = useState(true)
     const [activeAcordeon, setActiveAcordeon] = useState(false)
     const [showModal, setShowModal] = useState(false)
     const [dataModal, setDataModal] = useState({}) 
+
+    const history = useHistory()
 
     const handlePAcordeon = () => {
         setActiveAcordeon(!activeAcordeon)
@@ -40,22 +45,36 @@ const ProfileDetalle = () => {
         setShowModal(true)
         setDataModal(data)
     }
+    const modePerfil = () => {
+        const direccion = history.location.pathname;
+
+        if (direccion === '/myprofile') {
+            setModeMyProfile(true)  
+        } else{
+            setModeMyProfile(false)
+        }
+    }
+
+    useEffect(() => {
+        modePerfil()
+    })
     return (
         <ContainerDetalle>
+            { !modeMyProfile && <ButtonBack /> }
             <ContainerBanner>
                 <ContainerHeader src={imgBanner} alt="Portada" >
                 </ContainerHeader>
-                <InputFile imageBanner='true' />
+                { modeMyProfile && <InputFileBanner  />}
             </ContainerBanner>
             <ContainerBody>
                 <ContentImg>
                     <div style={{position:'relative'}}>
                         <ImgProfile src={imgProfile} alt="Perfil"/>
-                        <InputFile imageProfile='true'/>
+                        { modeMyProfile && <InputFileProfile />}
                     </div>
                     <p>{nameUser}</p>
                     <p>#soyCampo</p>
-                    <EditInfoProfile handleModal={handleModal}/>
+                    { modeMyProfile && <EditInfoProfile handleModal={handleModal}/> }
                     {
                     showModal && <ModalCampo  
                     dataModal={dataModal} 
@@ -69,7 +88,7 @@ const ProfileDetalle = () => {
                         <p>Ciudad:</p><PRinfo>{city}</PRinfo>
                         <p>Ventas Exitosas:</p><PRinfo>{salesRealized}</PRinfo>
                     </TextInfo>
-                    <ButtonGreen />
+                    { !modeMyProfile && <ButtonGreen /> }
                 </ContentInfo>
             </ContainerBody>
 

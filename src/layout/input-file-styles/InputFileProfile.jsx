@@ -3,25 +3,21 @@ import './InputFileStyle.css'
 
 
 // imageBanner false envia la imagen de perfil d elo contrario enviara banner
-const InputFile = ({}) => {
+const InputFileProfile = () => {
 
 
-    // const handleChangeFile = ({ target }) => {
-    //     const file = target.files[0];
-    //     if (imageBanner === 'true') {
-    //         console.log('Imagen banner') 
-    //     }
-    //     if(imageBanner === 'false'){
-    //         console.log('imagen perfil')
-    //     }
-    // }
+    const handleChangeFile = ( e ) => {
+        const file = e.target.files[0];
+        console.log(file)
+        console.log('soy perfil')
+    }
     return (
         <>
         <div className="container-input">
             <input type="file" name="file-6" 
-            // onChange={ handleChangeFile } 
+            onChange={ handleChangeFile } 
             id="file-6" 
-            className="inputfile inputfile-6 hiddenInput" 
+            className={`inputfile inputfile-6 hiddenInput`}
             data-multiple-caption="{count} archivos seleccionados" 
             multiple />
             <label htmlFor="file-6">
@@ -33,4 +29,4 @@ const InputFile = ({}) => {
     )
 }
 
-export default InputFile
+export default InputFileProfile
