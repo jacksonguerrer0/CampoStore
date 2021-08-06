@@ -18,8 +18,6 @@ const ModalCampo = ({ dataModal, setShowModal }) => {
         validationSchema: yup.object().shape({
             name: yup.string().min(10, 'Escribe tu nombre').max(30, 'Nombre muy largo').required('Escribe tu nombre'),
             city: yup.string().required('Escribe tu ciudad'),
-            imgPerfil: '',
-            imgBanner: '',
             description: yup.string().min(10, 'Escribe una descripción').required('Escribe una descripción')
         }).required('neces'),
         onSubmit: (data) => {
@@ -34,7 +32,7 @@ const ModalCampo = ({ dataModal, setShowModal }) => {
                 <i className="fas fa-times" onClick={handleModalX}></i>
             </HeaderModal>
             {
-                formik.errors.name || formik.errors.city || formik.errors.description === {} ?
+                formik.errors.name || formik.errors.city || formik.errors.description  ?
                     <ErrorFormik>
                     {
                         formik.errors.name || formik.errors.city || formik.errors.description
@@ -53,20 +51,6 @@ const ModalCampo = ({ dataModal, setShowModal }) => {
                 name='city'
                 onChange={formik.handleChange}
                 />
-                {/* <label>Foto de perfil:</label><input 
-                type="file" 
-                name='imgPerfil'
-                onChange={(e)=>{
-                    formik.setFieldValue("imgPerfil", e.target.files[0])
-                }}
-                />
-                <label>Foto de portada:</label><input 
-                type="file"
-                name='imgBanner'
-                onChange={(e)=>{
-                    formik.setFieldValue("imgBanner", e.target.files[0]);
-                }}
-                /> */}
                 <label>Descripción:</label>
                 <textarea 
                 name="description"  

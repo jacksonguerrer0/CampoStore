@@ -68,6 +68,7 @@ export const ContentInputModal = styled.form`
     }
     button{
         padding: 1rem 0;
+        cursor: pointer;
         width: 50%;
         background: ${variables.gradiant};
         border: 1px;
@@ -94,4 +95,5 @@ export const IconSuccesHappy  = styled.i`
     font-size: 2rem;
     padding: 0.5rem;
     height: 1.5rem;
+    margin: auto;
 `
