@@ -13,8 +13,8 @@ const StarRaiting = ({ stars }) =>{
       <ContentStar>
         <StarRatings
           rating={rating}
-          starRatedColor='#FFFF00'
-          starHoverColor='#FFFF00'
+          starRatedColor='#ffcc1c'
+          starHoverColor='#ffcc1c'
           // changeRating={changeRating}
           numberOfStars={5}
           name='rating'
