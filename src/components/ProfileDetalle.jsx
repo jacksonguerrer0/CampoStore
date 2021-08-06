@@ -29,14 +29,12 @@ const imgFail = {
 }
 
 
-const ProfileDetalle = () => {
-    const [modeMyProfile, setModeMyProfile] = useState(true)
+const ProfileDetalle = ({ modeMyProfile }) => {
     const [activeAcordeon, setActiveAcordeon] = useState(false)
     const [showModal, setShowModal] = useState(false)
     const [dataModal, setDataModal] = useState({}) 
 
-    const history = useHistory()
-
+console.log(modeMyProfile)
     const handlePAcordeon = () => {
         setActiveAcordeon(!activeAcordeon)
     }
@@ -45,18 +43,6 @@ const ProfileDetalle = () => {
         setShowModal(true)
         setDataModal(data)
     }
-    const modePerfil = () => {
-        const direccion = history.location.pathname;
-        if (direccion.toLowerCase() === '/myprofile') {
-            setModeMyProfile(true)  
-        } else{
-            setModeMyProfile(false)
-        }
-    }
-
-    useEffect(() => {
-        modePerfil()
-    })
     return (
         <ContainerDetalle>
             { !modeMyProfile && <ButtonBack /> }

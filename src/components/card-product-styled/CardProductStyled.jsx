@@ -11,6 +11,7 @@ export const ContentProduct = styled.div`
     box-shadow: ${variables.boxShadown};
     border-radius: 10px;
     padding: 1rem;
+    position: relative;
     img{
         width: 12rem;
         height:12rem;
@@ -43,4 +44,18 @@ export const ContentDetailInfo = styled.div`
 export const Pr = styled.p`
     text-align: right;
     color: #0000006b;
+`
+
+export const ButtonEdit = styled.button`
+    padding: 0.8rem 1rem;
+    text-decoration: none;
+    border: none;
+    border-radius: 10px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: #c8c8cb;
+    color: ${variables.white};
+    font-size: 0.8rem;
+
 `
