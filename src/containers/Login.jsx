@@ -2,10 +2,11 @@ import React from 'react'
 // import { loginGoogle, loginWhitEmailPassword, registerWhitEmailPassword } from '../redux/loginDucks'
 // import {useDispatch} from 'react-redux'
 import { useState } from 'react'
-import { ContainerForm, FormLogin, FormRegister, Input, Button, IconSocial, HeaderForm } from './login-styled/LoginStyled'
+import { ContainerForm, FormLogin, FormRegister, Input, Button, IconSocial, HeaderForm, Select, ErrorP } from './login-styled/LoginStyled'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
-
+const departamentos = ['Amazonas', 'Antioquía', 'Arauca', 'Atlántico', 'Bolívar', 'Boyacá', 'Caldas', 'Caquetá', 'Casanare', 'Cauca', 'Cesar', 'Chocó', 'Córdoba', 'Cundinamarca', 'Guainía', 'Guaviare', 'Huila', 'Guajira', 'Magdalena', 'Meta', 'Nariño', 'Norte de Santander', 'Putumayo', 'Quindío', 'Risaralda', 'San Andrés y Providencia','Santander', 'Sucre', 'Tolima', 'Valle del Cauca', 'Vaupés', 'Vichada'
+]
 
 const Login = () => {
     const [isRegister, setIsRegister] = useState(false)
@@ -14,14 +15,16 @@ const Login = () => {
     const formikRegister = useFormik({
         initialValues: {
             nameR: '',
+            department: '',
             emailR: '',
             passwordR: '',
             passwordR2: ''
         },
         validationSchema: yup.object({
-            nameR: yup.string().min(5, 'Tu nombre es muy corto').required('Campo requerido'),
-            emailR: yup.string().email('Tu email no es valido').required('Campo requerido'),
-            passwordR: yup.string().min(6, 'Debe tener mas de 6 caracteres').required('Campo requerido'),
+            nameR: yup.string().min(5, 'Tu nombre es muy corto').required('Nombre'),
+            department: yup.string().required('Departamento'),
+            emailR: yup.string().email('Tu email no es valido').required('Correo'),
+            passwordR: yup.string().min(6, 'Debe tener mas de 6 caracteres').required('Contraseña'),
             passwordR2: yup.string()
                .oneOf([yup.ref('passwordR'), null], 'La contraseña no coincide')
         }),
@@ -36,8 +39,8 @@ const Login = () => {
             password: ''
         },
         validationSchema: yup.object({
-            email: yup.string().email('Tú email no es valido').required('Este campo es requerido'),
-            password: yup.string().required('Este campo es requerido')
+            email: yup.string().email('Tú email no es valido').required('Correo'),
+            password: yup.string().required('Contraseña')
         }),
         onSubmit: (data) => {
             // dispatch(loginWhitEmailPassword(data.email, data.password))
@@ -47,7 +50,7 @@ const Login = () => {
     const handleGoogleLoginClick = () => {
         // dispatch(loginGoogle())
     }
-    console.log(formikSign)
+    console.log(formikRegister)
     return (
         <>
         <ContainerForm>
@@ -68,6 +71,27 @@ const Login = () => {
                 onChange={formikRegister.handleChange}
                 value={formikRegister.values.nameR}
                 />
+                <label>
+                    {
+                        formikRegister.errors.department ? formikRegister.errors.department : 'Departamento'
+                    }
+                </label>
+                    <Select 
+                    name="department"
+                    onChange={formikRegister.handleChange}
+                    // defaultValue={'DEFAULT'}
+                    value={formikRegister.values.department || 'DEFAULT'}
+                    >
+                        <option 
+                        value={'DEFAULT'} 
+                        disabled 
+                        >Elija una opcion</option>
+                        {
+                            departamentos.map(ele => (
+                                <option value={ele} key={ele}>{ele}</option>
+                            ))
+                        }
+                    </Select>
                 <label>
                     {
                         formikRegister.errors.emailR ? formikRegister.errors.emailR : 'Correo'
@@ -104,6 +128,11 @@ const Login = () => {
                 onChange={formikRegister.handleChange}
                 value={formikRegister.values.passwordR2}
                 />
+                <ErrorP>
+                {
+                    Object.keys(formikRegister.errors).length === 0 ? '' : '*Todos los campos son obligatorios*' 
+                }
+                </ErrorP>
                 <Button  type="submit" >
                 Registrarse
                 </Button>
@@ -124,6 +153,7 @@ const Login = () => {
                 name='email'
                 placeholder="Escribe tu correo" 
                 onChange={formikSign.handleChange}
+                value={formikSign.values.email}
                 />
     
                 <label>
@@ -136,7 +166,13 @@ const Login = () => {
                 placeholder="Contraseña"
                 name='password' 
                 onChange={formikSign.handleChange}
+                value={formikSign.values.password}
                 />
+                <ErrorP>
+                {
+                    Object.keys(formikSign.errors).length === 0 ? '' : '*Todos los campos son obligatorios*' 
+                }
+                </ErrorP>
                 <Button type="submit">
                 Enviar
                 </Button>

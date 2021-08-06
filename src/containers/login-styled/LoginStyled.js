@@ -15,6 +15,7 @@ export const ContainerForm = styled.div`
         color: ${variables.greenDown};
         font-size: 15px;
         margin-top: 0;
+        cursor: pointer;
     }
     div{
         border-top: 2px solid ${variables.greenDown};
@@ -42,6 +43,17 @@ export const Input = styled.input`
     background: ${variables.background};
     margin-bottom: 1rem;
 `
+export const Select = styled.select`
+    padding: 0.8rem;
+    border-radius: 10px;
+    border: none;
+    background: ${variables.background};
+    margin-bottom: 1rem;
+`
+export const ErrorP  = styled.span`
+    color: red;
+    font-size: 0.7rem;
+`
 export const Button = styled.button`
     width: 8rem;
     margin: auto;
@@ -52,11 +64,14 @@ export const Button = styled.button`
     border-radius: 10px;
     margin-top: 1rem;
     border: none;
+    cursor: pointer;
+
 
 `
 export const IconSocial = styled.img`
     width: 30px;
     margin: 0 0.5rem;
+    cursor: pointer;
 `
 export const HeaderForm = styled.h3`
     background: ${variables.gradiant};
