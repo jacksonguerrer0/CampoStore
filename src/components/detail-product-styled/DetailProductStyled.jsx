@@ -53,7 +53,7 @@ export const ButtonBuy = styled.a`
 export const ContainerCarrusel = styled.div`
     width: 90%;
     margin: auto;
-    margin-top: 2.3rem;
+    margin-top: 4rem;
     div{
         border-radius: 1rem 1rem 1rem 1rem;
         --loader-bar-color: ${variables.greenDown};

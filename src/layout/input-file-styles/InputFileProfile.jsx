@@ -19,7 +19,8 @@ const InputFileProfile = () => {
             id="file-6" 
             className={`inputfile inputfile-6 hiddenInput`}
             data-multiple-caption="{count} archivos seleccionados" 
-            multiple />
+            multiple 
+            accept="image/*;capture=camera"/>
             <label htmlFor="file-6">
             <i className="fas fa-camera iborrainputfile iPosition"></i>
             <span className="iborrainputfile"></span>

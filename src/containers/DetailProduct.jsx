@@ -3,6 +3,7 @@ import ButtonBack from '../components/ButtonBack'
 import { ButtonBuy, CarruselProduct, ContainerCarrusel, ContainerDetail, ContentDetail, ContentInfoDetail, TextRight, TitleProductDetail } from '../components/detail-product-styled/DetailProductStyled'
 import AwesomeSlider from 'react-awesome-slider';
 import 'react-awesome-slider/dist/styles.css';
+import ButtonGreen from '../components/ButtonGreen';
 
 const slider = (
   <AwesomeSlider>
@@ -26,7 +27,7 @@ const DetailProduct = () => {
                     <p>Cantidad:</p><TextRight>Soy la cantidad</TextRight>
                     <p>Vendedor:</p><TextRight><a href="/profile">Mailer Maritnez</a></TextRight>
                 </ContentInfoDetail>
-                <ButtonBuy>Comprar</ButtonBuy>
+                <ButtonGreen url='/pay' text='Comprar'/> 
         </ContainerDetail>
     )
 }
