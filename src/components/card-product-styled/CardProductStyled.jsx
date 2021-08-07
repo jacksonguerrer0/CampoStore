@@ -49,6 +49,7 @@ export const Pr = styled.p`
 export const ButtonEdit = styled.button`
     padding: 0.8rem 1rem;
     text-decoration: none;
+    cursor:  pointer;
     border: none;
     border-radius: 10px;
     position: absolute;

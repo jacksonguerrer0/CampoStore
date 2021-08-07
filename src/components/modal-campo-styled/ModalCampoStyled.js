@@ -32,7 +32,7 @@ export const ContentModal = styled.div`
 export const HeaderModal = styled.div`
     width: 100%;
     display: grid;
-    grid-template-columns: 1.3fr 1fr;
+    grid-template-columns: 9fr 1fr;
     text-align: right;
     i{
         font-size: 2rem;
@@ -43,6 +43,7 @@ export const HeaderModal = styled.div`
     }
     h3{
         margin-bottom:2rem;
+        text-align: center;
     }
 `
 export const ContentInputModal = styled.form`
