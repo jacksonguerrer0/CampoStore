@@ -13,10 +13,12 @@ import isAuth from '../utils/isAuth'
 const Routes = () => {
 
    const [isLogged, setIsLogged] = useState(false);
+   const [isLoaded, setIsLoaded] = useState(false)
 
    useEffect(() => {
       isAuth().then((response) => {
          setIsLogged(response)
+         setIsLoaded(true)
       })
    }, [])
 
@@ -50,8 +52,13 @@ const Routes = () => {
       <Router>
          <GlobalStyles />
          <Switch>
-            <PublicRoute component={Login} exact path="/login" isLogged={isLogged} restricted={true} />
-            <PrivateRoute component={Layout} path="/" isLogged={isLogged} />
+            {
+               isLoaded &&
+               <>
+               <PublicRoute component={Login} exact path="/login" isLogged={isLogged} restricted={true} />
+               <PrivateRoute component={Layout} path="/" isLogged={isLogged} />
+               </>
+            }
          </Switch>
       </Router>
    )

@@ -13,7 +13,7 @@ const Layout = () => {
    const [menu, setMenu] = useState([
       {
          name: 'Home',
-         path: '/',
+         path: '/home',
          component: Home,
          icon: 'https://i.imgur.com/Zj6wB6H.png',
          status: false
