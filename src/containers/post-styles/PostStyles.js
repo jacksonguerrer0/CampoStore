@@ -4,7 +4,6 @@ import variables from "../../styles/variables";
 export const Container = styled.div`
     margin-bottom: 5rem;
 `;
-
 export const Header = styled.div`
    display: flex;
    justify-content: center;
