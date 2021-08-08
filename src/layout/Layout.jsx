@@ -6,7 +6,6 @@ import Post from '../containers/Post'
 import Messages from '../containers/Messages'
 import Profile from '../containers/Profile'
 import DetailProduct from '../containers/DetailProduct'
-import Login from '../containers/Login'
 import ShowChat from '../components/ShowChat'
 
 const Layout = () => {
@@ -14,7 +13,7 @@ const Layout = () => {
    const [menu, setMenu] = useState([
       {
          name: 'Home',
-         path: '/home',
+         path: '/',
          component: Home,
          icon: 'https://i.imgur.com/Zj6wB6H.png',
          status: false
@@ -63,13 +62,12 @@ const Layout = () => {
    return (
       <div className='container'>
          <Router>
-         <Route exact path='/messages/:id' component={ShowChat} />
             <Switch>
+               <Route exact path='/messages/:id' component={ShowChat} />
                {menu.map((element, index) => (
                   <Route key={index} exact path={element.path} component={element.component} />
                ))}
                <Route exact path='/detail' component={DetailProduct} />
-               <Route path='/login' exact component={Login} />
                <Route exact path='/profile' component={Profile} />
             </Switch>
             <Menu listMenu = {menu} handleMenu={handleMenu} />

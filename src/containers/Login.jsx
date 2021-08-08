@@ -1,15 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 // import { loginGoogle, loginWhitEmailPassword, registerWhitEmailPassword } from '../redux/loginDucks'
 // import {useDispatch} from 'react-redux'
-import { useState } from 'react'
 import { ContainerForm, FormLogin, FormRegister, Input, Button, IconSocial, HeaderForm, Select, ErrorP } from './login-styled/LoginStyled'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
+import { loginEmail } from '../services/login'
+import { useHistory } from 'react-router-dom'
+
 const departamentos = ['Amazonas', 'Antioquía', 'Arauca', 'Atlántico', 'Bolívar', 'Boyacá', 'Caldas', 'Caquetá', 'Casanare', 'Cauca', 'Cesar', 'Chocó', 'Córdoba', 'Cundinamarca', 'Guainía', 'Guaviare', 'Huila', 'Guajira', 'Magdalena', 'Meta', 'Nariño', 'Norte de Santander', 'Putumayo', 'Quindío', 'Risaralda', 'San Andrés y Providencia','Santander', 'Sucre', 'Tolima', 'Valle del Cauca', 'Vaupés', 'Vichada'
 ]
 
 const Login = () => {
+
+    const history = useHistory();
+
     const [isRegister, setIsRegister] = useState(false)
+    const [alert, setAlert] = useState(false)
     // const dispatch = useDispatch()
 
     const formikRegister = useFormik({
@@ -42,15 +48,32 @@ const Login = () => {
             email: yup.string().email('Tú email no es valido').required('Correo'),
             password: yup.string().required('Contraseña')
         }),
-        onSubmit: (data) => {
-            // dispatch(loginWhitEmailPassword(data.email, data.password))
+        onSubmit: async (data) => {
+            //console.log(data)
+            try {
+                const response = await loginEmail(data)
+                if (response.status === 200) {
+                    setAlert(false)
+
+                    const token = response.data.data.token
+                    sessionStorage.setItem('token', JSON.stringify(token))
+                    sessionStorage.setItem('user', JSON.stringify(response.data.data.user))
+                    history.go(0);
+                }
+            } catch (error) {
+                setTimeout(() => {
+                    setAlert(false)
+                }, 3000);
+                setAlert(true)
+            }
+            
         }
         
     })
     const handleGoogleLoginClick = () => {
         // dispatch(loginGoogle())
     }
-    console.log(formikRegister)
+
     return (
         <>
         <ContainerForm>
@@ -171,6 +194,9 @@ const Login = () => {
                 <ErrorP>
                 {
                     Object.keys(formikSign.errors).length === 0 ? '' : '*Todos los campos son obligatorios*' 
+                }
+                {
+                    alert && 'Usuario o contraseña Incorrectos'
                 }
                 </ErrorP>
                 <Button type="submit">
