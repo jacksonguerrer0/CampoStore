@@ -53,7 +53,7 @@ export const uploadFile = (file) => {
 
 export const postProduct = (data) => {
   return new Promise(function (resolve, reject) {
-    axios.post(`${process.env.REACT_APP_URL_API}items/products/`, data)
+    axios.post(`${process.env.REACT_APP_URL_API}items/products`, data)
       .then((response) => {
         resolve(response);
       }).catch((err) => {

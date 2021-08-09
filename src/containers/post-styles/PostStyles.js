@@ -27,6 +27,15 @@ export const ContainerForm = styled.div`
     width: 80%;
     margin: 2rem auto;
 `;
+export const ContainerUnit = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: end !important;
+    p{
+        text-align: left;
+        margin-left: 1rem;
+    }
+`
 
 // export const InputGroup = styled.div`
 //     display: flex;
@@ -55,8 +64,19 @@ export const InputFormPhoto = styled.input`
     display: none;
 `;
 
+export const ContainerFileText = styled.div`
+    display: flex;
+    justify-content: space-between;
+    p{
+        width: 60%;
+        margin: auto 0.2rem auto 0.2rem;
+        text-align: center;
+    }
+`
+
 export const ButtonPhoto = styled.button`
-    padding: 0.8rem 1rem;
+    width: 100%;
+    padding: 0.9rem 1rem;
     cursor: pointer;
     background: ${variables.gradiant};
     border: 1px;
@@ -72,7 +92,17 @@ export const ButtonPhoto = styled.button`
 // export const LabelInput = styled.label`
 //     margin-right: 10px;
 // `;
-
+export const ContainerButtonSubmitError = styled.div`
+        grid-column: 1/3;
+        display: flex;
+        flex-flow: column wrap;
+        margin: 1rem;
+        p{
+            color: red;
+            font-size: 0.8rem;
+            margin: 0 auto;
+        }
+`
 export const ButtonPrimary = styled.button`
     background: ${variables.gradiant};
     border: none;
@@ -82,7 +112,6 @@ export const ButtonPrimary = styled.button`
     cursor: pointer;
     font-weight: bold;
     width:50%;
-    grid-column: 1/3;
-    margin: 2rem auto;
+    margin: 0 auto;
     font-size: 1.2rem;
 `

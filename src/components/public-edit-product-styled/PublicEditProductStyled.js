@@ -8,6 +8,9 @@ export const ContentInfoProduct = styled.form`
     padding: 1rem;
     row-gap: 1rem;
     column-gap: 0.5rem;
+    background-color: ${variables.white};
+    border-radius: 1rem;
+    padding: 2rem;
     input{
         border: 0.01rem solid gray;
         padding: 0.7rem;
