@@ -9,6 +9,7 @@ export const FormSearch  = styled.div`
     position: sticky;
     top: 0;
     margin-bottom: 2rem;
+    z-index: 1;
 `
 export const InputSearch = styled.input`
     border: none;
