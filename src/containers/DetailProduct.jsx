@@ -47,9 +47,12 @@ const DetailProduct = () => {
     return (
         <ContainerDetail>
             <ButtonBack />
-                <ContainerCarrusel>
-                    {slider}
-                </ContainerCarrusel>
+                { dataProduct?.photo &&
+                    <ContainerCarrusel>
+                        {slider}
+                    </ContainerCarrusel>
+                }
+                
                 <TitleProductDetail>{dataProduct.name}</TitleProductDetail>
                 <ContentInfoDetail>
                     <p>Precio:</p><TextRight>$ {dataProduct.price}</TextRight>

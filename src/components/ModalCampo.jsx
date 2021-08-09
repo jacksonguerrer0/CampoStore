@@ -8,15 +8,17 @@ const ModalCampo = ({ dataModal, setShowModal }) => {
     const handleModalX = () => {
         setShowModal(false)
     }
+
+    console.log(dataModal)
     
     const formik = useFormik({
         initialValues: {
-            name: '',
-            city: '',
-            description: ''
+            first_name: dataModal.first_name,
+            city: dataModal.city,
+            description: dataModal.description
         },
         validationSchema: yup.object().shape({
-            name: yup.string().min(10, 'Escribe tu nombre').max(30, 'Nombre muy largo').required('Escribe tu nombre'),
+            first_name: yup.string().min(10, 'Escribe tu nombre').max(30, 'Nombre muy largo').required('Escribe tu nombre'),
             city: yup.string().required('Escribe tu ciudad'),
             description: yup.string().min(10, 'Escribe una descripción').required('Escribe una descripción')
         }).required('neces'),
@@ -32,10 +34,10 @@ const ModalCampo = ({ dataModal, setShowModal }) => {
                 <i className="fas fa-times" onClick={handleModalX}></i>
             </HeaderModal>
             {
-                formik.errors.name || formik.errors.city || formik.errors.description  ?
+                formik.errors.first_name || formik.errors.city || formik.errors.description  ?
                     <ErrorFormik>
                     {
-                        formik.errors.name || formik.errors.city || formik.errors.description
+                        formik.errors.first_name || formik.errors.city || formik.errors.description
                     }
                     </ErrorFormik>
                     : <IconSuccesHappy className="fas fa-laugh-beam"></IconSuccesHappy>
@@ -43,7 +45,7 @@ const ModalCampo = ({ dataModal, setShowModal }) => {
             <ContentInputModal onSubmit={formik.handleSubmit}>
                 <label>Nombre:</label><input 
                 type="text" 
-                name='name'
+                name='first_name'
                 onChange={formik.handleChange}
                 />
                 <label>Ciudad:</label><input 
