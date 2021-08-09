@@ -84,12 +84,16 @@ export const TextInfo = styled.div`
     display: flex;
     flex-flow: row wrap;
     margin: 1rem 0;
+    justify-content: space-between;
     p{
-        width: 50%;
+        /* width: 50%; */
+        font-size: 0.9rem;
     }
 `
 export const PRinfo = styled.p`
-    text-align: right;
+    text-align: center;
+    font-size: 0.8rem;
+    width: 70%;
 `
 // 
 export const ContainerFooter = styled.div`
