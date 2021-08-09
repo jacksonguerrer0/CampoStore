@@ -17,6 +17,7 @@
     "react-star-rating-component": "^1.4.1",
     "react-star-ratings": "^2.3.0",
     "styled-components": "^5.3.0",
+    "sweetalert2": "^11.1.2",
     "toastify-js": "^1.11.1",
     "web-vitals": "^1.0.1",
     "yup": "^0.32.9"

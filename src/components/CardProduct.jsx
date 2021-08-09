@@ -1,8 +1,11 @@
 import React from 'react'
 import { useState } from 'react'
 import ButtonGreen from './ButtonGreen'
-import { ButtonEdit, ContentDetailInfo, ContentPDetail, ContentProduct, Pr } from './card-product-styled/CardProductStyled'
+import { ButtonDelete, ButtonEdit, ContainerCrudCardProduct, ContentDetailInfo, ContentPDetail, ContentProduct, Pr } from './card-product-styled/CardProductStyled'
 import EditProduct from './EditProduct'
+import Swal from 'sweetalert2'
+import { deleteFile, deleteProduct } from '../services'
+
 
 const CardProduct = ({ modeMyProfile, product }) => {
     const [showModal, setShowModal] = useState(false)
@@ -11,8 +14,42 @@ const CardProduct = ({ modeMyProfile, product }) => {
     const handleModalX = () => {
         setShowModal(false)
     }
-
     console.log(product)
+
+    const handleDeleteProduct = (e, data) => {
+        console.log(data)
+        Swal.fire({
+            title: `Estás seguro de eliminar el producto?`,
+            text: "Esta acción no es reversible!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Sí, eliminar!',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                deleteFile(data.photo?.id)
+                deleteFile(data.photo2?.id)
+                deleteFile(data.photo3?.id)
+                deleteProduct(data.id).then((response) => {
+                if (response) {
+                    Swal.fire(
+                        'Eliminado!',
+                        'Tu archivo ha sido eliminado.',
+                        'success'
+                      )
+                }else{
+                    Swal.fire(
+                        'Oops!',
+                        'Ha ocurrido un error al eliminar.',
+                        'error'
+                    )
+                }
+            })
+            }
+        })
+    }
     return (
         <>
             <ContentProduct>
@@ -26,7 +63,10 @@ const CardProduct = ({ modeMyProfile, product }) => {
                     {
                         modeMyProfile ? 
                         <>
-                        <ButtonEdit onClick={() => setShowModal(true)}><i className="fas fa-edit"></i>Editar</ButtonEdit>
+                            <ContainerCrudCardProduct>
+                            <ButtonEdit onClick={() => setShowModal(true)}><i className="fas fa-edit"></i>Editar</ButtonEdit>
+                            <ButtonDelete onClick={(e) => {handleDeleteProduct(e, product)}}>Eliminar</ButtonDelete>
+                            </ContainerCrudCardProduct>
                             {
                                 showModal &&
                                 <EditProduct setShowModal={setShowModal} />

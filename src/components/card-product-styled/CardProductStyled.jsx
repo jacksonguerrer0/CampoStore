@@ -45,18 +45,28 @@ export const Pr = styled.p`
     text-align: right;
     color: #0000006b;
 `
-
+export const ContainerCrudCardProduct = styled.div`
+    position: absolute;
+    right: 0;
+    top: 0;
+`
 export const ButtonEdit = styled.button`
     padding: 0.8rem 1rem;
     text-decoration: none;
     cursor:  pointer;
     border: none;
     border-radius: 10px;
-    position: absolute;
-    right: 0;
-    top: 0;
     background: #c8c8cb;
     color: ${variables.white};
     font-size: 0.8rem;
-
+`
+export const ButtonDelete = styled.button`
+    padding: 0.8rem 1rem;
+    text-decoration: none;
+    cursor:  pointer;
+    border: none;
+    border-radius: 10px;
+    background: #ff4967;
+    color: ${variables.white};
+    font-size: 0.8rem;
 `
