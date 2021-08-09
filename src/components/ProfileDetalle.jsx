@@ -17,7 +17,6 @@ const ProfileDetalle = ({ modeMyProfile, dataProfile }) => {
     const [showModal, setShowModal] = useState(false)
     const [dataModal, setDataModal] = useState({}) 
 
-    console.log(modeMyProfile)
     const handlePAcordeon = () => {
         setActiveAcordeon(!activeAcordeon)
     }
@@ -27,7 +26,6 @@ const ProfileDetalle = ({ modeMyProfile, dataProfile }) => {
         setDataModal(dataProfile)
     }
 
-    console.log(dataProfile)
     return (
         <ContainerDetalle>
             { !modeMyProfile && <ButtonBack /> }

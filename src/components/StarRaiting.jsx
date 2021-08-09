@@ -5,8 +5,6 @@ import { ContentStar } from "./star-raiting/StarRaiting.js";
 
 const StarRaiting = ({ stars }) =>{
 
-
-
     return (
       <ContentStar>
         <StarRatings

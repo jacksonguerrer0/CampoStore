@@ -1,15 +1,34 @@
 import React,{useState} from 'react'
+import { useHistory } from 'react-router-dom';
+import { uploadFile } from '../../services';
+import { getUser, updateProfile } from '../../services/login';
 import './InputFileStyle.css'
 
 
 // imageBanner false envia la imagen de perfil d elo contrario enviara banner
 const InputFileBanner = () => {
 
+    const history = useHistory();
 
-    const handleChangeFile = ( e ) => {
-        const file = e.target.files[0];
-        console.log(file)
-        console.log('soy banner')
+    const handleChangeFile = async ( e ) => {
+        if (e.target.files[0]) {
+            const file = e.target.files[0];
+            const response = await uploadFile(file);
+            if (response.status === 200) {
+                const idFile = response.data.data.id;
+
+                const userOnline = await getUser();
+                const userId = userOnline.data.data.id;
+                const dataSend = {
+                    cover: idFile
+                }
+                const update = await updateProfile(dataSend, userId);
+                if (update.status === 200) {
+                    history.go(0)
+                }
+            }
+            //console.log(response.data.data.data.full_url)
+        }
     }
     return (
         <>

@@ -33,7 +33,6 @@ const Profile = () => {
       }
       
       const user = data.data.data
-      console.log(user)
       setDataProfile({
          id: user.id,
          first_name: user.first_name,
@@ -49,10 +48,8 @@ const Profile = () => {
 
       const products = await getListProductsByUser(user.id);
       setDataProducts(products.data.data)
-      console.log('products',products)
   }
 
-  console.log(dataProducts)
 
   useEffect(() => {
       modePerfil()

@@ -43,3 +43,14 @@ export const getUserById = (id) => {
       })
   });
 };
+
+export const updateProfile = (data, idUser) => {
+  return new Promise(function (resolve, reject) {
+    axios.patch(`${process.env.REACT_APP_URL_API}users/${idUser}`,data)
+      .then((response) => {
+        resolve(response);
+      }).catch((err) => {
+        reject(err)
+      })
+  });
+};
