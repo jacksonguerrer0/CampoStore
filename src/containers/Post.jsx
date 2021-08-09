@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import { Container, Header, Title, ContainerForm, InputGroup, InputForm, LabelInput, InputFormPhoto, ButtonPhoto, ButtonPrimary, ContainerFileText, ContainerUnit, ContainerButtonSubmitError } from './post-styles/PostStyles'
 import useForm from '../hooks/useForm';
 import { ContentInfoProduct } from '../components/public-edit-product-styled/PublicEditProductStyled';
-import { postProduct, uploadFile } from '../services';
+import { deleteProduct, postProduct, uploadFile } from '../services';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import Toastify from 'toastify-js';
@@ -132,7 +132,7 @@ const Post = () => {
                         }
                     </select>
                 </div>
-               <label>Cantidad disponible: </label>
+               <label>Cantidad: </label>
                <ContainerUnit>
                   <input 
                   type="number" 

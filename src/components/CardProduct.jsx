@@ -69,7 +69,7 @@ const CardProduct = ({ modeMyProfile, product }) => {
                             </ContainerCrudCardProduct>
                             {
                                 showModal &&
-                                <EditProduct setShowModal={setShowModal} />
+                                <EditProduct setShowModal={setShowModal} product={product}/>
                             }
                         </>
                         :<ButtonGreen url={`detail/${product.id}`} text='Ver el producto' />

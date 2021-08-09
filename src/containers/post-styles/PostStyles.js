@@ -34,6 +34,7 @@ export const ContainerUnit = styled.div`
     p{
         text-align: left;
         margin-left: 1rem;
+        font-size: 0.8rem;
     }
 `
 
@@ -71,6 +72,7 @@ export const ContainerFileText = styled.div`
         width: 60%;
         margin: auto 0.2rem auto 0.2rem;
         text-align: center;
+        font-size: 0.8rem;
     }
 `
 
