@@ -5,6 +5,7 @@ import { ContentInfoProduct } from '../components/public-edit-product-styled/Pub
 import { postProduct, uploadFile } from '../services';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import Toastify from 'toastify-js';
 
 const unidadesMedicion = [ 'Kilo(kg)', 'Gramo(g)', 'Litro(L)', 'Mililitro(mL)', 'Tonelada(t)']
 
@@ -75,8 +76,18 @@ const Post = () => {
          }
          const response  = await postProduct(newDataForm);
          if (response.status === 200) {
-            console.log('se publico compa')
-         }
+            Toastify({
+                text: "Producto publicado con éxito",
+                backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
+                duration: 3000
+              }).showToast();
+        }else{
+            Toastify({
+                text: "Hubo un error al publicar",
+                backgroundColor: "linear-gradient(to right, #b93c1d, #f81808)",
+                duration: 3000
+              }).showToast();
+        }
          reset()
       }
    }
