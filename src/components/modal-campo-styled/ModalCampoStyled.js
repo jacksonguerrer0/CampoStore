@@ -59,6 +59,13 @@ export const ContentInputModal = styled.form`
         background-color: ${variables.background};
         box-shadow: ${variables.boxShadownBotttom};
     }
+    select{
+        border: 0.01rem solid gray;
+        padding: 0.7rem;
+        border-radius: 10px;
+        background-color: ${variables.background};
+        box-shadow: ${variables.boxShadownBotttom};
+    }
     label{
         margin: auto auto auto 0;
     }
