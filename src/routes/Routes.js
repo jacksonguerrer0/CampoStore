@@ -9,6 +9,7 @@ import Login from '../containers/Login'
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 import isAuth from '../utils/isAuth'
+import '../utils/axiosConfig'
 
 const Routes = () => {
 

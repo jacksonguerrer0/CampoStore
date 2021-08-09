@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import { ContainerForm, FormLogin, FormRegister, Input, Button, IconSocial, HeaderForm, Select, ErrorP } from './login-styled/LoginStyled'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
-import { loginEmail } from '../services/login'
+import { loginEmail, createUser, createPerson } from '../services/login'
 import { useHistory } from 'react-router-dom'
 
 const departamentos = ['Amazonas', 'Antioquía', 'Arauca', 'Atlántico', 'Bolívar', 'Boyacá', 'Caldas', 'Caquetá', 'Casanare', 'Cauca', 'Cesar', 'Chocó', 'Córdoba', 'Cundinamarca', 'Guainía', 'Guaviare', 'Huila', 'Guajira', 'Magdalena', 'Meta', 'Nariño', 'Norte de Santander', 'Putumayo', 'Quindío', 'Risaralda', 'San Andrés y Providencia','Santander', 'Sucre', 'Tolima', 'Valle del Cauca', 'Vaupés', 'Vichada'
@@ -20,22 +20,58 @@ const Login = () => {
 
     const formikRegister = useFormik({
         initialValues: {
-            nameR: '',
+            first_name: '',
             department: '',
+            city: '',
             emailR: '',
             passwordR: '',
             passwordR2: ''
         },
         validationSchema: yup.object({
-            nameR: yup.string().min(5, 'Tu nombre es muy corto').required('Nombre'),
+            first_name: yup.string().min(5, 'Tu nombre es muy corto').required('Nombre'),
             department: yup.string().required('Departamento'),
+            city: yup.string().required('Ciudad'),
             emailR: yup.string().email('Tu email no es valido').required('Correo'),
             passwordR: yup.string().min(6, 'Debe tener mas de 6 caracteres').required('Contraseña'),
             passwordR2: yup.string()
                .oneOf([yup.ref('passwordR'), null], 'La contraseña no coincide')
         }),
-        onSubmit: (data) => {
-            // dispatch(registerWhitEmailPassword(data.emailR, data.passwordR, data.nameR))
+        onSubmit: async (data) => {
+            //console.log(data)
+            const dataUser = {
+                first_name: data.first_name,
+                last_name: ' ',
+                email: data.emailR,
+                password: data.passwordR,
+                role: 3,
+                status: "active",
+                city: data.city,
+                department: data.department,
+                title: 'Vendedor'
+            }
+            try {
+                const response = await createUser(dataUser);
+                if (response.status === 200) {
+                    setAlert(false)
+                    const user = {
+                        email: data.emailR,
+                        password: data.passwordR,
+                    }
+                    const login = await loginEmail(user)
+                    if (login.status === 200) {
+                        const token = login.data.data.token
+                        sessionStorage.setItem('token', JSON.stringify(token))
+                        history.go(0);
+                    }
+                }
+                
+            } catch (error) {
+                console.log(error)
+                setTimeout(() => {
+                    setAlert(false)
+                }, 3000);
+                setAlert(true)
+            }
         }
     })
 
@@ -57,7 +93,6 @@ const Login = () => {
 
                     const token = response.data.data.token
                     sessionStorage.setItem('token', JSON.stringify(token))
-                    sessionStorage.setItem('user', JSON.stringify(response.data.data.user))
                     history.go(0);
                 }
             } catch (error) {
@@ -84,15 +119,27 @@ const Login = () => {
             <FormRegister onSubmit={formikRegister.handleSubmit}>
                 <label>
                     {
-                        formikRegister.errors.nameR ? formikRegister.errors.nameR : 'Nombre'
+                        formikRegister.errors.first_name ? formikRegister.errors.first_name : 'Nombre'
                     }
                 </label>
                 <Input
                 type="text" 
-                name='nameR'
+                name='first_name'
                 placeholder="Escribe tu nombre" 
                 onChange={formikRegister.handleChange}
-                value={formikRegister.values.nameR}
+                value={formikRegister.values.first_name}
+                />
+                <label>
+                    {
+                        formikRegister.errors.city ? formikRegister.errors.city : 'Ciudad de Residencia'
+                    }
+                </label>
+                <Input
+                type="text" 
+                name='city'
+                placeholder="Escriba la Ciudad de Residencia" 
+                onChange={formikRegister.handleChange}
+                value={formikRegister.values.city}
                 />
                 <label>
                     {
@@ -154,6 +201,9 @@ const Login = () => {
                 <ErrorP>
                 {
                     Object.keys(formikRegister.errors).length === 0 ? '' : '*Todos los campos son obligatorios*' 
+                }
+                {
+                    alert && 'Hubo un error al crear el Usuario'
                 }
                 </ErrorP>
                 <Button  type="submit" >

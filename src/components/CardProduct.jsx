@@ -4,22 +4,24 @@ import ButtonGreen from './ButtonGreen'
 import { ButtonEdit, ContentDetailInfo, ContentPDetail, ContentProduct, Pr } from './card-product-styled/CardProductStyled'
 import EditProduct from './EditProduct'
 
-const CardProduct = ({ modeMyProfile }) => {
+const CardProduct = ({ modeMyProfile, product }) => {
     const [showModal, setShowModal] = useState(false)
     const [dataModal, setDataModal] = useState({}) 
 
     const handleModalX = () => {
         setShowModal(false)
     }
+
+    console.log(product)
     return (
         <>
             <ContentProduct>
-                <img src="https://productmanagementfestival.com/wp-content/uploads/2017/01/sell-your-product-online.jpg" alt="" />
+                <img src={product.photo?.data.full_url} alt="Producto" />
                 <ContentDetailInfo>
-                    <h3>Producto</h3>
+                    <h3>{product.name}</h3>
                     <ContentPDetail>
-                        <p>Precio:</p><Pr>Soy precio</Pr>
-                        <p>Cantidad:</p><Pr>Soy cantidad</Pr>
+                        <p>Precio:</p><Pr>{product.price}</Pr>
+                        <p>Cantidad:</p><Pr>{product.quantity}</Pr>
                     </ContentPDetail>
                     {
                         modeMyProfile ? 
@@ -30,7 +32,7 @@ const CardProduct = ({ modeMyProfile }) => {
                                 <EditProduct setShowModal={setShowModal} />
                             }
                         </>
-                        :<ButtonGreen url='/detail' text='Ver el producto' />
+                        :<ButtonGreen url={`detail/${product.id}`} text='Ver el producto' />
                     }
                 </ContentDetailInfo>
             </ContentProduct>

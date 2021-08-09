@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import variables from '../../styles/variables'
 
 export const ContainerForm = styled.div`
-    margin: 0 auto;
+    margin: auto;
     width: 350px;
     border-radius: 1rem;
     box-shadow: inset 2px 18px 0 rgb(0 0 0 / 1%), 0 0 0px 0px rgb(255 255 255), 0px 0 16px 4px rgb(0 0 0 / 10%);

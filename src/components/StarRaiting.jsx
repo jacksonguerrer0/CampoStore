@@ -4,15 +4,13 @@ import variables from "../styles/variables.js";
 import { ContentStar } from "./star-raiting/StarRaiting.js";
 
 const StarRaiting = ({ stars }) =>{
-    const [rating, setRating] = useState(stars)
-    const changeRating = ( newRating, name ) => {
-      setRating(newRating)
-    }
+
+
 
     return (
       <ContentStar>
         <StarRatings
-          rating={rating}
+          rating={stars}
           starRatedColor='#ffcc1c'
           starHoverColor='#ffcc1c'
           // changeRating={changeRating}
