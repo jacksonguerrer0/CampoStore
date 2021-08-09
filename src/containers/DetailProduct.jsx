@@ -7,13 +7,7 @@ import ButtonGreen from '../components/ButtonGreen';
 import { useParams } from 'react-router-dom';
 import { getProductById } from '../services';
 
-const slider = (
-  <AwesomeSlider>
-    <div data-src="https://foodserviceyequipo.com/wp-content/uploads/2017/11/206406A5-C1F0-409C-A9B9E84D05A48AB7_source-1030x687.jpg" />
-    <div data-src="https://api.mimorelia.com/uploads/2017/03/noticias/03/sedrua.jpg" />
-    <div data-src="http://superchannel12.com/wp-content/uploads/2018/02/productos-del-campo.jpg" />
-  </AwesomeSlider>
-);
+
 
 
 const DetailProduct = () => {
@@ -26,6 +20,23 @@ const DetailProduct = () => {
         const {data} = await getProductById(idProduct)
         setDataProduct(data.data)
     }
+
+    const slider = (
+        <AwesomeSlider>
+            {
+                dataProduct.photo?.data.full_url &&
+                <div data-src={dataProduct.photo?.data.full_url} />
+            }
+            {
+                dataProduct.photo2?.data.full_url &&
+                <div data-src={dataProduct.photo2?.data.full_url} />
+            }
+            {
+                dataProduct.photo3?.data.full_url &&
+                <div data-src={dataProduct.photo3?.data.full_url} />
+            }
+        </AwesomeSlider>
+    );
 
     useEffect(() => {
         getData()
