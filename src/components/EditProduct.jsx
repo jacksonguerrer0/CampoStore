@@ -164,9 +164,9 @@ const EditProduct = ({ setShowModal, product }) => {
             </HeaderModal>
             <MsjError>
             {
-                errorMsj.length !== 0 ? errorMsj : <IconSuccesHappy className="fas fa-laugh-beam"></IconSuccesHappy> 
+                errorMsj.length !== 0 ? <p>{errorMsj}</p> : <IconSuccesHappy className="fas fa-laugh-beam"></IconSuccesHappy> 
             }
-         </MsjError>
+            </MsjError>
             <ContentInfoProduct onSubmit={handleSubmit}>
                 <label htmlFor="nameProduct">Nombre:</label>
                 <input 
@@ -182,12 +182,11 @@ const EditProduct = ({ setShowModal, product }) => {
                <div><input 
                   type="number" 
                   id='precio' 
-                  min='1000' 
                   name="price"
                   placeholder="Precio del producto"
                   onChange={handleChangeInput}
                   value={dataForm.price}
-                  required
+                  
                     />
                   <select 
                     name='unit' 
@@ -211,7 +210,7 @@ const EditProduct = ({ setShowModal, product }) => {
                   placeholder="Cantidad del producto"
                   onChange={handleChangeInput}
                   value={dataForm.quantity}
-                  required
+                  
                   />
                   <p>{dataForm.unit}</p>
                </ContainerUnit>

@@ -37,10 +37,22 @@ export const ContainerUnit = styled.div`
         font-size: 0.8rem;
     }
 `
-export const MsjError = styled.p`
+export const MsjError = styled.div`
     text-align: center;
     margin-bottom: 0;
-    margin-top: 2rem;
+    margin-top: 1rem;
+    p{
+        font-size: ${variables.white};
+        background-color: #ff00009c;
+        border-radius: 1rem;
+        padding: 0.5rem;
+        height: 1.5rem;
+        width: 70%;
+        margin: auto;
+    }
+    i{
+        color: ${variables.greenHight};
+    }
 `
 
 // export const InputGroup = styled.div`
