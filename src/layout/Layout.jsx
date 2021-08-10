@@ -8,6 +8,8 @@ import Profile from '../containers/Profile'
 import DetailProduct from '../containers/DetailProduct'
 import ShowChat from '../components/ShowChat'
 import isAuth from '../utils/isAuth'
+import PaymentSuccess from '../containers/Pay'
+import Pay from '../containers/Pay'
 
 const Layout = () => {
 
@@ -70,6 +72,7 @@ const Layout = () => {
                ))}
                <Route exact path='/detail/:idProduct' component={DetailProduct} />
                <Route exact path='/profile/:idUser' component={Profile} />
+               <Route exact path ='/pay/:idProductPay' component={Pay} />
             </Switch>
             <Menu listMenu = {menu} handleMenu={handleMenu} />
          </Router>

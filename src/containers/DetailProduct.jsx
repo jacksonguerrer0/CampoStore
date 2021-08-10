@@ -52,14 +52,13 @@ const DetailProduct = () => {
                         {slider}
                     </ContainerCarrusel>
                 }
-                
                 <TitleProductDetail>{dataProduct.name}</TitleProductDetail>
                 <ContentInfoDetail>
                     <p>Precio:</p><TextRight>$ {dataProduct.price}</TextRight>
                     <p>Cantidad:</p><TextRight>{dataProduct.quantity}</TextRight>
                     <p>Vendedor:</p><TextRight><a href={`/profile/${dataProduct.owner?.id}`}>{dataProduct.owner?.first_name}</a></TextRight>
                 </ContentInfoDetail>
-                <ButtonGreen url='/pay' text='Comprar'/> 
+                <ButtonGreen url={`/pay/${dataProduct.id}`} text='Comprar'/> 
         </ContainerDetail>
     )
 }
