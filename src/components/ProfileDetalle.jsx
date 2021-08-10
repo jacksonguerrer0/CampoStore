@@ -54,7 +54,7 @@ const ProfileDetalle = ({ modeMyProfile, dataProfile }) => {
                     <StarRaiting stars={dataProfile?.rating}/>
                     <TextInfo>
                         <p>Ciudad:</p><PRinfo>{`${dataProfile.city} - ${dataProfile.department}`}</PRinfo>
-                        <p>Ventas:</p><PRinfo>{dataProfile.sales_number}</PRinfo>
+                        <p>Ventas:</p><PRinfo>{dataProfile.sales_number ? dataProfile.sales_number : 0 }</PRinfo>
                     </TextInfo>
                     { !modeMyProfile && <ButtonGreen /> }
                 </ContentInfo>
