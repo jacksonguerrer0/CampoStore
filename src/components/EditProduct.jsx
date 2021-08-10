@@ -79,7 +79,9 @@ const EditProduct = ({ setShowModal, product }) => {
      }
      const uploadFileProduct2 = async () => {
         if(typeof dataForm.photo2 !== 'number'){
-            await deleteFile(photosDeleteSubmit.photo2)
+            if (photosDeleteSubmit.photo2 !== 153) {
+                await deleteFile(photosDeleteSubmit.photo2)
+            }
             const response = await uploadFile(dataForm.photo2);
             if (response.status === 200) {
                 return  response.data.data.id
@@ -92,7 +94,9 @@ const EditProduct = ({ setShowModal, product }) => {
      }
      const uploadFileProduct3 = async () => {
         if(typeof dataForm.photo3 !== 'number'){
-            await deleteFile(photosDeleteSubmit.photo3)
+            if(photosDeleteSubmit.photo3 !== 153){
+                await deleteFile(photosDeleteSubmit.photo3)
+            }
             const response = await uploadFile(dataForm.photo3);
             if (response.status === 200) {
                 return  response.data.data.id
@@ -142,7 +146,7 @@ const EditProduct = ({ setShowModal, product }) => {
         })
     }
  
-
+console.log(dataForm)
 
 
 

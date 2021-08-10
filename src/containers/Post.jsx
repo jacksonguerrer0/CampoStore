@@ -79,10 +79,18 @@ const Post = () => {
        });
        schemaValidatorObject.validate(dataForm).then(async(value) => {
          setErrorMsj('')
+         if(dataForm.photo2){
+
+         }
+         if(dataForm.photo3){
+
+         }
          const newDataForm = {
             ...dataForm,
             price: parseInt(dataForm.price),
-            quantity: parseInt(dataForm.quantity)
+            quantity: parseInt(dataForm.quantity),
+            photo2: dataForm.photo2 === '' && 153,
+            photo3: dataForm.photo3 === '' && 153,
          }
          const response  = await postProduct(newDataForm);
          if (response.status === 200) {

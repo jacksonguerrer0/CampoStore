@@ -17,7 +17,6 @@ const CardProduct = ({ modeMyProfile, product }) => {
     console.log(product)
 
     const handleDeleteProduct = (e, data) => {
-        console.log(data)
         Swal.fire({
             title: `Estás seguro de eliminar el producto?`,
             text: "Esta acción no es reversible!",
@@ -30,8 +29,12 @@ const CardProduct = ({ modeMyProfile, product }) => {
         }).then((result) => {
             if (result.isConfirmed) {
                 deleteFile(data.photo?.id)
-                deleteFile(data.photo2?.id)
-                deleteFile(data.photo3?.id)
+                if (data.photo2?.id !== 153) {
+                    deleteFile(data.photo2?.id)
+                }
+                if(data.photo3?.id !== 153){
+                    deleteFile(data.photo3?.id)
+                }
                 deleteProduct(data.id).then((response) => {
                 if (response) {
                     Swal.fire(
