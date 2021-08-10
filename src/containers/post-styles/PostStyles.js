@@ -25,7 +25,7 @@ export const ContainerForm = styled.div`
     flex-direction: column;
     align-items: center;
     width: 80%;
-    margin: 2rem auto;
+    margin: 0 auto auto auto;
 `;
 export const ContainerUnit = styled.div`
     display: flex;
@@ -36,6 +36,11 @@ export const ContainerUnit = styled.div`
         margin-left: 1rem;
         font-size: 0.8rem;
     }
+`
+export const MsjError = styled.p`
+    text-align: center;
+    margin-bottom: 0;
+    margin-top: 2rem;
 `
 
 // export const InputGroup = styled.div`

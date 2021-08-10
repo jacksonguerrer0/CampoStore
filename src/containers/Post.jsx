@@ -1,11 +1,13 @@
 import React, { useRef } from 'react'
-import { Container, Header, Title, ContainerForm, InputGroup, InputForm, LabelInput, InputFormPhoto, ButtonPhoto, ButtonPrimary, ContainerFileText, ContainerUnit, ContainerButtonSubmitError } from './post-styles/PostStyles'
+import { Container, Header, Title, ContainerForm, InputGroup, InputForm, LabelInput, InputFormPhoto, ButtonPhoto, ButtonPrimary, ContainerFileText, ContainerUnit, ContainerButtonSubmitError, MsjError } from './post-styles/PostStyles'
 import useForm from '../hooks/useForm';
 import { ContentInfoProduct } from '../components/public-edit-product-styled/PublicEditProductStyled';
 import { deleteProduct, postProduct, uploadFile } from '../services';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import Toastify from 'toastify-js';
+import * as yup from 'yup'
+import { IconSuccesHappy } from '../components/modal-campo-styled/ModalCampoStyled';
 
 const unidadesMedicion = [ 'Kilo(kg)', 'Gramo(g)', 'Litro(L)', 'Mililitro(mL)', 'Tonelada(t)']
 
@@ -14,6 +16,8 @@ const Post = () => {
    const inputPhoto1 = useRef(null);
    const inputPhoto2 = useRef(null);
    const inputPhoto3 = useRef(null);
+   const [errorMsj, setErrorMsj] = useState('')
+   const [validateConfirmed, setValidateConfirmed] = useState(false)
 
    const [dataForm, handleChangeInput,  handleChangeForm, reset] = useForm({
       name: '',
@@ -65,10 +69,26 @@ const Post = () => {
          }
       }
    }
+   const validationSchemaForm = () =>  {
+       const schemaValidatorObject = yup.object().shape({
+         photo: yup.string().required('Primera foto obligatoria'),
+         quantity: yup.string().required('Escribe la cantidad'),
+         unit: yup.string().required('Selecciona la unidad'),
+         price: yup.string().required('Precio obligatorio').min(4, 'El precio debe ser mayor a $1.000'),
+         name: yup.string().required('Nombre del producto obligatorio').max(25, 'Nombre del producto es muy largo'),
+       });
+       schemaValidatorObject.validate(dataForm).then(function(value) {
+         setErrorMsj('')
+         setValidateConfirmed(true)
+       }).catch(function(err){
+         setErrorMsj(err.message)
+       })
+   }
 
    const handleSubmit = async (e) => {
       e.preventDefault();
-      if (typeof dataForm.photo3 === 'number' || typeof dataForm.photo2 === 'number'||typeof dataForm.photo === 'number') {
+      validationSchemaForm()
+      if (validateConfirmed) {
          const newDataForm = {
             ...dataForm,
             price: parseInt(dataForm.price),
@@ -91,14 +111,19 @@ const Post = () => {
          reset()
       }
    }
-
    console.log(dataForm)
+   console.log(errorMsj)
 
    return (
       <Container>
          <Header>
             <Title>Publicar Producto</Title>
          </Header>
+         <MsjError>
+         {
+            errorMsj.length !== 0 ? errorMsj : <IconSuccesHappy className="fas fa-laugh-beam"></IconSuccesHappy> 
+         }
+         </MsjError>
          <ContainerForm>
             <ContentInfoProduct onSubmit={handleSubmit} >
                <label>Nombre: </label>
@@ -107,19 +132,16 @@ const Post = () => {
                   placeholder="Nombre del producto"
                   onChange={handleChangeInput}
                   value={dataForm.name}
-                  required
                />
             
                <label>Precio: $ </label>
                <div><input 
                   type="number" 
                   id='precio' 
-                  min='1000' 
                   name="price"
                   placeholder="Precio del producto"
                   onChange={handleChangeInput}
-                  value={dataForm.price}
-                  required/>
+                  value={dataForm.price}/>
                     <select 
                     name='unit' 
                     onChange={handleChangeInput} 
@@ -141,7 +163,6 @@ const Post = () => {
                   placeholder="Cantidad del producto"
                   onChange={handleChangeInput}
                   value={dataForm.quantity}
-                  required
                   />
                   <p>{dataForm.unit}</p>
                </ContainerUnit>
@@ -157,7 +178,7 @@ const Post = () => {
                />
                <ContainerFileText>                 
                {
-                  typeof dataForm.photo !== 'number' ? <p>No hay foto</p> :  <p>Si hay foto</p>
+                  typeof dataForm.photo !== 'number' ? <p>No hay foto</p> :  <p>Foto guardada</p>
                }
                <ButtonPhoto onClick={handleBtnPhoto1} type='button'>Buscar Foto</ButtonPhoto>
                </ContainerFileText>
@@ -172,7 +193,7 @@ const Post = () => {
                />
                <ContainerFileText>                 
                {
-                  typeof dataForm.photo2 !== 'number' ? <p>No hay foto</p> :  <p>Si hay foto</p>
+                  typeof dataForm.photo2 !== 'number' ? <p>No hay foto</p> :  <p>Foto guardada</p>
                }
                   <ButtonPhoto onClick={handleBtnPhoto2} type='button'>Buscar Foto</ButtonPhoto>
                </ContainerFileText>
@@ -186,14 +207,11 @@ const Post = () => {
                />
                <ContainerFileText>                 
                {
-                  typeof dataForm.photo3 !== 'number' ? <p>No hay foto</p> :  <p>Si hay foto</p>
+                  typeof dataForm.photo3 !== 'number' ? <p>No hay foto</p> :  <p>Foto guardada</p>
                }
                   <ButtonPhoto onClick={handleBtnPhoto3} type='button' >Buscar Foto</ButtonPhoto>
                </ContainerFileText>
                <ContainerButtonSubmitError>
-                 {
-                    typeof dataForm.photo3 === 'number' || typeof dataForm.photo2 === 'number'||typeof dataForm.photo === 'number'? <p></p> : <p>*Necesitas enviar 3 fotos*</p>
-                 }
                   <ButtonPrimary type="submit">Publicar</ButtonPrimary>
                </ContainerButtonSubmitError>
             </ContentInfoProduct>
