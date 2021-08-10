@@ -77,18 +77,8 @@ const Post = () => {
          price: yup.string().required('Precio obligatorio').min(4, 'El precio debe ser mayor a $1.000'),
          name: yup.string().required('Nombre del producto obligatorio').max(25, 'Nombre del producto es muy largo'),
        });
-       schemaValidatorObject.validate(dataForm).then(function(value) {
+       schemaValidatorObject.validate(dataForm).then(async(value) => {
          setErrorMsj('')
-         setValidateConfirmed(true)
-       }).catch(function(err){
-         setErrorMsj(err.message)
-       })
-   }
-
-   const handleSubmit = async (e) => {
-      e.preventDefault();
-      validationSchemaForm()
-      if (validateConfirmed) {
          const newDataForm = {
             ...dataForm,
             price: parseInt(dataForm.price),
@@ -109,11 +99,15 @@ const Post = () => {
               }).showToast();
         }
          reset()
-      }
+       }).catch(function(err){
+         setErrorMsj(err.message)
+       })
    }
-   console.log(dataForm)
-   console.log(errorMsj)
 
+   const handleSubmit = async (e) => {
+      e.preventDefault();
+      validationSchemaForm()
+   }
    return (
       <Container>
          <Header>
