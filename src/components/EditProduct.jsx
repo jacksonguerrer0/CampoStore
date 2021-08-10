@@ -1,15 +1,18 @@
 import React, {useState} from 'react'
 import { useRef } from 'react'
-import { ButtonPhoto, ContainerFileText, ContainerUnit, InputFormPhoto } from '../containers/post-styles/PostStyles'
+import Toastify from 'toastify-js'
+import { ButtonPhoto, ContainerFileText, ContainerUnit, InputFormPhoto, MsjError } from '../containers/post-styles/PostStyles'
 import useForm from '../hooks/useForm'
 import { deleteFile, deleteProduct, updateProduct, uploadFile } from '../services'
-import { ContentModal, HeaderModal, Modal } from './modal-campo-styled/ModalCampoStyled'
+import { ContentModal, HeaderModal, IconSuccesHappy, Modal } from './modal-campo-styled/ModalCampoStyled'
 import { ButtonPublicar, ContentInfoProduct } from './public-edit-product-styled/PublicEditProductStyled'
-
+import * as yup from 'yup'
 
 const unidadesMedicion = ['Kilo(kg)', 'Gramo(g)', 'Litro(L)', 'Mililitro(mL)', 'Tonelada(t)']
 
 const EditProduct = ({ setShowModal, product }) => {
+    const [errorMsj, setErrorMsj] = useState('');
+
 
     const inputPhoto1 = useRef(null);
     const inputPhoto2 = useRef(null);
@@ -100,15 +103,17 @@ const EditProduct = ({ setShowModal, product }) => {
             return null
         }
      }
-
-    const handleSubmit = async (e) => {
-       e.preventDefault();
-        const photoId = await uploadFileProduct1();
-        const photo2Id = await uploadFileProduct2();
-        const photo3Id = await uploadFileProduct3();
-        console.log(photoId, photo2Id, photo3Id)
-
-        let dataSend = {
+     const validationSchemaForm =  async(photoId, photo2Id, photo3Id) =>  {
+        const schemaValidatorObject = yup.object().shape({
+          photo: yup.string().required('Primera foto obligatoria'),
+          quantity: yup.string().required('Escribe la cantidad'),
+          unit: yup.string().required('Selecciona la unidad'),
+          price: yup.string().required('Precio obligatorio').min(4, 'El precio debe ser mayor a $1.000'),
+          name: yup.string().required('Nombre del producto obligatorio').max(25, 'Nombre del producto es muy largo'),
+        });
+        schemaValidatorObject.validate(dataForm).then(async(value) => {
+          setErrorMsj('')
+          let dataSend = {
             ...dataForm,
             photo: photoId || dataForm.photo,
             photo2: photo2Id || dataForm.photo2,
@@ -116,9 +121,39 @@ const EditProduct = ({ setShowModal, product }) => {
             price: parseInt(dataForm.price),
             quantity: parseInt(dataForm.quantity)
         }
-        console.log(dataSend)
-        // console.log(dataForm)
-        await updateProduct(dataSend, product.id)
+        const updateResponse = await updateProduct(dataSend, product.id)
+        if (updateResponse.status === 200) {
+            setShowModal(false)
+            Toastify({
+                text: "Producto actualizado",
+                backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
+                duration: 3000
+              }).showToast();
+        }else{
+            Toastify({
+                text: "Hubo un error al publicar",
+                backgroundColor: "linear-gradient(to right, #b93c1d, #f81808)",
+                duration: 3000
+              }).showToast();
+        }
+          reset()
+        }).catch(function(err){
+          setErrorMsj(err.message)
+        })
+    }
+ 
+
+
+
+
+
+    const handleSubmit = async (e) => {
+       e.preventDefault();
+        const photoId = await uploadFileProduct1();
+        const photo2Id = await uploadFileProduct2();
+        const photo3Id = await uploadFileProduct3();
+        // valida y a la vez envia la actualización
+        validationSchemaForm(photoId, photo2Id, photo3Id)
     }
     return (
         <Modal>
@@ -127,6 +162,11 @@ const EditProduct = ({ setShowModal, product }) => {
                 <h3>Editar Producto</h3>
                 <i className="fas fa-times" onClick={()=>setShowModal(false)}></i>
             </HeaderModal>
+            <MsjError>
+            {
+                errorMsj.length !== 0 ? errorMsj : <IconSuccesHappy className="fas fa-laugh-beam"></IconSuccesHappy> 
+            }
+         </MsjError>
             <ContentInfoProduct onSubmit={handleSubmit}>
                 <label htmlFor="nameProduct">Nombre:</label>
                 <input 
@@ -218,7 +258,7 @@ const EditProduct = ({ setShowModal, product }) => {
                }
                   <ButtonPhoto onClick={handleBtnPhoto3} type='button'>Buscar Foto</ButtonPhoto>
                </ContainerFileText>
-                <ButtonPublicar>Publicar</ButtonPublicar>
+                <ButtonPublicar>Actualizar</ButtonPublicar>
             </ContentInfoProduct>
         </ContentModal>
 

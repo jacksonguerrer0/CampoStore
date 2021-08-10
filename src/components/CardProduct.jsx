@@ -29,16 +29,9 @@ const CardProduct = ({ modeMyProfile, product }) => {
             cancelButtonText: 'Cancelar'
         }).then((result) => {
             if (result.isConfirmed) {
-                if(data.photo !== 0){
-                    deleteFile(data.photo?.id)
-                }
-                if(data.photo2 !== 0){
-                    deleteFile(data.photo2?.id)
-                }
-                if(data.photo3 !== 0){
-                    deleteFile(data.photo3?.id)
-                }
-
+                deleteFile(data.photo?.id)
+                deleteFile(data.photo2?.id)
+                deleteFile(data.photo3?.id)
                 deleteProduct(data.id).then((response) => {
                 if (response) {
                     Swal.fire(

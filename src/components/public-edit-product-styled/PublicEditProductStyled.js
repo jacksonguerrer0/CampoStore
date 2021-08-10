@@ -5,12 +5,12 @@ import variables from '../../styles/variables'
 export const ContentInfoProduct = styled.form`
     display: grid;
     grid-template-columns: 1fr 2.3fr;
-    padding: 1rem;
     row-gap: 1rem;
     column-gap: 0.5rem;
     background-color: ${variables.white};
     border-radius: 1rem;
-    padding: 2rem;
+    padding: 0 2rem 2rem 2rem;
+    margin-top: 1rem;
     input{
         border: 0.01rem solid gray;
         padding: 0.7rem;

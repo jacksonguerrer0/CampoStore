@@ -32,14 +32,17 @@ export const ContentModal = styled.div`
 export const HeaderModal = styled.div`
     width: 100%;
     display: grid;
-    grid-template-columns: 9fr 1fr;
+    grid-template-columns:1fr;
+    grid-template-rows: 50px;
     text-align: right;
+    position: relative;
     i{
         font-size: 2rem;
         padding: 1rem 1rem 0 0;
         color: ${variables.greenHight};
         cursor: pointer;
         right: 0;
+        position: absolute;
     }
     h3{
         margin-bottom:2rem;

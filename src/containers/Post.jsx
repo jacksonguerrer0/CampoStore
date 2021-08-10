@@ -17,7 +17,7 @@ const Post = () => {
    const inputPhoto2 = useRef(null);
    const inputPhoto3 = useRef(null);
    const [errorMsj, setErrorMsj] = useState('')
-   const [validateConfirmed, setValidateConfirmed] = useState(false)
+
 
    const [dataForm, handleChangeInput,  handleChangeForm, reset] = useForm({
       name: '',
@@ -87,7 +87,7 @@ const Post = () => {
          const response  = await postProduct(newDataForm);
          if (response.status === 200) {
             Toastify({
-                text: "Producto publicado con éxito",
+                text: "Producto publicado, Revisa tu perfil",
                 backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
                 duration: 3000
               }).showToast();
