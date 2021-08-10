@@ -1,8 +1,8 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { useRef } from 'react'
 import { ButtonPhoto, ContainerFileText, ContainerUnit, InputFormPhoto } from '../containers/post-styles/PostStyles'
 import useForm from '../hooks/useForm'
-import { deleteProduct, updateProduct, uploadFile } from '../services'
+import { deleteFile, deleteProduct, updateProduct, uploadFile } from '../services'
 import { ContentModal, HeaderModal, Modal } from './modal-campo-styled/ModalCampoStyled'
 import { ButtonPublicar, ContentInfoProduct } from './public-edit-product-styled/PublicEditProductStyled'
 
@@ -14,19 +14,20 @@ const EditProduct = ({ setShowModal, product }) => {
     const inputPhoto1 = useRef(null);
     const inputPhoto2 = useRef(null);
     const inputPhoto3 = useRef(null);
+    
     const photosDeleteSubmit = {
-        photo: product.photo.id,
-        photo2: product.photo2.id,
-        photo3: product.photo3.id
+        photo: product.photo?.id,
+        photo2: product.photo2?.id,
+        photo3: product.photo3?.id
     }
     const [dataForm, handleChangeInput, reset] = useForm({
        name: product.name,
        price: product.price,
        quantity: product.quantity,
        unit: product.unit,
-       photo: product.photo.id,
-       photo2: product.photo2.id,
-       photo3: product.photo3.id
+       photo: product.photo?.id,
+       photo2: product.photo2?.id,
+       photo3: product.photo3?.id
     })
     // const {name, price, quantity, photo1, photo2, photo3} = dataForm
     const handleBtnPhoto1 = () => {
@@ -58,33 +59,66 @@ const EditProduct = ({ setShowModal, product }) => {
             handleChangeInput({target: {name: e.target.name, value: file}})
         }
      }
-     const uploadFileProduct = async () =>{
+     const uploadFileProduct1 = async () =>{
         if(typeof dataForm.photo !== 'number'){
-            await deleteProduct(photosDeleteSubmit.photo)
+            console.log(dataForm.photo)
+            await deleteFile(photosDeleteSubmit.photo)
             const response = await uploadFile(dataForm.photo);
+            console.log(response)
             if (response.status === 200) {
-               handleChangeInput({target: {name: 'photo', value: response.data.data.id}})
+                return  response.data.data.id
+            }else{
+                return null
             }
-        }
-        if(typeof dataForm.photo2 !== 'number'){
-            await deleteProduct(photosDeleteSubmit.photo2)
-            const response = await uploadFile(dataForm.photo);
-            if (response.status === 200) {
-               handleChangeInput({target: {name: 'photo2', value: response.data.data.id}})
-            }
-        }
-        if(typeof dataForm.photo3 !== 'number'){
-            await deleteProduct(photosDeleteSubmit.photo3)
-            const response = await uploadFile(dataForm.photo);
-            if (response.status === 200) {
-               handleChangeInput({target: {name: 'photo3', value: response.data.data.id}})
-            }
+        }else{
+            return null
         }
      }
+     const uploadFileProduct2 = async () => {
+        if(typeof dataForm.photo2 !== 'number'){
+            await deleteFile(photosDeleteSubmit.photo2)
+            const response = await uploadFile(dataForm.photo2);
+            if (response.status === 200) {
+                return  response.data.data.id
+            }else{
+                return null
+            }
+        }else{
+            return null
+        }
+     }
+     const uploadFileProduct3 = async () => {
+        if(typeof dataForm.photo3 !== 'number'){
+            await deleteFile(photosDeleteSubmit.photo3)
+            const response = await uploadFile(dataForm.photo3);
+            if (response.status === 200) {
+                return  response.data.data.id
+            }else{
+                return null
+            }
+        }else{
+            return null
+        }
+     }
+
     const handleSubmit = async (e) => {
        e.preventDefault();
-        uploadFileProduct()
-        updateProduct(dataForm, product.id)
+        const photoId = await uploadFileProduct1();
+        const photo2Id = await uploadFileProduct2();
+        const photo3Id = await uploadFileProduct3();
+        console.log(photoId, photo2Id, photo3Id)
+
+        let dataSend = {
+            ...dataForm,
+            photo: photoId || dataForm.photo,
+            photo2: photo2Id || dataForm.photo2,
+            photo3: photo3Id || dataForm.photo3,
+            price: parseInt(dataForm.price),
+            quantity: parseInt(dataForm.quantity)
+        }
+        console.log(dataSend)
+        // console.log(dataForm)
+        await updateProduct(dataSend, product.id)
     }
     return (
         <Modal>
