@@ -24,16 +24,16 @@ const DetailProduct = () => {
     const slider = (
         <AwesomeSlider>
             {
-                dataProduct.photo?.data.full_url &&
-                <div data-src={dataProduct.photo?.data.full_url} />
+                dataProduct.photo?.data?.full_url ?
+                <div data-src={dataProduct.photo?.data?.full_url} /> : <div data-src={'https://i0.wp.com/css-tricks.com/wp-content/uploads/2018/10/skeleton-react-01.jpg?ssl=1'} />
             }
             {
-                dataProduct.photo2?.data.full_url &&
-                <div data-src={dataProduct.photo2?.data.full_url} />
+                dataProduct.photo2?.data?.full_url ?
+                <div data-src={dataProduct.photo2?.data?.full_url} /> : <div data-src={'https://i0.wp.com/css-tricks.com/wp-content/uploads/2018/10/skeleton-react-01.jpg?ssl=1'} />
             }
             {
-                dataProduct.photo3?.data.full_url &&
-                <div data-src={dataProduct.photo3?.data.full_url} />
+                dataProduct.photo3?.data?.full_url ?
+                <div data-src={dataProduct.photo3?.data?.full_url} /> : <div data-src={'https://i0.wp.com/css-tricks.com/wp-content/uploads/2018/10/skeleton-react-01.jpg?ssl=1'} />
             }
         </AwesomeSlider>
     );
