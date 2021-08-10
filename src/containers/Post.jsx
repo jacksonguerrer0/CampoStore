@@ -89,8 +89,8 @@ const Post = () => {
             ...dataForm,
             price: parseInt(dataForm.price),
             quantity: parseInt(dataForm.quantity),
-            photo2: dataForm.photo2 === '' && 153,
-            photo3: dataForm.photo3 === '' && 153,
+            photo2:typeof dataForm.photo2 !== 'number' ? 162 : dataForm.photo2,
+            photo3:typeof dataForm.photo3 !== 'number' ? 162 : dataForm.photo3,
          }
          const response  = await postProduct(newDataForm);
          if (response.status === 200) {

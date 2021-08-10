@@ -29,10 +29,10 @@ const CardProduct = ({ modeMyProfile, product }) => {
         }).then((result) => {
             if (result.isConfirmed) {
                 deleteFile(data.photo?.id)
-                if (data.photo2?.id !== 153) {
+                if (data.photo2?.id !== 162) {
                     deleteFile(data.photo2?.id)
                 }
-                if(data.photo3?.id !== 153){
+                if(data.photo3?.id !== 162){
                     deleteFile(data.photo3?.id)
                 }
                 deleteProduct(data.id).then((response) => {

@@ -79,7 +79,7 @@ const EditProduct = ({ setShowModal, product }) => {
      }
      const uploadFileProduct2 = async () => {
         if(typeof dataForm.photo2 !== 'number'){
-            if (photosDeleteSubmit.photo2 !== 153) {
+            if (photosDeleteSubmit.photo2 !== 162) {
                 await deleteFile(photosDeleteSubmit.photo2)
             }
             const response = await uploadFile(dataForm.photo2);
@@ -94,7 +94,7 @@ const EditProduct = ({ setShowModal, product }) => {
      }
      const uploadFileProduct3 = async () => {
         if(typeof dataForm.photo3 !== 'number'){
-            if(photosDeleteSubmit.photo3 !== 153){
+            if(photosDeleteSubmit.photo3 !== 162){
                 await deleteFile(photosDeleteSubmit.photo3)
             }
             const response = await uploadFile(dataForm.photo3);
