@@ -4,8 +4,11 @@ import React, { useState } from 'react'
 import { ContainerForm, FormLogin, FormRegister, Input, Button, IconSocial, HeaderForm, Select, ErrorP } from './login-styled/LoginStyled'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
-import { loginEmail, createUser, createPerson } from '../services/login'
+import { loginEmail, createUser, updateProfile } from '../services/login'
 import { useHistory } from 'react-router-dom'
+import { GoogleLogin } from 'react-google-login';
+import { uploadFile } from '../services'
+
 
 const departamentos = ['Amazonas', 'Antioquía', 'Arauca', 'Atlántico', 'Bolívar', 'Boyacá', 'Caldas', 'Caquetá', 'Casanare', 'Cauca', 'Cesar', 'Chocó', 'Córdoba', 'Cundinamarca', 'Guainía', 'Guaviare', 'Huila', 'Guajira', 'Magdalena', 'Meta', 'Nariño', 'Norte de Santander', 'Putumayo', 'Quindío', 'Risaralda', 'San Andrés y Providencia','Santander', 'Sucre', 'Tolima', 'Valle del Cauca', 'Vaupés', 'Vichada'
 ]
@@ -105,9 +108,66 @@ const Login = () => {
         }
         
     })
-    const handleGoogleLoginClick = () => {
-        // dispatch(loginGoogle())
+
+    const responseGoogle = async (response) => {
+        if (response.error) {
+            console.log(response.error)
+            setTimeout(() => {
+                setAlert(false)
+            }, 3000);
+            setAlert(true)
+        }else {
+            console.log(response.Ts)
+            const dataLogin = {
+                email: response.Ts.Et,
+                password: response.Ts.mS
+            }
+            //Try login 
+            try {
+                const response = await loginEmail(dataLogin)
+                if (response.status === 200) {
+                    setAlert(false)
+
+                    const token = response.data.data.token
+                    sessionStorage.setItem('token', JSON.stringify(token))
+                    history.go(0);
+                }
+            } catch (error) {
+                //Try Register
+                console.log('entro al registro')
+                const image = response.Ts.hj
+                const dataUser = {
+                    first_name: response.Ts.Ne,
+                    last_name: ' ',
+                    email: response.Ts.Et,
+                    password: response.Ts.mS,
+                    role: 3,
+                    status: "active",
+                    title: 'Vendedor'
+                }
+                const responseLogin = await createUser(dataUser);
+                if (responseLogin.status === 200) {
+                    console.log('registro el user')
+                    setAlert(false)
+                    const user = {
+                        email: dataUser.email,
+                        password: dataUser.password
+                    }
+                    //Login User
+                    const login = await loginEmail(user)
+                    if (login.status === 200) {
+                        const token = JSON.stringify(login.data.data.token)
+                        sessionStorage.setItem('token', token)
+                        history.go(0);
+                    }
+                }
+            }
+        }
     }
+
+    // const handleGoogleLoginClick = () => {
+    //     window.location.href=`${process.env.REACT_APP_URL_API}auth/sso/google?mode=jwt`;
+    // }
 
     return (
         <>
@@ -260,7 +320,16 @@ const Login = () => {
             </>
             }
             <div >
-                <IconSocial src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="google" onClick={handleGoogleLoginClick}/>
+                <GoogleLogin
+                    clientId="551239456496-6vf6v1vjscaaf2lsaniebr5hpdtvuq1a.apps.googleusercontent.com"
+                    render={renderProps => (
+                        <IconSocial src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="google" onClick={renderProps.onClick} disabled={renderProps.disabled} />
+                      )}
+                    buttonText="Login"
+                    onSuccess={responseGoogle}
+                    onFailure={responseGoogle}
+                    cookiePolicy={'single_host_origin'}
+                />
                 <IconSocial src='https://image.flaticon.com/icons/png/512/733/733547.png' alt='facebook' />
             </div>
         </ContainerForm>
