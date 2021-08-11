@@ -56,6 +56,7 @@ const Layout = () => {
                <Route exact path='/detail/:idProduct' component={DetailProduct} />
                <Route exact path='/profile/:idUser' component={Profile} />
                <Route exact path ='/pay/:idProductPay' component={Pay} />
+               <Route exact path ='/check' component={Messages} />
                <Redirect to="/home" />
             </Switch>
             <Menu listMenu={menu} />

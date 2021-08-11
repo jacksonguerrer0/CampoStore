@@ -193,6 +193,14 @@ const Login = () => {
                         if (login.status === 200) {
                             const token = JSON.stringify(login.data.data.token)
                             sessionStorage.setItem('token', token)
+                            //Upload Imagen
+                            // const respFile = await uploadFile(image)
+                            // const idImage = respFile.data.data.id;
+                            // const dataSendProfile = {
+                            //     avatar: idImage
+                            // }
+                            // const respProfile = await updateProfile(dataSendProfile, login.data.data.user.id)
+                            // console.log(respProfile)
                             history.go(0);
                         }
                     }

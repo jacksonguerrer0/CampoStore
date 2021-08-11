@@ -13,6 +13,15 @@ const Pay = () => {
     const [totalPay, setTotalPay] = useState(0)
     const { idProductPay } = useParams();
 
+    useEffect(() => {
+        const script = document.createElement("script");
+
+        script.src = "https://checkout.wompi.co/widget.js";
+        script.async = true;
+
+        document.body.appendChild(script);
+    }, [])
+
     const handleChangeTotalPay = async (e) => {
         setTotalPay(e.target.value * dataProduct.price)
     }
@@ -35,7 +44,24 @@ const Pay = () => {
     
     const handleSubmit = (e) => {
         e.preventDefault()
+        const date = new Date()
+        const string = date.toLocaleString()
+        const reference = btoa(string)
+        
         console.log(dataProduct, totalPay)
+        let checkout = new window.WidgetCheckout({
+            currency: 'COP',
+            amountInCents: totalPay*100,
+            reference: reference,
+            publicKey: 'pub_test_hOKAX0kIktPzLTVwX5EaljIMfH1Z9mYD',
+            redirectUrl: 'http://localhost:3000/check', // Opcional
+        })
+        checkout.open(function ( result ) {
+            //Guardar en la base de datos
+            let transaction = result.transaction
+            console.log('Transaction ID: ', transaction.id)
+            console.log('Transaction object: ', transaction)
+        })
     }
 
     const getData = async () => {
