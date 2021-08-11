@@ -7,7 +7,7 @@ import ButtonBack from '../components/ButtonBack';
 import useForm from '../hooks/useForm';
 import { getProductById } from '../services';
 import { ContainerPay, ContentFormPay, ContentHeaderProduct, PRightPay } from './pay-styled/PayStyled';
-
+import { unitExp, thousandPoint } from '../helpers/funtions.js'
 const Pay = () => {
     const [dataProduct, setDataProduct] = useState({});
     const [totalPay, setTotalPay] = useState(0)
@@ -83,8 +83,8 @@ const Pay = () => {
                     dataProduct?.id &&
                     <>           
                     <h3>{dataProduct.name}</h3>
-                    <p>Precio: </p><PRightPay>${dataProduct.price?.toLocaleString('en-US')} X    {dataProduct.unit}</PRightPay>
-                    <p>Cantidad disponible en {dataProduct.unit}:</p><PRightPay>{dataProduct.quantity} {dataProduct.unit}</PRightPay>
+                    <p>Precio: </p><PRightPay>${thousandPoint(dataProduct?.price)} X  {dataProduct.unit}</PRightPay>
+                    <p>Cantidad disponible:</p><PRightPay>{dataProduct.quantity} {unitExp(dataProduct?.unit)}</PRightPay>
                     </>
                 }
             </ContentHeaderProduct>

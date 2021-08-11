@@ -5,7 +5,7 @@ import { ButtonDelete, ButtonEdit, ContainerCrudCardProduct, ContentDetailInfo, 
 import EditProduct from './EditProduct'
 import Swal from 'sweetalert2'
 import { deleteFile, deleteProduct } from '../services'
-
+import { thousandPoint, unitExp } from '../helpers/funtions.js'
 
 const CardProduct = ({ modeMyProfile, product }) => {
     const [showModal, setShowModal] = useState(false)
@@ -60,8 +60,8 @@ const CardProduct = ({ modeMyProfile, product }) => {
                 <ContentDetailInfo>
                     <h3>{product.name}</h3>
                     <ContentPDetail>
-                        <p>Precio:</p><Pr>{product.price}</Pr>
-                        <p>Cantidad:</p><Pr>{product.quantity}</Pr>
+                        <p>Precio:</p><Pr>${product.price && thousandPoint(product?.price)} X {product.unit && unitExp(product.unit)}</Pr>
+                        <p>Cantidad:</p><Pr>{product?.quantity} {product.unit && unitExp(product.unit)}</Pr>
                     </ContentPDetail>
                     {
                         modeMyProfile ? 

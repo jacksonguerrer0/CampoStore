@@ -7,7 +7,7 @@ import ButtonGreen from '../components/ButtonGreen';
 import { useParams } from 'react-router-dom';
 import { getProductById } from '../services';
 import variables from '../styles/variables';
-
+import { unitExp, thousandPoint } from '../helpers/funtions.js'
 
 
 
@@ -41,7 +41,6 @@ const DetailProduct = () => {
     }, [])
 
     console.log(dataProduct)
-
     return (
         <ContainerDetail>
             <ButtonBack />
@@ -53,8 +52,11 @@ const DetailProduct = () => {
                 dataProduct?.id &&
                 <>
                     <ContentInfoDetail>
-                    <p>Precio:</p><TextRight>$ {dataProduct.price?.toLocaleString('en-US')} X {dataProduct.unit}</TextRight>
-                    <p>Cantidad disponible en {dataProduct.unit}:</p><TextRight>{dataProduct.quantity} {dataProduct?.unit}</TextRight>
+                    <p>Precio:</p><TextRight>$ {thousandPoint(dataProduct?.price)} X {dataProduct.unit}</TextRight>
+                    <p>Cantidad disponible:</p>
+                    <TextRight>
+                    {dataProduct.quantity} {unitExp(dataProduct?.unit)}
+                    </TextRight>
                     <p>Vendedor:</p><TextRight><a href={`/profile/${dataProduct.owner?.id}`}>{dataProduct.owner?.first_name}</a></TextRight>
                 </ContentInfoDetail>
                 <ButtonGreen url={`/pay/${dataProduct.id}`} text='Comprar'/> 
