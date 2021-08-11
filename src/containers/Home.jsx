@@ -17,6 +17,7 @@ const Home = () => {
     useEffect(() => {
         getData()
     }, [])
+    console.log(dataProducts)
 
     return (
         <div>

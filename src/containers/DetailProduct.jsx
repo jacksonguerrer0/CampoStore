@@ -6,6 +6,7 @@ import 'react-awesome-slider/dist/styles.css';
 import ButtonGreen from '../components/ButtonGreen';
 import { useParams } from 'react-router-dom';
 import { getProductById } from '../services';
+import variables from '../styles/variables';
 
 
 
@@ -20,21 +21,18 @@ const DetailProduct = () => {
         const {data} = await getProductById(idProduct)
         setDataProduct(data.data)
     }
-
+    const startupScreen = (
+        <div style={{background: variables.gradiant}}>
+          <img  alt='' />
+        </div>
+      );
     const slider = (
-        <AwesomeSlider>
-            {
-                dataProduct.photo?.data?.full_url ?
-                <div data-src={dataProduct.photo?.data?.full_url} /> : <div data-src={'https://i0.wp.com/css-tricks.com/wp-content/uploads/2018/10/skeleton-react-01.jpg?ssl=1'} />
-            }
-            {
-                dataProduct.photo2?.data?.full_url ?
-                <div data-src={dataProduct.photo2?.data?.full_url} /> : <div data-src={'https://i0.wp.com/css-tricks.com/wp-content/uploads/2018/10/skeleton-react-01.jpg?ssl=1'} />
-            }
-            {
-                dataProduct.photo3?.data?.full_url ?
-                <div data-src={dataProduct.photo3?.data?.full_url} /> : <div data-src={'https://i0.wp.com/css-tricks.com/wp-content/uploads/2018/10/skeleton-react-01.jpg?ssl=1'} />
-            }
+        <AwesomeSlider 
+        // startupScreen={startupScreen}
+        >
+            <div data-src={dataProduct.photo?.data?.full_url} />
+            <div data-src={dataProduct.photo2?.data?.full_url} />
+            <div data-src={dataProduct.photo3?.data?.full_url} />
         </AwesomeSlider>
     );
 
@@ -47,19 +45,21 @@ const DetailProduct = () => {
     return (
         <ContainerDetail>
             <ButtonBack />
-                { dataProduct?.photo &&
                     <ContainerCarrusel>
                         {slider}
                     </ContainerCarrusel>
-                }
-                
                 <TitleProductDetail>{dataProduct.name}</TitleProductDetail>
-                <ContentInfoDetail>
-                    <p>Precio:</p><TextRight>$ {dataProduct.price}</TextRight>
-                    <p>Cantidad:</p><TextRight>{dataProduct.quantity}</TextRight>
+            {
+                dataProduct?.id &&
+                <>
+                    <ContentInfoDetail>
+                    <p>Precio:</p><TextRight>$ {dataProduct.price?.toLocaleString('en-US')} X {dataProduct.unit}</TextRight>
+                    <p>Cantidad disponible en {dataProduct.unit}:</p><TextRight>{dataProduct.quantity} {dataProduct?.unit}</TextRight>
                     <p>Vendedor:</p><TextRight><a href={`/profile/${dataProduct.owner?.id}`}>{dataProduct.owner?.first_name}</a></TextRight>
                 </ContentInfoDetail>
-                <ButtonGreen url='/pay' text='Comprar'/> 
+                <ButtonGreen url={`/pay/${dataProduct.id}`} text='Comprar'/> 
+                </>
+            }
         </ContainerDetail>
     )
 }

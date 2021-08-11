@@ -27,7 +27,7 @@ const ModalCampo = ({ dataModal, setShowModal }) => {
             title: dataModal.title
         },
         validationSchema: yup.object().shape({
-            first_name: yup.string().min(10, 'Escribe tu nombre').max(30, 'Nombre muy largo').required('Escribe tu nombre'),
+            first_name: yup.string().min(3, 'Escribe tu nombre').max(30, 'Nombre muy largo').required('Escribe tu nombre'),
             city: yup.string().required('Escribe tu ciudad'),
             department: yup.string().required('Selecciona tu departamento'),
             description: yup.string().min(10, 'Escribe una descripción').required('Escribe una descripción'),

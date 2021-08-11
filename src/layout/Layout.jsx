@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Menu from './Menu'
-import { BrowserRouter as Router, Switch, Route, useLocation } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route, useLocation, Redirect } from 'react-router-dom'
 import Home from '../containers/Home'
 import Post from '../containers/Post'
 import Messages from '../containers/Messages'
@@ -8,6 +8,8 @@ import Profile from '../containers/Profile'
 import DetailProduct from '../containers/DetailProduct'
 import ShowChat from '../components/ShowChat'
 import isAuth from '../utils/isAuth'
+import PaymentSuccess from '../containers/Pay'
+import Pay from '../containers/Pay'
 
 const Layout = () => {
 
@@ -16,50 +18,33 @@ const Layout = () => {
          name: 'Home',
          path: '/home',
          component: Home,
-         icon: 'https://i.imgur.com/Zj6wB6H.png',
+         icon: 'fas fa-home',
          status: false
       },
       {
          name: 'Publicar',
          path: '/post',
          component: Post,
-         icon: 'https://i.imgur.com/fNxEJ8g.png',
+         icon: 'fas fa-bullhorn',
          status: false
       },
       {
          name: 'Mensajes',
          path: '/messages',
          component: Messages,
-         icon: 'https://i.imgur.com/sNPrfEE.png',
+         icon: 'far fa-comment-dots',
          status: false
       },
       {
          name: 'Perfil',
          path: '/myprofile',
          component: Profile,
-         icon: 'https://i.imgur.com/NI4icpy.png',
+         icon: 'fas fa-user',
          status: false
       }
    ])
 
-   const handleMenu = (menuItem) => {
-      const list = menu;
-      list.forEach(element => {
-         if(element.name === menuItem.name) {
-            element.status = true
-         }else {
-            element.status = false
-         }
-      });
 
-      // const index = menu.indexOf(menuItem)
-      // list.forEach(element => {
-      //    element.status = false
-      // });
-      // list[index].status = true;
-      // console.log(list)
-      setMenu(list)
-   }
    return (
       <div className='container'>
          <Router>
@@ -70,8 +55,10 @@ const Layout = () => {
                ))}
                <Route exact path='/detail/:idProduct' component={DetailProduct} />
                <Route exact path='/profile/:idUser' component={Profile} />
+               <Route exact path ='/pay/:idProductPay' component={Pay} />
+               <Redirect to="/home" />
             </Switch>
-            <Menu listMenu = {menu} handleMenu={handleMenu} />
+            <Menu listMenu={menu} />
          </Router>
       </div>
    )

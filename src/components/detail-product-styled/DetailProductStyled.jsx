@@ -11,7 +11,7 @@ export const ContainerDetail = styled.div`
 export const ContentInfoDetail = styled.div`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(3, 2rem);
+    grid-template-rows: 3rem 4rem 3rem;
     width: 80%;
     margin: auto;
     border-top: 0.3rem solid ${variables.greenDown};
@@ -19,6 +19,10 @@ export const ContentInfoDetail = styled.div`
     border-radius: 0 0 1rem 1rem;
     background-color: ${variables.white};
     box-shadow: ${variables.boxShadown};
+    p{
+        border-bottom: 1px inset ;
+        margin: auto 0 0 0;
+    }
 `
 export const TitleProductDetail = styled.h2`
     text-align: center;
@@ -58,6 +62,7 @@ export const ContainerCarrusel = styled.div`
         border-radius: 1rem 1rem 1rem 1rem;
         --loader-bar-color: ${variables.greenDown};
         border-bottom: 2px solid ${variables.greenDown};
+        background: ${variables.gradiant}
     }
     nav{
         display: none;

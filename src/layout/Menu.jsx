@@ -1,25 +1,19 @@
 import React, { useState } from 'react'
+import { NavLink } from 'react-router-dom'
 import { Item, MenuContainer, ItemTitle, ItemIcon } from './menu-styles/MenuStyles'
-import { useHistory } from 'react-router-dom'
-
 
 const Menu = ({listMenu, handleMenu}) => {
 
-   const history = useHistory()
-
-   function handleClick(menuItem) {
-      history.push(menuItem.path)
-      handleMenu(menuItem)
-   }
 
    return (
       <MenuContainer>
          {
             listMenu.map((menuItem) => (
-               <Item key={menuItem.name} status={menuItem.status} onClick={(e) => { handleClick(menuItem) }}>
-                  <ItemIcon src={menuItem.icon} alt={menuItem.name} />
+               <NavLink to={menuItem.path} key={menuItem.name} activeClassName='active'>
+                  <ItemIcon className={menuItem.icon} />
+                  {/* <i class="fas fa-home"></i> */}
                   <ItemTitle>{menuItem.name}</ItemTitle>
-               </Item>
+               </NavLink>
             ))
          }
       </MenuContainer>
