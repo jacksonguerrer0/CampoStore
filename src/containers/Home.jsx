@@ -3,7 +3,7 @@ import Header from '../components/Header'
 import ProductsHome from '../components/ProductsHome'
 import SearchHome from '../components/SearchHome'
 import { getListProducts } from '../services'
-
+import Loader from '../components/Loader'
 
 const Home = () => {
 
@@ -23,7 +23,11 @@ const Home = () => {
         <div>
             <Header title='CampoStore'/>
             <SearchHome />
-            <ProductsHome dataProducts={dataProducts} />
+            {
+                dataProducts.length !== 0
+                ?<ProductsHome dataProducts={dataProducts} />
+                : <Loader />
+            }
         </div>
     )
 }

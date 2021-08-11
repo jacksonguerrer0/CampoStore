@@ -6,9 +6,7 @@ import { ContainerProductsHome } from './products-home-styled/ProductsHomeStyled
 const ProductsHome = ({ modeMyProfile, dataProducts }) => {
     return (
         <ContainerProductsHome>
-            {console.log(dataProducts.length !== 0)}
             {
-                dataProducts.length !== 0 ?
                 dataProducts.map((product, index) => (
                     <CardProduct 
                         key={index} 
@@ -16,7 +14,6 @@ const ProductsHome = ({ modeMyProfile, dataProducts }) => {
                         product={product}
                     />
                 ))
-                : <Loader />
             }
         </ContainerProductsHome>
     )

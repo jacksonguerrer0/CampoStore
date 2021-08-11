@@ -60,14 +60,16 @@ const Profile = () => {
    return (
       <div>
             <ProfileDetalLe modeMyProfile={modeMyProfile} dataProfile={dataProfile} />
-            <h2 style={{textAlign: 'center'}}>Mis productos</h2>
-         {
-            dataProfile?.id ? 
-            <>
-            <ProductsHome modeMyProfile={modeMyProfile} dataProducts={dataProducts} />
-            </>
-            : <Loader />
-         }
+            {
+               dataProfile.id
+               ?
+               <>
+               {dataProducts.length !== 0 ? <h2 style={{textAlign: 'center'}}>Mis  productos</h2> : <h2 style={{textAlign: 'center'}}>Sin productos</h2>}
+               <ProductsHome modeMyProfile={modeMyProfile} dataProducts={dataProducts} />
+               </>
+               : <Loader />
+            }
+
       </div>
    )
 }
