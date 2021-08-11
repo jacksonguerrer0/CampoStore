@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Menu from './Menu'
-import { BrowserRouter as Router, Switch, Route, useLocation } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route, useLocation, Redirect } from 'react-router-dom'
 import Home from '../containers/Home'
 import Post from '../containers/Post'
 import Messages from '../containers/Messages'
@@ -56,6 +56,7 @@ const Layout = () => {
                <Route exact path='/detail/:idProduct' component={DetailProduct} />
                <Route exact path='/profile/:idUser' component={Profile} />
                <Route exact path ='/pay/:idProductPay' component={Pay} />
+               <Redirect to="/home" />
             </Switch>
             <Menu listMenu={menu} />
          </Router>
