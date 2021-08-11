@@ -43,8 +43,8 @@ const Pay = () => {
                     dataProduct?.id &&
                     <>           
                     <h3>{dataProduct.name}</h3>
-                    <p>Precio: </p><PRightPay>${dataProduct.price?.toLocaleString('en-US')} el {dataProduct.unit}</PRightPay>
-                    <p>Cantidad disponible en {dataProduct.unit}:</p><PRightPay>{dataProduct.quantity}</PRightPay>
+                    <p>Precio: </p><PRightPay>${dataProduct.price?.toLocaleString('en-US')} X    {dataProduct.unit}</PRightPay>
+                    <p>Cantidad disponible en {dataProduct.unit}:</p><PRightPay>{dataProduct.quantity} {dataProduct.unit}</PRightPay>
                     </>
                 }
             </ContentHeaderProduct>

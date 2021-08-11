@@ -19,7 +19,7 @@ export const ContentHeaderProduct = styled.div`
         font-size: 0.8rem;
         margin: 0;
         color: ${variables.gray};
-        border-bottom: 1px black dashed;
+        border-bottom: 1px ${variables.gray} inset;
     }
     h2{
         grid-column: 1/4;
@@ -48,7 +48,6 @@ export const ContentHeaderProduct = styled.div`
 `
 
 export const PRightPay = styled.p`
-    font-size: 1rem !important;
     text-align: right;
     width: 10rem;
     display: flex;

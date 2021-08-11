@@ -53,7 +53,7 @@ const DetailProduct = () => {
                 dataProduct?.id &&
                 <>
                     <ContentInfoDetail>
-                    <p>Precio:</p><TextRight>$ {dataProduct.price?.toLocaleString('en-US')} el {dataProduct.unit}</TextRight>
+                    <p>Precio:</p><TextRight>$ {dataProduct.price?.toLocaleString('en-US')} X {dataProduct.unit}</TextRight>
                     <p>Cantidad disponible en {dataProduct.unit}:</p><TextRight>{dataProduct.quantity} {dataProduct?.unit}</TextRight>
                     <p>Vendedor:</p><TextRight><a href={`/profile/${dataProduct.owner?.id}`}>{dataProduct.owner?.first_name}</a></TextRight>
                 </ContentInfoDetail>
