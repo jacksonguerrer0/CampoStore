@@ -6,6 +6,7 @@ import ProductsHome from '../components/ProductsHome'
 import ProfileDetalLe from '../components/ProfileDetalle'
 import { getUser, getUserById } from '../services/login';
 import { getListProductsByUser } from '../services';
+import Loader from '../components/Loader';
 
 const Profile = () => {
    const [modeMyProfile, setModeMyProfile] = useState(false)
@@ -58,9 +59,15 @@ const Profile = () => {
 
    return (
       <div>
-         <ProfileDetalLe modeMyProfile={modeMyProfile} dataProfile={dataProfile} />
-         <h2 style={{textAlign: 'center'}}>Mis productos</h2>
-         <ProductsHome modeMyProfile={modeMyProfile} dataProducts={dataProducts} />
+            <ProfileDetalLe modeMyProfile={modeMyProfile} dataProfile={dataProfile} />
+            <h2 style={{textAlign: 'center'}}>Mis productos</h2>
+         {
+            dataProfile?.id ? 
+            <>
+            <ProductsHome modeMyProfile={modeMyProfile} dataProducts={dataProducts} />
+            </>
+            : <Loader />
+         }
       </div>
    )
 }

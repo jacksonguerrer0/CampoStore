@@ -33,6 +33,13 @@ export const ContainerHeader = styled.img`
     box-shadow: ${variables.boxShadownBotttom};
     object-fit: cover;
 `
+export const HeaderCopy = styled.div`
+    width: 100%;
+    height: 15rem;
+    background: ${variables.gradiant};
+    box-shadow: ${variables.boxShadownBotttom};
+    object-fit: cover; 
+`
 export const H2 = styled.h2`
     margin: auto;
     text-align: center;
@@ -67,7 +74,15 @@ export const ImgProfile = styled.img`
     border: 0.5rem #53e88b groove;
     object-fit: cover;
 `
-
+export const ImgProfileCopy = styled.div`
+    width: 9rem;
+    height: 9rem;
+    background: ${variables.gradiant};
+    border-radius: 100%;
+    border: 0.5rem #53e88b groove;
+    object-fit: cover;
+    margin: auto !important;
+`
 export const ContentInfo = styled.div`
     height: 250px;
     justify-content: flex-end;
@@ -103,6 +118,7 @@ export const ContainerFooter = styled.div`
 `
 export const ContentAcordeon = styled.div`
     max-width: 100%;
+    height: 5rem;
     text-align: justify;
     padding: 0 1rem 1rem 1rem;
     h3{

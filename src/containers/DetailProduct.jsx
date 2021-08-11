@@ -50,7 +50,7 @@ const DetailProduct = () => {
                     </ContainerCarrusel>
                 <TitleProductDetail>{dataProduct.name}</TitleProductDetail>
             {
-                dataProduct?.id&&
+                dataProduct?.id &&
                 <>
                     <ContentInfoDetail>
                     <p>Precio:</p><TextRight>$ {dataProduct.price?.toLocaleString('en-US')} el {dataProduct.unit}</TextRight>
