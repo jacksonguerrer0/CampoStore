@@ -18,50 +18,33 @@ const Layout = () => {
          name: 'Home',
          path: '/home',
          component: Home,
-         icon: 'https://i.imgur.com/Zj6wB6H.png',
+         icon: 'fas fa-home',
          status: false
       },
       {
          name: 'Publicar',
          path: '/post',
          component: Post,
-         icon: 'https://i.imgur.com/fNxEJ8g.png',
+         icon: 'fas fa-bullhorn',
          status: false
       },
       {
          name: 'Mensajes',
          path: '/messages',
          component: Messages,
-         icon: 'https://i.imgur.com/sNPrfEE.png',
+         icon: 'far fa-comment-dots',
          status: false
       },
       {
          name: 'Perfil',
          path: '/myprofile',
          component: Profile,
-         icon: 'https://i.imgur.com/NI4icpy.png',
+         icon: 'fas fa-user',
          status: false
       }
    ])
 
-   const handleMenu = (menuItem) => {
-      const list = menu;
-      list.forEach(element => {
-         if(element.name === menuItem.name) {
-            element.status = true
-         }else {
-            element.status = false
-         }
-      });
 
-      // const index = menu.indexOf(menuItem)
-      // list.forEach(element => {
-      //    element.status = false
-      // });
-      // list[index].status = true;
-      // console.log(list)
-      setMenu(list)
-   }
    return (
       <div className='container'>
          <Router>
@@ -74,7 +57,7 @@ const Layout = () => {
                <Route exact path='/profile/:idUser' component={Profile} />
                <Route exact path ='/pay/:idProductPay' component={Pay} />
             </Switch>
-            <Menu listMenu = {menu} handleMenu={handleMenu} />
+            <Menu listMenu={menu} />
          </Router>
       </div>
    )

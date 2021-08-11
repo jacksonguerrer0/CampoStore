@@ -16,22 +16,33 @@ export const MenuContainer = styled.div`
    bottom: 0;
    width: 100%;
    max-width: 600px;
+   .active{
+      background: ${variables.gradiant};
+      span{
+         color: #EAFAF2;
+         font-size: 0.8rem;
+      }
+      i{
+         color: #EAFAF2;
+      }
+   }
+   a{
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      padding: 5px 10px;
+      background-color: ${props => props.status ? variables.greenDown : variables.active};
+      width: 85px;
+      height:50px;
+      border-radius: 10px;
+      text-decoration: none;
+   }
 `
-export const Item = styled.div`
-   display: flex;
-   align-items: center;
-   justify-content: space-evenly;
-   padding: 5px 10px;
-   background-color: ${props => props.status ? variables.greenDown : variables.active};
-   width: 85px;
-   height:50px;
-   border-radius: 10px;
-   
-`
-export const ItemIcon = styled.img`
-   width: 24px;
-   height: 24px;
+
+export const ItemIcon = styled.i`
+   font-size: 24px;
    margin-right: 5px;
+   color: ${variables.greenHight}; 
 `
 export const ItemTitle = styled.span`
    color: ${variables.black};
