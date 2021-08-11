@@ -18,7 +18,7 @@ const Login = () => {
     const history = useHistory();
 
     const [isRegister, setIsRegister] = useState(false)
-    const [alert, setAlert] = useState(false)
+    const [alert, setAlert] = useState({status: false, message: ''})
     // const dispatch = useDispatch()
 
     const formikRegister = useFormik({
@@ -55,7 +55,10 @@ const Login = () => {
             try {
                 const response = await createUser(dataUser);
                 if (response.status === 200) {
-                    setAlert(false)
+                    setAlert({
+                        ...alert,
+                        status: false
+                    })
                     const user = {
                         email: data.emailR,
                         password: data.passwordR,
@@ -71,9 +74,16 @@ const Login = () => {
             } catch (error) {
                 console.log(error)
                 setTimeout(() => {
-                    setAlert(false)
+                    setAlert({
+                        ...alert,
+                        status: false
+                    })
                 }, 3000);
-                setAlert(true)
+                setAlert({
+                    ...alert,
+                    status: true,
+                    message: 'Hubo un error al crear el usuario'
+                })
             }
         }
     })
@@ -92,7 +102,11 @@ const Login = () => {
             try {
                 const response = await loginEmail(data)
                 if (response.status === 200) {
-                    setAlert(false)
+                    setAlert({
+                        ...alert,
+                        status: false,
+                        message: ''
+                    })
 
                     const token = response.data.data.token
                     sessionStorage.setItem('token', JSON.stringify(token))
@@ -100,9 +114,16 @@ const Login = () => {
                 }
             } catch (error) {
                 setTimeout(() => {
-                    setAlert(false)
+                    setAlert({
+                        ...alert,
+                        status: false
+                    })
                 }, 3000);
-                setAlert(true)
+                setAlert({
+                    ...alert,
+                    status: true,
+                    message: 'Usuario o Contraseña Incorrectas'
+                })
             }
             
         }
@@ -113,9 +134,16 @@ const Login = () => {
         if (response.error) {
             console.log(response.error)
             setTimeout(() => {
-                setAlert(false)
+                setAlert({
+                    ...alert,
+                    status: false
+                })
             }, 3000);
-            setAlert(true)
+            setAlert({
+                ...alert,
+                status: true,
+                message: 'Hubo un error con tu cuenta de Google'
+            })
         }else {
             console.log(response.Ts)
             const dataLogin = {
@@ -126,7 +154,10 @@ const Login = () => {
             try {
                 const response = await loginEmail(dataLogin)
                 if (response.status === 200) {
-                    setAlert(false)
+                    setAlert({
+                        ...alert,
+                        status: false
+                    })
 
                     const token = response.data.data.token
                     sessionStorage.setItem('token', JSON.stringify(token))
@@ -145,22 +176,41 @@ const Login = () => {
                     status: "active",
                     title: 'Vendedor'
                 }
-                const responseLogin = await createUser(dataUser);
-                if (responseLogin.status === 200) {
-                    console.log('registro el user')
-                    setAlert(false)
-                    const user = {
-                        email: dataUser.email,
-                        password: dataUser.password
+                try {
+                    const responseLogin = await createUser(dataUser);
+                    if (responseLogin.status === 200) {
+                        console.log('registro el user')
+                        setAlert({
+                            ...alert,
+                            status: false
+                        })
+                        const user = {
+                            email: dataUser.email,
+                            password: dataUser.password
+                        }
+                        //Login User
+                        const login = await loginEmail(user)
+                        if (login.status === 200) {
+                            const token = JSON.stringify(login.data.data.token)
+                            sessionStorage.setItem('token', token)
+                            history.go(0);
+                        }
                     }
-                    //Login User
-                    const login = await loginEmail(user)
-                    if (login.status === 200) {
-                        const token = JSON.stringify(login.data.data.token)
-                        sessionStorage.setItem('token', token)
-                        history.go(0);
-                    }
+                } catch (error) {
+                     //No se pudo crear el usuario
+                     setTimeout(() => {
+                        setAlert({
+                            ...alert,
+                            status: false
+                        })
+                    }, 3000);
+                    setAlert({
+                        ...alert,
+                        status: true,
+                        message: 'Tu cuenta es con usuario y contraseña, no con Google'
+                    })
                 }
+                
             }
         }
     }
@@ -306,7 +356,7 @@ const Login = () => {
                     Object.keys(formikSign.errors).length === 0 ? '' : '*Todos los campos son obligatorios*' 
                 }
                 {
-                    alert && 'Usuario o contraseña Incorrectos'
+                    alert.status && alert.message
                 }
                 </ErrorP>
                 <Button type="submit">

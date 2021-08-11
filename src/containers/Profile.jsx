@@ -24,9 +24,9 @@ const Profile = () => {
   }
 
   const getData = async () => {
-
+      const direccion = history.location.pathname;
       let data = ''
-      if(modeMyProfile) {
+      if(direccion.toLowerCase() === '/myprofile') {
          data = await getUser();
       }else {
          data = await getUserById(idUser);
