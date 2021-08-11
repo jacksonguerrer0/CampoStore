@@ -118,14 +118,14 @@ export const ContainerFooter = styled.div`
 `
 export const ContentAcordeon = styled.div`
     max-width: 100%;
-    height: 5rem;
+    min-height: 6rem;
     text-align: justify;
     padding: 0 1rem 1rem 1rem;
     h3{
         cursor: pointer;
         text-align: center;
         width: 13rem;
-        margin: 1rem auto;
+        margin: 2rem auto 1rem auto;
         color: ${variables.greenHight};
     }
 `
