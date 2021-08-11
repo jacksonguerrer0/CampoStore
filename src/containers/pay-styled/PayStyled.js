@@ -4,17 +4,22 @@ import variables from '../../styles/variables'
 export const ContainerPay = styled.div`
     display: flex;
     flex-flow: column wrap;
-    margin-bottom: 5rem;
+    margin-bottom: 3rem;
+    background-color: ${variables.white};
 `
 export const ContentHeaderProduct = styled.div`
     display: grid;
     grid-template-columns: 2fr 1fr 1fr;
-    grid-template-rows: 5rem 3rem 2rem 2rem repeat(4, 2rem);
+    grid-template-rows: 5rem 2rem 3rem 1rem;
     background: ${variables.gradiant};
     border-radius: 0 0 10px 10px;
     padding: 0 1rem 1rem 1rem;
+    z-index: 1;
     p{
+        font-size: 0.8rem;
         margin: 0;
+        color: ${variables.gray};
+        border-bottom: 1px black dashed;
     }
     h2{
         grid-column: 1/4;
@@ -22,6 +27,7 @@ export const ContentHeaderProduct = styled.div`
         color: ${variables.white};
     }
     h3{
+        color: ${variables.gray};
         border-bottom: 1px solid black;
         grid-row: 2/5;
         grid-column: 2/4; 
@@ -37,40 +43,53 @@ export const ContentHeaderProduct = styled.div`
         margin: auto;
         object-fit: cover;
         border-radius: 1rem;
+        background: ${variables.gradiant};
     }
 `
 
 export const PRightPay = styled.p`
+    font-size: 1rem !important;
     text-align: right;
     width: 10rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
 `
 
 export const ContentFormPay =styled.form`
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 3rem 4rem 4rem;
-    padding: 2rem;
+    padding: 2rem 2rem 7rem 2rem;
+    background: ${variables.white};
+    margin-top: -1rem;
+    z-index: 0;
+    label{
+        margin: auto 0;
+    }
     input{
-        background: ${variables.white};
+        background: ${variables.background};
         border: none;
         border-radius: 10px;
         padding: 0.5rem;
     }
     button{
-        grid-column: 1/3;
+        grid-column: 2/3;
         background: ${variables.gradiant};
         color: ${variables.white};
-        font-size: 1rem;
+        font-size: 1.2rem;
         border: none;
+        cursor: pointer;
         border-radius: 1rem;
+        box-shadow: ${variables.boxShadown};
         :hover{
-
+            filter:brightness(0.97);
         }
     }
     p{
         display: flex;
-        grid-column: 1/3;
-        justify-content: flex-end;
+        grid-column: 2/3;
+        justify-content: space-between;
         width: 100%;
         h3{
             color: ${variables.greenHight};
