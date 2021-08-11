@@ -1,16 +1,14 @@
-import React, { useState, useEffect } from 'react'
-import {  ContainerBody, ContainerDetalle, ContainerFooter, ContainerHeader, ImgProfile,  ContentAcordeon, ToggleAcordeon, ContentImg, ContentInfo, H2, ContainerBanner, TextInfo, PRinfo, IconPhotoPerfil, HeaderCopy, ImgProfileCopy } from './profile-detalle-styles/ProfileDetalleStyled'
+import React, { useState } from 'react'
+import {  ContainerBody, ContainerDetalle, ContainerFooter, ContainerHeader, ImgProfile,  ContentAcordeon, ToggleAcordeon, ContentImg, ContentInfo, ContainerBanner, TextInfo, PRinfo,  HeaderCopy, ImgProfileCopy } from './profile-detalle-styles/ProfileDetalleStyled'
 
 import ButtonBack from './ButtonBack';
 import StarRaiting from './StarRaiting';
-import { Link, useHistory } from 'react-router-dom';
 import ButtonGreen from './ButtonGreen';
 import EditInfoProfile from './EditInfoProfile';
 import ModalCampo from './ModalCampo';
-import InputFile from '../layout/input-file-styles/InputFileProfile';
 import InputFileBanner from '../layout/input-file-styles/InputFileBanner';
 import InputFileProfile from '../layout/input-file-styles/InputFileProfile';
-import variables from '../styles/variables';
+
 
 
 const ProfileDetalle = ({ modeMyProfile, dataProfile }) => {
@@ -35,7 +33,7 @@ const ProfileDetalle = ({ modeMyProfile, dataProfile }) => {
                     dataProfile?.cover ? <ContainerHeader src={dataProfile?.cover} alt="Portada" />
                     : <HeaderCopy src='' alt="Portada" />
                 }
-                { modeMyProfile && <InputFileBanner  />}
+                { modeMyProfile && dataProfile?.cover ?  <InputFileBanner  /> : ''}
             </ContainerBanner>
             <ContainerBody>
                 <ContentImg>
@@ -44,7 +42,7 @@ const ProfileDetalle = ({ modeMyProfile, dataProfile }) => {
                             dataProfile.avatar ? <ImgProfile src={dataProfile.avatar} alt="Perfil"/>
                             : <ImgProfileCopy/>
                         }
-                        { modeMyProfile && <InputFileProfile />}
+                        { modeMyProfile && dataProfile?.cover ? <InputFileProfile />: ''}
                     </div>
                     {
                         dataProfile?.id &&
@@ -79,8 +77,8 @@ const ProfileDetalle = ({ modeMyProfile, dataProfile }) => {
             <ContainerFooter>
                 <ContentAcordeon>
                 {
-                        dataProfile?.id &&
-                        <>
+                    dataProfile?.id &&
+                    <>
                     <h3 onClick={handlePAcordeon}>Ver más información<i className="fas fa-hand-pointer"></i></h3>
                     <ToggleAcordeon status={activeAcordeon.toString()}>
                         <p>{ dataProfile.description }</p>

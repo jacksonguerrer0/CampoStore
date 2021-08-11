@@ -8,7 +8,7 @@ export const LoaderPro = styled.div`
   width: 50px;
   height: 50px;
   animation: spin 2s linear infinite;
-  margin: 5rem auto auto auto;
+  margin: 5rem auto 6rem auto;
 
 @keyframes spin {
   0% { transform: rotate(0deg); }
