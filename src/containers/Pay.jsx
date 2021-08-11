@@ -39,23 +39,33 @@ const Pay = () => {
                 <ButtonBack />
                 <h2>Comprar</h2>
                 <img src={dataProduct.photo?.data.full_url} alt="" />
-                <h3>{dataProduct.name}</h3>
-                <p>Precio: </p><PRightPay>${dataProduct.price?.toLocaleString('en-US')} el {dataProduct.unit}</PRightPay>
-                <p>Cantidad disponible en {dataProduct.unit}:</p><PRightPay>{dataProduct.quantity}</PRightPay>
+                {
+                    dataProduct?.id &&
+                    <>           
+                    <h3>{dataProduct.name}</h3>
+                    <p>Precio: </p><PRightPay>${dataProduct.price?.toLocaleString('en-US')} el {dataProduct.unit}</PRightPay>
+                    <p>Cantidad disponible en {dataProduct.unit}:</p><PRightPay>{dataProduct.quantity}</PRightPay>
+                    </>
+                }
             </ContentHeaderProduct>
             <ContentFormPay onSubmit={handleSubmit}>
-                <label htmlFor="quantityPay">Cantidad a comprar en {dataProduct.unit}:</label>
-                <input 
-                type="number" 
-                id='quantityPay'
-                name='quantityPay' 
-                placeholder='Cantidad a comprar'
-                min='1'
-                onChange={(e) => {
-                    handleChangeTotalPay(e)
-                }}/>
-                <p>Total a pagar: <h3>{'$' + totalPay.toLocaleString('en-US')}</h3></p>
-                <button type='submit'>Confirmar compra</button>
+                {
+                    dataProduct?.id &&
+                    <>
+                        <label htmlFor="quantityPay">Cantidad a comprar en {dataProduct.unit}:</label>
+                        <input 
+                        type="number" 
+                        id='quantityPay'
+                        name='quantityPay' 
+                        placeholder='Cantidad a comprar'
+                        min='1'
+                        onChange={(e) => {
+                            handleChangeTotalPay(e)
+                        }}/>
+                        <p>Total a pagar: <h3>{'$' + totalPay.toLocaleString('en-US')}</h3></p>
+                        <button type='submit'>Confirmar compra</button>
+                    </>
+                }
             </ContentFormPay>
         </ContainerPay>
     )
