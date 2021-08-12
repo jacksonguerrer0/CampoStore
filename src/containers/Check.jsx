@@ -39,8 +39,8 @@ const Check = () => {
                     checkStateFunction()
                 }
                 <p>Ahora hay una nueva familia feliz. Gracias por apoyar el campo Colombiano.</p>
-                <span>Pulsa el boton para ver y calificar tus compras</span>
-                <ButtonGreen url='/history' text='Calificar' />
+                <span>Puedes calificar tus compras desde el historial de tu perfil</span>
+                <ButtonGreen url='/myProfile' text='Mi Perfil' />
                 </>
                 
             }

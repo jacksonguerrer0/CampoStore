@@ -9,7 +9,7 @@ export const ContentCheck = styled.div`
     background-color: ${variables.white};
     border-radius: 1rem;
     padding: 1rem;
-    margin-top: 5vh;
+    margin-top: 2vh;
     box-shadow: ${variables.boxShadown};
     text-align: center;
     img{
