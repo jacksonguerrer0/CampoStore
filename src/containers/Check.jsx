@@ -3,9 +3,9 @@ import ButtonGreen from '../components/ButtonGreen'
 import { ContainerCheck, ContentCheck } from './check-styled/CheckStyled'
 
 const checkState = {
-    success: false,
+    success: true,
     pending: false,
-    error: true
+    error: false
 }
 const {success, pending, error} = checkState
 const Check = () => {
