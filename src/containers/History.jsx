@@ -4,6 +4,7 @@ import ButtonBack from '../components/ButtonBack'
 import TabletHistory from '../components/TabletHistory'
 import './history-styled/HistoryStyled.css'
 
+
 const History = () => {
     const {modeProfile} = useParams()
     const {idProfile} = useParams()
@@ -11,6 +12,8 @@ const History = () => {
 
     const mode = () => {
         if (modeProfile === 'me') {
+            const headerTablet = ['Fecha', 'Nombre', 'Cantidad', 'Total', 'Estado', 'Acción']
+            const headerTabletSales = ['Fecha', 'Nombre', 'Cantidad', 'Total', 'Estado']
             return (
             <div className="warpper">
             <input className="radio" id="one" name="group" type="radio" defaultChecked />
@@ -23,15 +26,16 @@ const History = () => {
             <div className="panels">
                 <div className="panel" id="one-panel">
                     <div className="panel-title">Puedes calificar las compras</div>
-                    <TabletHistory />
+                    <TabletHistory headerTablet={headerTablet} modeTablet={'rating'} />
                 </div>
                 <div className="panel" id="two-panel">
-                    <TabletHistory />
+                    <TabletHistory headerTablet={headerTabletSales} modeTablet={'state'}/>
                 </div>
             </div>
             </div>
             )
         }else{
+            const headerTablet = ['Fecha', 'Nombre', 'Cantidad', 'Total']
             return (
                 <>
                 <div className="warpper">
@@ -42,7 +46,7 @@ const History = () => {
     
                 <div className="panels">
                     <div className="panel" id="two-panel">
-                        <TabletHistory />
+                        <TabletHistory headerTablet={headerTablet} modeTablet={'sales'}/>
                     </div>
                 </div>
                 </div>
