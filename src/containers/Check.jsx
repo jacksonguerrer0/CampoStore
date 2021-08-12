@@ -1,4 +1,5 @@
 import React from 'react'
+import ButtonBack from '../components/ButtonBack'
 import ButtonGreen from '../components/ButtonGreen'
 import { ContainerCheck, ContentCheck } from './check-styled/CheckStyled'
 
@@ -26,6 +27,7 @@ const Check = () => {
     return (
         <ContainerCheck>
             <ContentCheck>
+            <ButtonBack/>
             {
                 error ?  
                 <>   
@@ -39,7 +41,7 @@ const Check = () => {
                     checkStateFunction()
                 }
                 <p>Ahora hay una nueva familia feliz. Gracias por apoyar el campo Colombiano.</p>
-                <span>Puedes calificar tus compras desde el historial de tu perfil</span>
+                <span>Puedes ver y calificar tus compras en el historial de tu perfil</span>
                 <ButtonGreen url='/myProfile' text='Mi Perfil' />
                 </>
                 

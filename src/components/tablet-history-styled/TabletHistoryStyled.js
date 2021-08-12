@@ -19,10 +19,35 @@ export const Table = styled.table`
     border-right: 2px solid whitesmoke;
     text-align: center;
   }
+  button{
+    width: 90%;
+    color: ${variables.white};
+    font-size: 0.9rem;
+    font-family: 'Otomanopee One';
+    text-decoration: none;
+    cursor: pointer;
+    padding: 0.5em;
+    margin: auto 0.3rem;
+    text-align: center;
+    border-radius: 10px;
+    border: none;
+    background: ${variables.gradiant};
+    box-shadow: ${variables.boxShadown};
+    &:hover {
+        filter:brightness(0.97);
+    }
+  }
   td{
       padding: 1rem 0;
       font-size: 0.8rem;
       text-align: center;
+      div{
+        margin: auto 0.3rem;
+        a{
+          padding: 0.5rem;
+
+        }
+      }
   }
   tr{
     border-bottom: 1px solid whitesmoke;

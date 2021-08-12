@@ -13,7 +13,7 @@ const History = () => {
     const mode = () => {
         if (modeProfile === 'me') {
             const headerTablet = ['Fecha', 'Nombre', 'Cantidad', 'Total', 'Estado', 'Acción']
-            const headerTabletSales = ['Fecha', 'Nombre', 'Cantidad', 'Total', 'Estado']
+            const headerTabletSales = ['Fecha', 'Nombre', 'Cantidad', 'Total', 'Estado', 'Cliente']
             return (
             <div className="warpper">
             <input className="radio" id="one" name="group" type="radio" defaultChecked />
@@ -29,6 +29,7 @@ const History = () => {
                     <TabletHistory headerTablet={headerTablet} modeTablet={'rating'} />
                 </div>
                 <div className="panel" id="two-panel">
+                    <div className="panel-title">Puedes ver el perfil de tu cliente</div>
                     <TabletHistory headerTablet={headerTabletSales} modeTablet={'state'}/>
                 </div>
             </div>

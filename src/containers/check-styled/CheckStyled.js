@@ -12,6 +12,7 @@ export const ContentCheck = styled.div`
     margin-top: 2vh;
     box-shadow: ${variables.boxShadown};
     text-align: center;
+    position: relative;
     img{
         width: 200px;
         height: 200px;

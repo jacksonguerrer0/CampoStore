@@ -1,5 +1,7 @@
 import React from 'react'
 import { calculatorQuantityByPrice, thousandPoint, unitExp } from '../helpers/funtions'
+import ButtonGreen from './ButtonGreen'
+import { ButtonBuy } from './detail-product-styled/DetailProductStyled'
 import { Table, Thead } from './tablet-history-styled/TabletHistoryStyled'
 
 
@@ -11,6 +13,7 @@ const infoProductBuySale = [
         price: 3000,
         unit: 'Kilo(kg)',
         total: 30000,
+        compradorId: 1,
         state: {
             paid: true,
             pending: false,
@@ -24,6 +27,7 @@ const infoProductBuySale = [
         price: 3000,
         unit: 'Kilo(kg)',
         total: 30000,
+        compradorId: 10,
         state: {
             paid: false,
             pending: true,
@@ -37,6 +41,7 @@ const infoProductBuySale = [
         price: 3000,
         unit: 'Kilo(kg)',
         total: 30000,
+        compradorId: 10,
         state: {
             paid: false,
             pending: false,
@@ -83,6 +88,12 @@ const TabletHistory = ({headerTablet, modeTablet}) => {
                         <td>{calculatorQuantityByPrice(ele.price, ele.total)} {unitExp(ele.unit)}</td>
                         <td>${thousandPoint(ele.total)}</td>
                         <td>{checkStateFunction(ele.state)}</td>
+                        <td>
+                            <ButtonGreen 
+                            url={`/profile/${ele.compradorId}`} 
+                            text='Ver perfil'
+                            />
+                        </td>
                     </tr>
                 ))
             )
