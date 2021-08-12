@@ -7,7 +7,7 @@ import Swal from 'sweetalert2'
 import { deleteFile, deleteProduct } from '../services'
 import { thousandPoint, unitExp } from '../helpers/funtions.js'
 
-const CardProduct = ({ modeMyProfile, product }) => {
+const CardProduct = ({ modeMyProfile, product, setRefresh }) => {
     const [showModal, setShowModal] = useState(false)
     const [dataModal, setDataModal] = useState({}) 
 
@@ -37,6 +37,7 @@ const CardProduct = ({ modeMyProfile, product }) => {
                 }
                 deleteProduct(data.id).then((response) => {
                 if (response) {
+                    setRefresh('delete')
                     Swal.fire(
                         'Eliminado!',
                         'Tu archivo ha sido eliminado.',
@@ -72,7 +73,7 @@ const CardProduct = ({ modeMyProfile, product }) => {
                             </ContainerCrudCardProduct>
                             {
                                 showModal &&
-                                <EditProduct setShowModal={setShowModal} product={product}/>
+                                <EditProduct setShowModal={setShowModal} product={product} setRefresh={setRefresh}/>
                             }
                         </>
                         :<ButtonGreen url={`detail/${product.id}`} text='Ver el producto' />

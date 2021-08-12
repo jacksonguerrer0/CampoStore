@@ -1,5 +1,6 @@
 import React,{useState} from 'react'
 import { useHistory } from 'react-router-dom';
+import Toastify from 'toastify-js';
 import { uploadFile } from '../../services';
 import { getUser, updateProfile } from '../../services/login';
 import './InputFileStyle.css'
@@ -24,7 +25,18 @@ const InputFileProfile = () => {
                 }
                 const update = await updateProfile(dataSend, userId);
                 if (update.status === 200) {
+                    Toastify({
+                        text: "Actualizado con éxito",
+                        backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
+                        duration: 3000
+                      }).showToast();
                     history.go(0)
+                }else{
+                    Toastify({
+                        text: "Hubo un error al guardar",
+                        backgroundColor: "linear-gradient(to right, #b93c1d, #f81808)",
+                        duration: 3000
+                      }).showToast();
                 }
             }
             //console.log(response.data.data.data.full_url)

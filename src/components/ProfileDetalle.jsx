@@ -11,7 +11,7 @@ import InputFileProfile from '../layout/input-file-styles/InputFileProfile';
 
 
 
-const ProfileDetalle = ({ modeMyProfile, dataProfile }) => {
+const ProfileDetalle = ({ modeMyProfile, dataProfile, setRefresh }) => {
     const [activeAcordeon, setActiveAcordeon] = useState(false)
     const [showModal, setShowModal] = useState(false)
     const [dataModal, setDataModal] = useState({}) 
@@ -33,7 +33,7 @@ const ProfileDetalle = ({ modeMyProfile, dataProfile }) => {
                     dataProfile?.cover ? <ContainerHeader src={dataProfile?.cover} alt="Portada" />
                     : <HeaderCopy src='' alt="Portada" />
                 }
-                { modeMyProfile && dataProfile?.cover ?  <InputFileBanner  /> : ''}
+                { modeMyProfile && dataProfile?.cover ?  <InputFileBanner setRefresh={setRefresh} /> : ''}
             </ContainerBanner>
             <ContainerBody>
                 <ContentImg>
@@ -54,6 +54,7 @@ const ProfileDetalle = ({ modeMyProfile, dataProfile }) => {
                         showModal && <ModalCampo  
                         dataModal={dataModal} 
                         setShowModal={setShowModal}
+                        setRefresh={setRefresh}
                         />
                         }
                         </>

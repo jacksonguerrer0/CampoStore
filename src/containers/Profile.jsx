@@ -12,6 +12,7 @@ const Profile = () => {
    const [modeMyProfile, setModeMyProfile] = useState(false)
    const [dataProfile, setDataProfile] = useState({})
    const [dataProducts, setDataProducts] = useState([])
+   const [refresh, setRefresh] = useState('')
    const history = useHistory()
    let { idUser } = useParams();
 
@@ -55,17 +56,18 @@ const Profile = () => {
   useEffect(() => {
       modePerfil()
       getData()
-   }, [modeMyProfile])
+   }, [refresh])
 
    return (
       <div>
-            <ProfileDetalLe modeMyProfile={modeMyProfile} dataProfile={dataProfile} />
+            <ProfileDetalLe modeMyProfile={modeMyProfile} dataProfile={dataProfile}  
+            setRefresh={setRefresh}/>
             {
                dataProfile.id
                ?
                <>
                {dataProducts.length !== 0 ? <h2 style={{textAlign: 'center'}}>Mis  productos</h2> : <h2 style={{textAlign: 'center'}}>Sin productos</h2>}
-               <ProductsHome modeMyProfile={modeMyProfile} dataProducts={dataProducts} />
+               <ProductsHome modeMyProfile={modeMyProfile} dataProducts={dataProducts}  setRefresh={setRefresh}/>
                </>
                : <Loader />
             }

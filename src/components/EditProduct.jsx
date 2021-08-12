@@ -10,7 +10,7 @@ import * as yup from 'yup'
 
 const unidadesMedicion = ['Kilo(kg)', 'Gramo(g)', 'Litro(L)', 'Mililitro(mL)', 'Tonelada(t)']
 
-const EditProduct = ({ setShowModal, product }) => {
+const EditProduct = ({ setShowModal, product, setRefresh }) => {
     const [errorMsj, setErrorMsj] = useState('');
 
 
@@ -127,6 +127,7 @@ const EditProduct = ({ setShowModal, product }) => {
         }
         const updateResponse = await updateProduct(dataSend, product.id)
         if (updateResponse.status === 200) {
+            setRefresh('Edit product')
             setShowModal(false)
             Toastify({
                 text: "Producto actualizado",

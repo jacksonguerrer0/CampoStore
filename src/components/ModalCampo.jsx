@@ -8,7 +8,7 @@ import "toastify-js/src/toastify.css"
 import { useHistory } from 'react-router-dom'
 
 
-const ModalCampo = ({ dataModal, setShowModal }) => {
+const ModalCampo = ({ dataModal, setShowModal, setRefresh }) => {
 
     const handleModalX = () => {
         setShowModal(false)
@@ -42,6 +42,7 @@ const ModalCampo = ({ dataModal, setShowModal }) => {
                     duration: 3000
                   }).showToast();
                   setShowModal(false)
+                  setRefresh('Edit Profile')
                   //Update the state
             }else{
                 Toastify({
