@@ -105,7 +105,7 @@ const Pay = () => {
                         onChange={(e) => {
                             handleChangeTotalPay(e)
                         }}/>
-                        <p>Total a pagar: <h3>{'$' + totalPay.toLocaleString('en-US')}</h3></p>
+                        <p>Total a pagar:</p><h3>{'$' + totalPay.toLocaleString('en-US')}</h3>
                         <button type='submit'>Confirmar compra</button>
                     </>
                 }

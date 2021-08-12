@@ -57,7 +57,7 @@ export const PRightPay = styled.p`
 
 export const ContentFormPay =styled.form`
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 2fr 1fr 1fr;
     grid-template-rows: 3rem 4rem 4rem;
     padding: 2rem 2rem 7rem 2rem;
     background: ${variables.white};
@@ -71,9 +71,10 @@ export const ContentFormPay =styled.form`
         border: none;
         border-radius: 10px;
         padding: 0.5rem;
+        grid-column: 2/4;
     }
     button{
-        grid-column: 2/3;
+        grid-column: 2/4;
         background: ${variables.gradiant};
         color: ${variables.white};
         font-size: 1.2rem;
@@ -90,9 +91,9 @@ export const ContentFormPay =styled.form`
         grid-column: 2/3;
         justify-content: space-between;
         width: 100%;
-        h3{
+    }
+    h3{
             color: ${variables.greenHight};
-            margin: 0  0 0 1rem ;
-        }
+            margin: auto 0 auto auto ;
     }
 `
