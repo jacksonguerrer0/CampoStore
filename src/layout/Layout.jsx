@@ -10,6 +10,8 @@ import ShowChat from '../components/ShowChat'
 import isAuth from '../utils/isAuth'
 import PaymentSuccess from '../containers/Pay'
 import Pay from '../containers/Pay'
+import Check from '../containers/Check'
+import History from '../containers/History'
 
 const Layout = () => {
 
@@ -56,7 +58,8 @@ const Layout = () => {
                <Route exact path='/detail/:idProduct' component={DetailProduct} />
                <Route exact path='/profile/:idUser' component={Profile} />
                <Route exact path ='/pay/:idProductPay' component={Pay} />
-               <Route exact path ='/check' component={Messages} />
+               <Route exact path ='/check' component={Check} />
+               <Route exact path='/history' component={History} />
                <Redirect to="/home" />
             </Switch>
             <Menu listMenu={menu} />
