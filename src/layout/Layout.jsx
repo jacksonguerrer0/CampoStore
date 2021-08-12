@@ -59,7 +59,7 @@ const Layout = () => {
                <Route exact path='/profile/:idUser' component={Profile} />
                <Route exact path ='/pay/:idProductPay' component={Pay} />
                <Route exact path ='/check' component={Check} />
-               <Route exact path='/history' component={History} />
+               <Route exact path='/history/:modeProfile/:idProfile' component={History} />
                <Redirect to="/home" />
             </Switch>
             <Menu listMenu={menu} />

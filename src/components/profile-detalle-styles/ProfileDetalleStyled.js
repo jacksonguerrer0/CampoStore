@@ -64,6 +64,11 @@ export const ContentImg = styled.div`
     p{
         margin: inherit;
     }
+    a{
+        width: 30%;
+        padding: 0.5rem;
+        font-size: 0.8rem;
+    }
 `
 
 export const ImgProfile = styled.img`

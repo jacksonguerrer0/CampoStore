@@ -24,7 +24,16 @@ const ProfileDetalle = ({ modeMyProfile, dataProfile, setRefresh }) => {
         setShowModal(true)
         setDataModal(dataProfile)
     }
+console.log(dataProfile)
 
+    const modeProfileParams = () => {
+        if (modeMyProfile) {
+            return 'me'
+        }
+        else{
+            return 'sales'
+        }
+    }
     return (
         <ContainerDetalle>
             { !modeMyProfile && <ButtonBack /> }
@@ -49,7 +58,12 @@ const ProfileDetalle = ({ modeMyProfile, dataProfile, setRefresh }) => {
                         <>
                         <p>{dataProfile.first_name}</p>
                         <p>{dataProfile.title}</p>
-                        { modeMyProfile && <EditInfoProfile handleModal={handleModal}/> }
+                        { modeMyProfile && 
+                        <>
+                        <EditInfoProfile handleModal={handleModal}/> 
+                        </>
+                        }
+                        <ButtonGreen url={`/history/${modeProfileParams()}/${dataProfile.id}`}text='Historial'/>
                         {
                         showModal && <ModalCampo  
                         dataModal={dataModal} 
