@@ -20,6 +20,7 @@ const SearchHome = ({ setDataProducts, dataProductsReading }) => {
         if(filterSearch.length !== 0 ){
             setDataProducts(filterSearch)
         }else{
+            setDataProducts(dataProductsReading)
             Toastify({
                 text: "No hay coincidencias",
                 backgroundColor: "linear-gradient(to right, #b93c1d, #f81808)",
