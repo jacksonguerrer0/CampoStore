@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import variables from '../../styles/variables'
 
-export const FormSearch  = styled.div`
+export const FormSearch  = styled.form`
     display: grid;
     grid-template-columns: 1fr 5fr;
     padding: 1rem 5rem;

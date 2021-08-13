@@ -15,3 +15,7 @@ export const calculatorQuantityByPrice = (priceUnit, totalPrice) => {
     let quantity = totalPrice / priceUnit;
     return quantity
 }
+
+export const removeAccents = (str) => {
+    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  } 

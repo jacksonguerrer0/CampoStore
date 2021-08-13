@@ -8,7 +8,7 @@ import Loader from '../components/Loader'
 const Home = () => {
 
     const [dataProducts, setDataProducts] = useState([])
-
+    // const [dataProductsReading, setDataProductsReading] = useState([])
     const getData = async () => {
         const {data} = await getListProducts()
         setDataProducts(data.data)
@@ -22,7 +22,7 @@ const Home = () => {
     return (
         <div>
             <Header title='CampoStore'/>
-            <SearchHome />
+            <SearchHome setDataProducts={setDataProducts} dataProducts={dataProducts}/>
             {
                 dataProducts.length !== 0
                 ?<ProductsHome dataProducts={dataProducts} />
