@@ -11,9 +11,7 @@ const CardProduct = ({ modeMyProfile, product, setRefresh }) => {
     const [showModal, setShowModal] = useState(false)
     const [dataModal, setDataModal] = useState({}) 
 
-    const handleModalX = () => {
-        setShowModal(false)
-    }
+
     console.log(product)
 
     const handleDeleteProduct = (e, data) => {

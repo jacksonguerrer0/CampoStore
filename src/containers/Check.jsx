@@ -26,7 +26,7 @@ const location = useLocation()
         <img src="https://i.pinimg.com/originals/5f/4f/c7/5f4fc77eeccfae9501d9c2c9f4c80dda.jpg" alt="CampoStore" />
         <p>Ahora hay una nueva familia feliz. Gracias por apoyar el campo Colombiano.</p>
         <span>Puedes ver y calificar tus compras en el historial de tu perfil</span>
-        <ButtonGreen url='/myProfile' text='Mi Perfil' />
+        <ButtonGreen url={`/history/me/${10}`} text='Mi Perfil' />
         </>
     )
     }
@@ -39,7 +39,7 @@ const location = useLocation()
             <i className="fas fa-exclamation-triangle i-declined"></i>
             <p>Lo sentimos, el metodo de pago no está disponible.</p>
             <span>Selecciona otro método de pago.</span>
-            <ButtonGreen url={`/detail/${productId}`} text='Volver a Intentar' />
+            <ButtonGreen url={`/pay/${productId}`} text='Volver a Intentar' />
             </>
         )
     }
@@ -52,7 +52,7 @@ const location = useLocation()
             <i className="fas fa-exclamation-circle i-error"></i>
             <p>Lo sentimos, hubo un error al pagar.</p>
             <span>Vuelve a ejecutar la compra</span>
-            <ButtonGreen url={`/detail/${productId}`} text='Volver a Intentar' />
+            <ButtonGreen url={`/pay/${productId}`} text='Volver a Intentar' />
             </>
         )
     }
