@@ -8,45 +8,42 @@ import { Table, Thead } from './tablet-history-styled/TabletHistoryStyled'
 const infoProductBuySale = [
     {   
         id: 1,
-        data: '22/07/2021',
-        name: 'Tomates',
-        price: 3000,
-        unit: 'Kilo(kg)',
-        total: 30000,
-        compradorId: 1,
-        state: {
-            paid: true,
-            pending: false,
-            unPaid: false
-        }
+        date: '22/07/2021',
+        product: {
+            name: 'Tomates',
+            price: 3000,
+            unit: 'Kilo(kg)',
+            total: 30000,
+        },
+        buyerId: 1,
+        sellerId: 9,
+        state: 'pending'
     },
     {   
         id: 2,
-        data: '22/07/2021',
-        name: 'Pepinos',
-        price: 3000,
-        unit: 'Kilo(kg)',
-        total: 30000,
-        compradorId: 10,
-        state: {
-            paid: false,
-            pending: true,
-            unPaid: false
-        }
+        date: '22/07/2021',
+        product: {
+            name: 'Pepinos',
+            price: 3000,
+            unit: 'Kilo(kg)',
+            total: 30000,
+        },
+        buyerId: 10,
+        sellerId: 9,
+        state: 'paid'
     },
     {
         id: 3,
-        data: '22/07/2021',
-        name: 'Zanahoria',
-        price: 3000,
-        unit: 'Kilo(kg)',
-        total: 30000,
-        compradorId: 10,
-        state: {
-            paid: false,
-            pending: false,
-            unPaid: true
-        }
+        date: '22/07/2021',
+        product: {
+            name: 'Zanahoria',
+            price: 3000,
+            unit: 'Kilo(kg)',
+            total: 30000,
+        },
+        buyerId: 10,
+        sellerId: 9,
+        state: 'unPaid'
     }
 
 ]
@@ -54,13 +51,13 @@ const infoProductBuySale = [
 const TabletHistory = ({headerTablet, modeTablet}) => {
 
     const checkStateFunction = (state) => {
-        if(state.paid){  
+        if(state === 'paid'){  
         return <p className='status status-paid'>Pagado</p>
     }
-        if(state.pending){
+        if(state ===  'pending'){
         return <p className='status status-pending'>Pendiente</p>
     }
-        if(state.unPaid){
+        if(state ===  'unPaid'){
         return <p className='status status-unpaid'>No pagado</p>
     }
     }
@@ -69,10 +66,10 @@ const TabletHistory = ({headerTablet, modeTablet}) => {
             return (
                 infoProductBuySale.map(ele => (
                     <tr key={ele.id}>
-                        <td>{ele.data}</td>
-                        <td>{ele.name}</td>
-                        <td>{calculatorQuantityByPrice(ele.price, ele.total)} {unitExp(ele.unit)}</td>
-                        <td>${thousandPoint(ele.total)}</td>
+                        <td>{ele.date}</td>
+                        <td>{ele.product.name}</td>
+                        <td>{calculatorQuantityByPrice(ele.product.price, ele.product.total)} {unitExp(ele.product.unit)}</td>
+                        <td>${thousandPoint(ele.product.total)}</td>
                         <td>{checkStateFunction(ele.state)}</td>
                         <td><button>Calificar</button></td>
                     </tr>
@@ -83,14 +80,14 @@ const TabletHistory = ({headerTablet, modeTablet}) => {
             return (
                 infoProductBuySale.map(ele => (
                     <tr key={ele.id}>
-                        <td>{ele.data}</td>
-                        <td>{ele.name}</td>
-                        <td>{calculatorQuantityByPrice(ele.price, ele.total)} {unitExp(ele.unit)}</td>
-                        <td>${thousandPoint(ele.total)}</td>
+                        <td>{ele.date}</td>
+                        <td>{ele.product.name}</td>
+                        <td>{calculatorQuantityByPrice(ele.product.price, ele.product.total)} {unitExp(ele.product.unit)}</td>
+                        <td>${thousandPoint(ele.product.total)}</td>
                         <td>{checkStateFunction(ele.state)}</td>
                         <td>
                             <ButtonGreen 
-                            url={`/profile/${ele.compradorId}`} 
+                            url={`/profile/${ele.buyerId}`} 
                             text='Ver perfil'
                             />
                         </td>
@@ -102,9 +99,9 @@ const TabletHistory = ({headerTablet, modeTablet}) => {
             return (
                 infoProductBuySale.map(ele => (
                     <tr key={ele.id}>
-                        <td>{ele.data}</td>
-                        <td>{ele.name}</td>
-                        <td>{calculatorQuantityByPrice(ele.price, ele.total)} {unitExp(ele.unit)}</td>
+                        <td>{ele.date}</td>
+                        <td>{ele.product.name}</td>
+                        <td>{calculatorQuantityByPrice(ele.product.price, ele.product.total)} {unitExp(ele.product.unit)}</td>
                         <td>${thousandPoint(ele.total)}</td>
                     </tr>
                 ))
