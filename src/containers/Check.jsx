@@ -57,10 +57,11 @@ const location = useLocation()
         )
     }
     }
-    
-    if(location.pathname === '/check'){
+
+    if(location.search.length === 0){
         return (<Redirect  to='home'/>)
     }
+    console.log(location)
     return (
         <ContainerCheck>
             <ContentCheck>
