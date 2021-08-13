@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Redirect, useLocation } from 'react-router-dom'
 import ButtonBack from '../components/ButtonBack'
 import ButtonGreen from '../components/ButtonGreen'
@@ -14,10 +14,26 @@ const {approved, declined,  error} = checkState;
 const productId = 32
 const Check = () => {
 
-const location = useLocation()
+    const location = useLocation()
+    const query = new URLSearchParams(location.search);
+    const idTransaction = query.get('id')
+
+    const [status, setStatus] = useState('')
+
+    useEffect(() => {
+        fetch(`${process.env.REACT_APP_URL_WOMPI}transactions/${idTransaction}`, {
+            method: 'GET'
+        }).then((response) => {
+            response.json().then((data) => {
+                console.log(data)
+                setStatus(data?.data?.status)
+            })
+        })
+    }, [])
+
     const checkStateFunction = () => {
 
-    if(approved){  
+    if(status === 'APPROVED'){  
     return (
         <> 
         <div className='status status-approved'>
@@ -30,7 +46,7 @@ const location = useLocation()
         </>
     )
     }
-    if(declined){
+    if(status === 'DECLINED'){
         return(
             <>
             <div className='status status-declined'>
@@ -43,7 +59,7 @@ const location = useLocation()
             </>
         )
     }
-    if(error){
+    if(status === 'ERROR'){
         return(
             <>
             <div className='status status-error'>
@@ -61,7 +77,8 @@ const location = useLocation()
     if(location.search.length === 0){
         return (<Redirect  to='home'/>)
     }
-    console.log(location)
+    
+
     return (
         <ContainerCheck>
             <ContentCheck>

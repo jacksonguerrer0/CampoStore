@@ -7,7 +7,8 @@ const HandleRatingStar = ({setShowModal}) => {
     const [stars, setStars] = useState(0)
     const changeRating = (newRaiting, name) => {
         setStars(newRaiting)
-        setShowModal(false)
+        console.log(newRaiting)
+        //setShowModal(false)
         // se envia la puntuacion
         // si la respuesta es 200 salir del modal y mostrar el siguiente mensaje
         // if (response.status === 200) {

@@ -53,8 +53,8 @@ const Pay = () => {
             currency: 'COP',
             amountInCents: totalPay*100,
             reference: reference,
-            publicKey: 'pub_test_hOKAX0kIktPzLTVwX5EaljIMfH1Z9mYD',
-            redirectUrl: 'http://localhost:3000/check', // Opcional
+            publicKey: process.env.REACT_APP_PUBLIC_KEY_WOMPI,
+            redirectUrl: `${process.env.REACT_APP_URL_FRONT}check` // Opcional
         })
         checkout.open(function ( result ) {
             //Guardar en la base de datos
