@@ -8,10 +8,11 @@ import Loader from '../components/Loader'
 const Home = () => {
 
     const [dataProducts, setDataProducts] = useState([])
-    // const [dataProductsReading, setDataProductsReading] = useState([])
+    const [dataProductsReading, setDataProductsReading] = useState([])
     const getData = async () => {
         const {data} = await getListProducts()
         setDataProducts(data.data)
+        setDataProductsReading(data.data)
     }
 
     useEffect(() => {
@@ -22,7 +23,7 @@ const Home = () => {
     return (
         <div>
             <Header title='CampoStore'/>
-            <SearchHome setDataProducts={setDataProducts} dataProducts={dataProducts}/>
+            <SearchHome setDataProducts={setDataProducts} dataProductsReading={dataProductsReading}/>
             {
                 dataProducts.length !== 0
                 ?<ProductsHome dataProducts={dataProducts} />

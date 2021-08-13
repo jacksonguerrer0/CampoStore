@@ -4,7 +4,7 @@ import listSearchStore from '../actions/searchHome'
 import { removeAccents } from '../helpers/funtions'
 import { ButtonSearch, FormSearch, InputSearch } from './serach-home-styled/SearchHomeStyled'
 
-const SearchHome = ({ setDataProducts, dataProducts }) => {
+const SearchHome = ({ setDataProducts, dataProductsReading }) => {
 
     const [search, setSearch] = useState('')
 
@@ -12,10 +12,9 @@ const SearchHome = ({ setDataProducts, dataProducts }) => {
         e.persist();
         await setSearch(e.target.value)
     }
-
     const handleSearchClick = (e) => {
         e.preventDefault()
-        const filterSearch = dataProducts.filter(ele =>{
+        const filterSearch = dataProductsReading.filter(ele =>{
             return (removeAccents(ele.name.toLowerCase()).includes(removeAccents(search.toLowerCase())))
         })
         if(filterSearch.length !== 0 ){
