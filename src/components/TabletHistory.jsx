@@ -102,7 +102,7 @@ const TabletHistory = ({headerTablet, modeTablet}) => {
                         <td>{ele.date}</td>
                         <td>{ele.product.name}</td>
                         <td>{calculatorQuantityByPrice(ele.product.price, ele.product.total)} {unitExp(ele.product.unit)}</td>
-                        <td>${thousandPoint(ele.total)}</td>
+                        <td>${thousandPoint(ele.product.total)}</td>
                     </tr>
                 ))
             )

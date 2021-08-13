@@ -9,7 +9,6 @@ export const Table = styled.table`
     overflow: hidden;
     width: 100%;
     margin: 0 auto;
-    margin-bottom: 6rem;
   th{
     padding: 1rem 1rem;
     text-transform: uppercase;

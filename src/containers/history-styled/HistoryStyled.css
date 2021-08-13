@@ -1,4 +1,6 @@
-
+.container-history{
+  margin-bottom: 7rem;
+}
 .warpper{
   display:flex;
   flex-direction: column;

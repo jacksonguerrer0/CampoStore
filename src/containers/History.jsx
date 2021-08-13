@@ -56,12 +56,12 @@ const History = () => {
         }
     }
     return (
-        <>
+        <div className='container-history'>
             <ButtonBack />
             <div className="header-history"><h2>Historial</h2></div>
             {mode()}
 
-        </>
+        </div>
     )
 }
 
