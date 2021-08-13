@@ -14,6 +14,7 @@ const DesactiveAcordeon = css`
 `
 // 
 export const ContainerDetalle = styled.div`
+    position: relative;
     background-color: ${variables.white};
     border-radius: 0 0 3rem 3rem;
     border-radius: 1rem 2rem 1rem 2rem;

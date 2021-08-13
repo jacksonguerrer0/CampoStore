@@ -8,6 +8,7 @@ import EditInfoProfile from './EditInfoProfile';
 import ModalCampo from './ModalCampo';
 import InputFileBanner from '../layout/input-file-styles/InputFileBanner';
 import InputFileProfile from '../layout/input-file-styles/InputFileProfile';
+import ButtonBackSession from './ButtonBackSession';
 
 
 
@@ -37,6 +38,7 @@ console.log(dataProfile)
     return (
         <ContainerDetalle>
             { !modeMyProfile && <ButtonBack /> }
+            { modeMyProfile && <ButtonBackSession />}
             <ContainerBanner>
                 {
                     dataProfile?.cover ? <ContainerHeader src={dataProfile?.cover} alt="Portada" />
