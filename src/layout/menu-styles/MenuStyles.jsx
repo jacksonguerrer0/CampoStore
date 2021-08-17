@@ -45,7 +45,7 @@ export const MenuContainer = styled.div`
    }
    @media (max-width: 400px){
       a{
-         width: 60px;
+         width: 70px;
       }
    }
 `
