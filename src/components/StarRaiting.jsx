@@ -2,7 +2,7 @@ import React,{ useState } from "react";
 import StarRatings from 'react-star-ratings';
 import variables from "../styles/variables.js";
 import { ContentStar } from "./star-raiting/StarRaiting.js";
-
+import "./star-raiting/starRaiting.css"
 const StarRaiting = ({ stars }) =>{
 
     return (

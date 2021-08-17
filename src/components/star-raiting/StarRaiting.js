@@ -6,6 +6,7 @@ export const ContentStar = styled.div`
     font-size: 2rem;
     margin: inherit;
     justify-content: center;
+    
 
 `
   
