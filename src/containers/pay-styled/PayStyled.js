@@ -45,6 +45,57 @@ export const ContentHeaderProduct = styled.div`
         border-radius: 1rem;
         background: ${variables.gradiant};
     }
+    @media (max-width: 500px){
+        p{
+            font-size: 0.8rem;
+        }
+        h3{
+            font-size: 1rem;
+        }
+        img{
+            width: 150px;
+            height: 150px;
+        }
+    }
+    @media (max-width: 450px){
+        grid-template-columns: 150px 50px 160px;
+        justify-content: center;
+        p{
+            font-size: 0.8rem;
+        }
+        h3{
+            font-size: 1rem;
+        }
+        img{
+            width: 140px;
+            height: 140px;
+            margin: auto;
+        }
+    }
+    @media (max-width: 390px){
+        grid-template-columns: 1fr ;
+        grid-template-rows: auto;
+        /* justify-content: center; */
+        p{
+            font-size: 0.8rem;
+        }
+        h2{
+        grid-column: 1/3;
+        text-align: center;
+        color: ${variables.white};
+    }
+        h3{
+        grid-row: 4/6;
+        grid-column: 1/3; 
+        margin: 1rem auto;
+    }
+        img{
+            grid-row: 2/4;
+            grid-column: 1/3;
+            width: 150px;
+            height: 150px;
+        }
+    }
 `
 
 export const PRightPay = styled.p`
@@ -95,5 +146,20 @@ export const ContentFormPay =styled.form`
     h3{
             color: ${variables.greenHight};
             margin: auto 0 auto auto ;
+    }
+    @media (max-width: 450px){
+        label{
+            font-size: 0.9rem;
+        }
+        p{
+            font-size: 0.8rem;
+        }
+        h3{
+            font-size: 1rem;
+        }
+        button{
+            font-size: 1rem;
+            height: 50px;
+        }
     }
 `
