@@ -6,7 +6,7 @@ export const MenuContainer = styled.div`
    flex-direction: row;
    background-color: ${variables.white};
    height: 74px;
-   border-radius: 20px;
+   border-radius: 20px 20px 0 0;
    box-shadow: 0px 0px 50px rgba(90, 108, 234, 0.1);
    align-items: center;
    justify-content: space-between;

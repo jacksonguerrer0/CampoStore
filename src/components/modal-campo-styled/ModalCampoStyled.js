@@ -75,7 +75,7 @@ export const ContentInputModal = styled.form`
     textarea{
         background-color: ${variables.background};
         max-width: 256px;
-        min-width: 256px;
+        /* min-width: 256px; */
     }
     button{
         padding: 1rem 0;
