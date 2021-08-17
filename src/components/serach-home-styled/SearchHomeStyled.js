@@ -10,6 +10,12 @@ export const FormSearch  = styled.form`
     top: 0;
     margin-bottom: 2rem;
     z-index: 1;
+    @media (max-width: 500px){
+        padding:  1rem 3rem;
+    }
+    @media (max-width: 400px){
+        padding:  1rem 2rem;
+    }
 `
 export const InputSearch = styled.input`
     border: none;
