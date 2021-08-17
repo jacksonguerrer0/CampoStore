@@ -3,10 +3,16 @@ import variables from '../../styles/variables'
 
 export const ContainerDetail = styled.div`
     padding: 1rem;
-    margin-bottom: 60px;
-    padding-bottom: 2rem;
+    margin-bottom: 70px;
     background-color: white;
-
+    @media (max-width: 500px){
+        p{
+            font-size: 0.8rem;
+        }
+        h2{
+            font-size: 1.2rem;
+        }
+    }
 `
 export const ContentInfoDetail = styled.div`
     display: grid;
