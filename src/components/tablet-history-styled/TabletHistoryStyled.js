@@ -10,7 +10,8 @@ export const Table = styled.table`
     width: 100%;
     margin: 0 auto;
   th{
-    padding: 1rem 1rem;
+    padding: 1rem 0.5rem;
+    /* width: 5rem; */
     text-transform: uppercase;
     letter-spacing: 0.1rem;
     font-size: 0.8rem;
@@ -43,33 +44,37 @@ export const Table = styled.table`
       div{
         margin: auto 0.3rem;
         a{
-          padding: 0.5rem;
+          padding: 0.5rem 0;
 
         }
       }
   }
   tr{
     border-bottom: 1px solid whitesmoke;
+    padding: 10rem !important;
   }
   .status {
     border-radius:  0.2rem;
     background-color: red;
-    padding: 0.2rem 1rem;
+    padding: 0.2rem 0;
     text-align: center;
   }
   .status-pending {
     background-color: #fff0c2;
     color: #a68b00;
+    font-size: 0.7rem;
   }
   
   .status-paid {
   background-color: #c8e6c9;
   color:  #388e3c;
+  font-size: 0.7rem;
   }
   
   .status-unpaid {
     background-color: #ffcdd2;
     color: #c62828;
+    font-size: 0.7rem;
   }
     
   

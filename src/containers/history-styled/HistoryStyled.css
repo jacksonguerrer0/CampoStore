@@ -19,10 +19,12 @@
 }
 .panels{
   background:#fffffff6;
-  width:100%;
+  width:95%;
   border-radius:3px;
   overflow:hidden;
-  padding: 20px 0;  
+  padding: 20px 0 0 0;  
+  display: block;
+  overflow: auto;
 }
 .panel{
   display:none;
