@@ -96,7 +96,7 @@ console.log(dataProfile)
                 {
                     dataProfile?.id &&
                     <>
-                    <h3 onClick={handlePAcordeon}>Ver más información<i className="fas fa-hand-pointer"></i></h3>
+                    <h3 onClick={handlePAcordeon}>Ver más información <br /><i className="fas fa-hand-pointer"></i></h3>
                     <ToggleAcordeon status={activeAcordeon.toString()}>
                         <p>{ dataProfile.description }</p>
                     </ToggleAcordeon>

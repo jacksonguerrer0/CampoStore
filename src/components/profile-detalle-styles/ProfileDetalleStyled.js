@@ -19,6 +19,11 @@ export const ContainerDetalle = styled.div`
     border-radius: 0 0 3rem 3rem;
     border-radius: 1rem 2rem 1rem 2rem;
     box-shadow: ${variables.boxShadownBotttom};
+    @media (max-width:500px){
+        h3{
+            font-size: 1rem;
+        }
+    }
 `
 // 
 export const ContainerBanner = styled.div`
@@ -69,6 +74,14 @@ export const ContentImg = styled.div`
         width: 5rem;
         padding: 0.5rem;
         font-size: 0.8rem;
+    }
+    @media(max-width: 500px){
+        p{
+            font-size: 0.9rem;
+        }
+        i{
+            font-size: 1.3rem;
+        }
     }
 `
 
@@ -158,6 +171,12 @@ export const ContentAcordeon = styled.div`
         color: ${variables.greenHight};
     }
 `
+
 export const ToggleAcordeon = styled.div`
     ${({status}) => status === 'true' ? ActiveAcordeon: DesactiveAcordeon}
+    @media (max-width: 500px){
+        p{
+        font-size: 0.8rem;
+    }
+    }
 `
