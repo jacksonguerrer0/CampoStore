@@ -22,7 +22,5 @@ export const removeAccents = (str) => {
 
 export const newDateCreatedOn = (str) => {
     let newDate = new Date(str)
-    // let format = moment(newDate).format('DD/MM/YYYY')
-    console.log(newDate)
-    // return 
+    return newDate.toLocaleDateString()
 }
