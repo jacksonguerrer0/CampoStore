@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react'
-import { calculatorQuantityByPrice, thousandPoint, unitExp } from '../helpers/funtions'
+import { calculatorQuantityByPrice, newDateCreatedOn, thousandPoint, unitExp } from '../helpers/funtions'
 import ButtonGreen from './ButtonGreen'
 import { ButtonBuy } from './detail-product-styled/DetailProductStyled'
 import ModalRating from './ModalRating'
@@ -61,30 +61,32 @@ const infoProductBuySale = [
 
 ]
 
-const TabletHistory = ({headerTablet, modeTablet}) => {
+const TabletHistory = ({headerTablet, modeTablet, data}) => {
     const [showModal, setShowModal] = useState(false)
     const [seller, setSeller] = useState({})
 
 
     const checkStateFunction = (state) => {
-        if(state === 'paid'){  
+        if(state === 'APPROVED'){  
         return <p className='status status-paid'>Pagado</p>
     }
-        if(state ===  'pending'){
+        if(state ===  'PENDING'){
         return <p className='status status-pending'>Pendiente</p>
     }
-        if(state ===  'unPaid'){
-        return <p className='status status-unpaid'>No pagado</p>
+        if(state ===  'DECLINED'){
+        return <p className='status status-unpaid'>Declinado</p>
+    }
+    if(state ===  'ERROR'){
+        return <p className='status status-unpaid'>ERROR</p>
     }
     }
-    console.log(seller)
     const modeTabletFunction = () => {
 
         if(modeTablet === 'rating'){
             return (
                 <>
                 {
-                infoProductBuySale.map((ele, index) => (
+                data.map((ele, index) => (
                     <TrHistoryDataRating
                     key={index}
                     data={ele}
@@ -98,17 +100,20 @@ const TabletHistory = ({headerTablet, modeTablet}) => {
             )
         }
         if(modeTablet === 'state'){
+            console.log(data)
+            // created_on product.name product.price total status
             return (
-                infoProductBuySale.map(ele => (
+
+                data.map(ele => (
                     <tr key={ele.id}>
-                        <td>{ele.date}</td>
+                        <td>{newDateCreatedOn(ele.created_on)}</td>
                         <td>{ele.product.name}</td>
-                        <td>{calculatorQuantityByPrice(ele.product.price, ele.product.total)} {unitExp(ele.product.unit)}</td>
-                        <td>${thousandPoint(ele.product.total)}</td>
-                        <td>{checkStateFunction(ele.state)}</td>
+                        <td>{ele.product.quantity} {unitExp(ele.product.unit)}</td>
+                        <td>${thousandPoint(ele.total)}</td>
+                        <td>{checkStateFunction(ele.status)}</td>
                         <td>
                             <ButtonGreen 
-                            url={`/profile/${ele.buyerId}`} 
+                            url={`/profile/${ele.buyer.id}`} 
                             text='Ver perfil'
                             />
                         </td>
@@ -117,13 +122,15 @@ const TabletHistory = ({headerTablet, modeTablet}) => {
             )
         }
         if(modeTablet === 'sales'){
+            var options = { year: 'numeric', month: 'long', day: 'numeric' };
+            
             return (
-                infoProductBuySale.map(ele => (
+                data.map(ele => (
                     <tr key={ele.id}>
-                        <td>{ele.date}</td>
+                        <td>{newDateCreatedOn(ele.created_on)}</td>
                         <td>{ele.product.name}</td>
-                        <td>{calculatorQuantityByPrice(ele.product.price, ele.product.total)} {unitExp(ele.product.unit)}</td>
-                        <td>${thousandPoint(ele.product.total)}</td>
+                        <td>{ele.product.quantity} {unitExp(ele.product.unit)}</td>
+                        <td>${thousandPoint(ele.total)}</td>
                     </tr>
                 ))
             )

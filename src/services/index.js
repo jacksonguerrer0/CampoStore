@@ -94,3 +94,37 @@ export const deleteFile = (id) => {
       })
   });
 };
+
+export const getSalesInfo = (idSale) => {
+  return new Promise(function (resolve, reject) {
+    axios.get(`${process.env.REACT_APP_URL_API}items/sales/${idSale}?fields=*.*
+    `)
+      .then((response) => {
+        resolve(response);
+      }).catch((err) => {
+        reject(err)
+      })
+  });
+};
+export const getSalesSeller = (idUser) => {
+  return new Promise(function (resolve, reject) {
+    axios.get(`${process.env.REACT_APP_URL_API}items/sales?fields=*.*&filter[seller]=${idUser}
+    `)
+      .then((response) => {
+        resolve(response);
+      }).catch((err) => {
+        reject(err)
+      })
+  });
+};
+export const getBuyBuyer = (idUser) => {
+  return new Promise(function (resolve, reject) {
+    axios.get(`${process.env.REACT_APP_URL_API}items/sales?fields=*.*&filter[buyer]=${idUser}
+    `)
+      .then((response) => {
+        resolve(response);
+      }).catch((err) => {
+        reject(err)
+      })
+  });
+};

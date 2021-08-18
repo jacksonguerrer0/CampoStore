@@ -19,3 +19,10 @@ export const calculatorQuantityByPrice = (priceUnit, totalPrice) => {
 export const removeAccents = (str) => {
     return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
   } 
+
+export const newDateCreatedOn = (str) => {
+    let newDate = new Date(str)
+    // let format = moment(newDate).format('DD/MM/YYYY')
+    console.log(newDate)
+    // return 
+}

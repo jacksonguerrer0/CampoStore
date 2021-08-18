@@ -11,7 +11,7 @@ const ModalRating = ({ setShowModal, seller, setRefresh }) => {
                     <h3>Calificar</h3>
                     <i className="fas fa-times" onClick={()=>setShowModal(false)}></i>
                 </HeaderModal>
-                    <h4>Vendedor: <a href={`/profile/${seller.data.seller.id}`}>{seller.data.seller.name}</a></h4>
+                    <h4>Vendedor: <a href={`/profile/${seller.data.seller.id}`}>{seller.data.seller.first_name}</a></h4>
                     <HandleRatingStar setShowModal={setShowModal}/> 
                     <p>Califica al vendedor por su producto</p>
                 </ContentModal>
