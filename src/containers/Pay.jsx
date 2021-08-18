@@ -5,13 +5,24 @@ import { useParams } from 'react-router-dom'
 import Swal from 'sweetalert2';
 import ButtonBack from '../components/ButtonBack';
 import useForm from '../hooks/useForm';
-import { getProductById } from '../services';
+import { getProductById, postSale } from '../services';
 import { ContainerPay, ContentFormPay, ContentHeaderProduct, PRightPay } from './pay-styled/PayStyled';
 import { unitExp, thousandPoint } from '../helpers/funtions.js'
+import { getUser } from '../services/login';
+
 const Pay = () => {
     const [dataProduct, setDataProduct] = useState({});
     const [totalPay, setTotalPay] = useState(0)
+    const [dataProfile, setDataProfile] = useState({})
     const { idProductPay } = useParams();
+
+    const getDataProfile = async () => {
+        const data = await getUser();
+        const user = data.data.data
+        setDataProfile({
+            id: user.id
+        })
+    }
 
     useEffect(() => {
         const script = document.createElement("script");
@@ -20,6 +31,7 @@ const Pay = () => {
         script.async = true;
 
         document.body.appendChild(script);
+        getDataProfile()
     }, [])
 
     const handleChangeTotalPay = async (e) => {
@@ -42,11 +54,25 @@ const Pay = () => {
 
     console.log(dataProduct)
     
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
         const date = new Date()
         const string = date.toLocaleString()
         const reference = btoa(string)
+
+        //Save the transaction
+        const dataSend = {
+            product: dataProduct.id,
+            quantity: totalPay / dataProduct.price,
+            id_transaction: null,
+            status: 'PENDING',
+            total: totalPay,
+            seller: dataProduct.owner.id,
+            buyer: dataProfile.id,
+            reference: reference
+        }
+        const response = await postSale(dataSend)
+        console.log(response)
         
         console.log(dataProduct, totalPay)
         let checkout = new window.WidgetCheckout({
@@ -56,7 +82,7 @@ const Pay = () => {
             publicKey: process.env.REACT_APP_PUBLIC_KEY_WOMPI,
             redirectUrl: `${process.env.REACT_APP_URL_FRONT}check` // Opcional
         })
-        checkout.open(function ( result ) {
+        checkout.open( async ( result ) => {
             //Guardar en la base de datos
             let transaction = result.transaction
             console.log('Transaction ID: ', transaction.id)

@@ -95,9 +95,9 @@ export const deleteFile = (id) => {
   });
 };
 
-export const getSalesInfo = (idSale) => {
+export const getSalesInfo = (idUser) => {
   return new Promise(function (resolve, reject) {
-    axios.get(`${process.env.REACT_APP_URL_API}items/sales/${idSale}?fields=*.*
+    axios.get(`${process.env.REACT_APP_URL_API}items/sales?fields=*.*
     `)
       .then((response) => {
         resolve(response);
@@ -106,6 +106,7 @@ export const getSalesInfo = (idSale) => {
       })
   });
 };
+
 export const getSalesSeller = (idUser) => {
   return new Promise(function (resolve, reject) {
     axios.get(`${process.env.REACT_APP_URL_API}items/sales?fields=*.*&filter[seller]=${idUser}
@@ -121,6 +122,38 @@ export const getBuyBuyer = (idUser) => {
   return new Promise(function (resolve, reject) {
     axios.get(`${process.env.REACT_APP_URL_API}items/sales?fields=*.*&filter[buyer]=${idUser}
     `)
+      .then((response) => {
+        resolve(response);
+      }).catch((err) => {
+        reject(err)
+      })
+  });
+};
+export const postSale = (data) => {
+  return new Promise(function (resolve, reject) {
+    axios.post(`${process.env.REACT_APP_URL_API}items/sales`, data)
+      .then((response) => {
+        resolve(response);
+      }).catch((err) => {
+        reject(err)
+      })
+  });
+};
+
+export const getSaleByReference = (reference) => {
+  return new Promise(function (resolve, reject) {
+    axios.get(`${process.env.REACT_APP_URL_API}items/sales?filter[reference]=${reference}`)
+      .then((response) => {
+        resolve(response);
+      }).catch((err) => {
+        reject(err)
+      })
+  });
+};
+
+export const updateSale = (data, idSale) => {
+  return new Promise(function (resolve, reject) {
+    axios.patch(`${process.env.REACT_APP_URL_API}items/sales/${idSale}`, data)
       .then((response) => {
         resolve(response);
       }).catch((err) => {
