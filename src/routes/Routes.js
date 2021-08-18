@@ -37,6 +37,10 @@ const Routes = () => {
          margin: 0 auto;
          box-sizing: border-box;
          width: 100%;
+         /* @media (max-width: 500px) {
+            width: 500px;
+            background-color: red;
+         } */
       }
 
       h1{

@@ -9,7 +9,7 @@ export const ContentInfoProduct = styled.form`
     column-gap: 0.5rem;
     background-color: ${variables.white};
     border-radius: 1rem;
-    padding: 2rem 2rem 2rem 2rem;
+    padding: 2rem 2rem 0 2rem;
     margin-top: 1rem;
     input{
         border: 0.01rem solid gray;
@@ -27,6 +27,18 @@ export const ContentInfoProduct = styled.form`
         justify-content: space-between;
         select{
             border-radius: 10px;
+        }
+    }
+    @media (max-width: 500px){
+        padding: 2rem 0.4rem 0 0.4rem;
+    }
+    @media (max-width: 400px){
+        padding: 2rem 1rem 0 1rem;
+        label{
+            font-size: 0.9rem;
+        }
+        input{
+            width: 90%;
         }
     }
 `

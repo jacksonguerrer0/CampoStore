@@ -5,4 +5,10 @@ export const ContainerProductsHome = styled.div`
     grid-template-columns: 1fr;
     margin-bottom: 90px;
     padding: 0 1rem;
+    @media (max-width: 500px) {
+      max-width: 500px;
+      min-width: 300px;
+      padding: 0;
+   }
+    
 `

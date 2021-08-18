@@ -24,6 +24,39 @@ export const ContentProduct = styled.div`
     a{
         width: 10rem;
     }
+    @media (max-width: 500px) {
+      max-width: 500px;
+      min-width: 300px;
+      img{
+        width: 10rem;
+        height:10rem;
+        border-radius: 10px;
+        }
+        p{
+            margin: 0;
+            font-size: 0.8rem;
+        }
+        a{
+            width: 9rem;
+        }
+    }
+    @media (max-width: 400px) {
+        padding: 0 0.5rem;
+      img{
+        width: 9rem;
+        height:9rem;
+        border-radius: 10px;
+        }
+        p{
+            margin: 0;
+            font-size: 0.7rem;
+        }
+        a{
+            width: 8rem;
+            font-size: 0.8rem;
+            padding: 1rem 0.5rem;
+        }
+    }
 `
 export const ContentPDetail = styled.div`
     display: grid;
@@ -36,9 +69,15 @@ export const ContentDetailInfo = styled.div`
     display: flex;
     flex-flow: wrap column;
     justify-content: center;
+    padding: 0 0.3rem;
     h3{
         text-align: center;
     }
+    @media (max-width: 500px) {
+        h3{
+            font-size: 1rem;
+        }
+   }
 
 `
 export const Pr = styled.p`
@@ -70,3 +109,4 @@ export const ButtonDelete = styled.button`
     color: ${variables.white};
     font-size: 0.8rem;
 `
+

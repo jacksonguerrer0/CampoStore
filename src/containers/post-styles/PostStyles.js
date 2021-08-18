@@ -24,7 +24,7 @@ export const ContainerForm = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 80%;
+    width: 90%;
     margin: 0 auto auto auto;
 `;
 export const ContainerUnit = styled.div`

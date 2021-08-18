@@ -19,6 +19,11 @@ export const ContainerDetalle = styled.div`
     border-radius: 0 0 3rem 3rem;
     border-radius: 1rem 2rem 1rem 2rem;
     box-shadow: ${variables.boxShadownBotttom};
+    @media (max-width:500px){
+        h3{
+            font-size: 1rem;
+        }
+    }
 `
 // 
 export const ContainerBanner = styled.div`
@@ -66,9 +71,17 @@ export const ContentImg = styled.div`
         margin: inherit;
     }
     a{
-        width: 30%;
+        width: 5rem;
         padding: 0.5rem;
         font-size: 0.8rem;
+    }
+    @media(max-width: 500px){
+        p{
+            font-size: 0.9rem;
+        }
+        i{
+            font-size: 1.3rem;
+        }
     }
 `
 
@@ -100,6 +113,9 @@ export const ContentInfo = styled.div`
     p{
         margin: 0;
     }
+    @media(max-width: 500px){
+        padding: 1rem 0.5rem;
+    }
 `
 export const TextInfo = styled.div`
     display: flex;
@@ -110,11 +126,31 @@ export const TextInfo = styled.div`
         /* width: 50%; */
         font-size: 0.9rem;
     }
+    @media (max-width: 500px){
+        p{
+            font-size: 0.8rem;
+        }
+    }
+    @media(max-width: 400px){
+        display: flex;
+        flex-flow: wrap column;
+        justify-content: center;
+        align-items: center;
+        p{
+            width: 100%;
+        }
+    }
 `
 export const PRinfo = styled.p`
     text-align: center;
     font-size: 0.8rem;
     width: 70%;
+    @media (max-width: 500px){
+        font-size: 0.74rem !important;
+    }
+    /* @media (max-width: 400px){
+        font-size: 0.5rem !important;
+    } */
 `
 // 
 export const ContainerFooter = styled.div`
@@ -135,6 +171,12 @@ export const ContentAcordeon = styled.div`
         color: ${variables.greenHight};
     }
 `
+
 export const ToggleAcordeon = styled.div`
     ${({status}) => status === 'true' ? ActiveAcordeon: DesactiveAcordeon}
+    @media (max-width: 500px){
+        p{
+        font-size: 0.8rem;
+    }
+    }
 `
