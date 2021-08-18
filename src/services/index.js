@@ -94,3 +94,36 @@ export const deleteFile = (id) => {
       })
   });
 };
+
+export const postSale = (data) => {
+  return new Promise(function (resolve, reject) {
+    axios.post(`${process.env.REACT_APP_URL_API}items/sales`, data)
+      .then((response) => {
+        resolve(response);
+      }).catch((err) => {
+        reject(err)
+      })
+  });
+};
+
+export const getSaleByReference = (reference) => {
+  return new Promise(function (resolve, reject) {
+    axios.get(`${process.env.REACT_APP_URL_API}items/sales?filter[reference]=${reference}`)
+      .then((response) => {
+        resolve(response);
+      }).catch((err) => {
+        reject(err)
+      })
+  });
+};
+
+export const updateSale = (data, idSale) => {
+  return new Promise(function (resolve, reject) {
+    axios.patch(`${process.env.REACT_APP_URL_API}items/sales/${idSale}`, data)
+      .then((response) => {
+        resolve(response);
+      }).catch((err) => {
+        reject(err)
+      })
+  });
+};
